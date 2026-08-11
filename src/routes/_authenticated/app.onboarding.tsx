@@ -107,12 +107,31 @@ function OnboardingPage() {
               {f.label}
               {f.required && " *"}
             </Label>
-            <Input
-              id={f.key}
-              required={f.required}
-              value={form[f.key]}
-              onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-            />
+            {f.key === "country" ? (
+              <Select
+                value={form.country}
+                onValueChange={(value) => setForm({ ...form, country: value })}
+                required={f.required}
+              >
+                <SelectTrigger id={f.key} className="w-full">
+                  <SelectValue placeholder="Selecione o país" />
+                </SelectTrigger>
+                <SelectContent>
+                  {countryOptions.map((opt) => (
+                    <SelectItem key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            ) : (
+              <Input
+                id={f.key}
+                required={f.required}
+                value={form[f.key]}
+                onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
+              />
+            )}
           </div>
         ))}
         <div className="sm:col-span-2">
