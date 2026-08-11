@@ -12,7 +12,6 @@ import {
   type RequiredDoc,
 } from "@/lib/kycdocs.functions";
 import { StatusPill } from "@/components/panel/PanelLayout";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export function KycDocuments({ country, merchantId }: { country: string; merchantId: string | null }) {
