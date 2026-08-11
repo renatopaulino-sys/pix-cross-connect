@@ -78,15 +78,6 @@ function CrossingDiagram({
 
   return (
     <div className="relative mt-16 lg:mt-20">
-      <img
-        src={worldMap}
-        alt=""
-        aria-hidden="true"
-        width={1920}
-        height={960}
-        loading="lazy"
-        className="pointer-events-none absolute -inset-x-16 -inset-y-24 m-auto h-[220%] w-[calc(100%+8rem)] object-cover opacity-30"
-      />
       <svg
         viewBox="0 0 800 170"
         className="relative h-auto w-full"
