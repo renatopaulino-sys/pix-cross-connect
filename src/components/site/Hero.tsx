@@ -85,7 +85,7 @@ function CrossingDiagram({
         width={1920}
         height={960}
         loading="lazy"
-        className="pointer-events-none absolute inset-0 m-auto h-full w-full scale-110 object-contain opacity-60"
+        className="pointer-events-none absolute -inset-x-16 -inset-y-24 m-auto h-[220%] w-[calc(100%+8rem)] object-cover opacity-30"
       />
       <svg
         viewBox="0 0 800 170"
