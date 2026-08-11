@@ -9,6 +9,7 @@ export const content = {
       developers: "Desenvolvedores",
       contact: "Contato",
       cta: "Falar com o time",
+      login: "Entrar",
     },
     badge: { live: "Disponível", soon: "Em breve" },
     hero: {
@@ -198,6 +199,7 @@ export const content = {
       developers: "Developers",
       contact: "Contact",
       cta: "Talk to the team",
+      login: "Log in",
     },
     badge: { live: "Available", soon: "Coming soon" },
     hero: {

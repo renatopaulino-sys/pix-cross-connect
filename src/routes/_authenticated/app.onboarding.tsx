@@ -32,7 +32,6 @@ const countryOptions = [
   { value: "AR", label: "Argentina (AR)" },
   { value: "CL", label: "Chile (CL)" },
   { value: "PE", label: "Peru (PE)" },
-  { value: "OTHER", label: "Outros países" },
 ];
 
 const fields: { key: keyof MerchantInput; label: string; required?: boolean }[] = [
