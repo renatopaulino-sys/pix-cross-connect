@@ -72,7 +72,7 @@ export function Hero() {
                 className="cp-reveal rounded-2xl border border-border bg-paper/80 p-5 backdrop-blur-sm"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <Icon className="text-gradient-brand h-5 w-5 text-[oklch(0.626_0.152_244)]" strokeWidth={1.6} />
+                <Icon className="h-5 w-5 text-brand" strokeWidth={1.6} />
                 <p className="font-display mt-3 text-sm font-bold text-ink">{b.title}</p>
                 <p className="mt-1 text-sm leading-relaxed text-slateink">{b.text}</p>
               </li>
