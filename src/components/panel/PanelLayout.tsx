@@ -9,6 +9,7 @@ import {
   LogOut,
   ArrowLeftRight,
   Menu,
+  ScrollText,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -25,6 +26,7 @@ const merchantNav = [
 const adminNav = [
   { to: "/app/clientes", label: "Gestão de Clientes / KYC", icon: Users },
   { to: "/app/roteamento", label: "Roteamento Inteligente", icon: RouteIcon },
+  { to: "/app/auditoria", label: "Log de Auditoria", icon: ScrollText },
 ] as const;
 
 export function PanelLayout({ children }: { children: ReactNode }) {

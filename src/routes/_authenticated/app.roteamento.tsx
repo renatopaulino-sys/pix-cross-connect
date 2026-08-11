@@ -3,7 +3,13 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { toast } from "sonner";
-import { listConnectors, listRoutingRules, createRoutingRule, toggleRoutingRule } from "@/lib/panel.functions";
+import {
+  listConnectors,
+  listRoutingRules,
+  createRoutingRule,
+  toggleRoutingRule,
+  deleteRoutingRule,
+} from "@/lib/panel.functions";
 import { PageHeader } from "@/components/panel/PanelLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,6 +35,7 @@ function RoutingPage() {
   const fetchRules = useServerFn(listRoutingRules);
   const create = useServerFn(createRoutingRule);
   const toggle = useServerFn(toggleRoutingRule);
+  const remove = useServerFn(deleteRoutingRule);
   const queryClient = useQueryClient();
 
   const connectors = useQuery({ queryKey: ["connectors"], queryFn: () => fetchConnectors() });
@@ -96,6 +103,7 @@ function RoutingPage() {
                   <th className="px-4 py-3">Destino</th>
                   <th className="px-4 py-3">Prio.</th>
                   <th className="px-4 py-3">Ativa</th>
+                  <th className="px-4 py-3"></th>
                 </tr>
               </thead>
               <tbody>
@@ -120,11 +128,28 @@ function RoutingPage() {
                         }}
                       />
                     </td>
+                    <td className="px-4 py-3 text-right">
+                      <button
+                        type="button"
+                        className="text-xs font-medium text-destructive hover:underline"
+                        onClick={async () => {
+                          try {
+                            await remove({ data: { id: r.id } });
+                            toast.success("Regra removida");
+                            await queryClient.invalidateQueries({ queryKey: ["routing-rules"] });
+                          } catch {
+                            toast.error("Sem permissão para remover regras");
+                          }
+                        }}
+                      >
+                        Remover
+                      </button>
+                    </td>
                   </tr>
                 ))}
                 {ruleList.length === 0 && (
                   <tr>
-                    <td colSpan={5} className="px-4 py-6 text-center text-muted-foreground">
+                    <td colSpan={6} className="px-4 py-6 text-center text-muted-foreground">
                       Nenhuma regra criada.
                     </td>
                   </tr>
