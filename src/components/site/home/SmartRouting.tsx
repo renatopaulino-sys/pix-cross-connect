@@ -112,7 +112,7 @@ export function SmartRouting() {
                 fontFamily="Inter, sans-serif"
                 fontWeight="600"
               >
-                {n.name}
+                {n.name} · {n.market}
               </text>
             </g>
           ))}
