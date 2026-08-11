@@ -1,9 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Hero } from "@/components/site/Hero";
-import {
-  SolutionsSection, MethodsSection, HowItWorksSection, VerticalsSection,
-  OrchestrationSection, SecuritySection, DevelopersSection, FaqSection,
-} from "@/components/site/Sections";
+import { Hero } from "@/components/site/home/Hero";
+import { ProductHighlights } from "@/components/site/home/ProductHighlights";
+import { HowItWorks } from "@/components/site/home/HowItWorks";
+import { Verticals } from "@/components/site/home/Verticals";
+import { SmartRouting } from "@/components/site/home/SmartRouting";
+import { LatamSimulator } from "@/components/site/home/LatamSimulator";
+import { DeveloperHub } from "@/components/site/home/DeveloperHub";
+import { Faq } from "@/components/site/home/Faq";
+import { FinalCta } from "@/components/site/home/FinalCta";
+import { MethodsSection, SecuritySection } from "@/components/site/Sections";
 import { ContactSection } from "@/components/site/ContactForm";
 import { content } from "@/data/content";
 
@@ -43,14 +48,16 @@ function Index() {
   return (
     <main>
       <Hero />
-      <SolutionsSection />
+      <ProductHighlights />
       <MethodsSection />
-      <HowItWorksSection />
-      <VerticalsSection />
-      <OrchestrationSection />
+      <HowItWorks />
+      <Verticals />
+      <SmartRouting />
+      <LatamSimulator />
       <SecuritySection />
-      <DevelopersSection />
-      <FaqSection />
+      <DeveloperHub />
+      <Faq />
+      <FinalCta />
       <ContactSection />
     </main>
   );
