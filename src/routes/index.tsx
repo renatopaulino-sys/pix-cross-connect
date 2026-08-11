@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/site/Hero";
 import {
   SolutionsSection, MethodsSection, HowItWorksSection, VerticalsSection,
-  SecuritySection, DevelopersSection, FaqSection,
+  OrchestrationSection, SecuritySection, DevelopersSection, FaqSection,
 } from "@/components/site/Sections";
 import { ContactSection } from "@/components/site/ContactForm";
 import { content } from "@/data/content";
@@ -47,6 +47,7 @@ function Index() {
       <MethodsSection />
       <HowItWorksSection />
       <VerticalsSection />
+      <OrchestrationSection />
       <SecuritySection />
       <DevelopersSection />
       <FaqSection />

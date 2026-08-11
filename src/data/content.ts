@@ -66,7 +66,25 @@ export const content = {
         { name: "Travel", text: "Reservas com janela de expiração definida por cobrança." },
         { name: "Educação", text: "Mensalidades e matrículas com conciliação por aluno." },
         { name: "Serviços digitais", text: "Pagamentos avulsos por link, sem desenvolvimento." },
+        { name: "iGaming e Entretenimento Digital", text: "Pix PayIn e Payout instantâneo 24/7, com conformidade legal e liquidação previsível." },
       ],
+    },
+    orchestration: {
+      label: "Orquestração",
+      title: "Orquestração e Resiliência Local",
+      intro:
+        "Conectamos sua operação a múltiplos parceiros de adquirência regionais. O roteador escolhe automaticamente a melhor rota, garantindo redundância e taxas otimizadas.",
+      partners: [
+        { name: "Cielo", region: "Brasil" },
+        { name: "Kushki", region: "Latam" },
+        { name: "Bamboo", region: "Latam" },
+        { name: "Monnet", region: "México" },
+        { name: "Klap", region: "Chile" },
+      ],
+      hub: "CruziaPay",
+      badgeActive: "Ativo",
+      badgeBackup: "Backup",
+      cta: "Falar com o time",
     },
     security: {
       label: "Compliance",
@@ -244,7 +262,25 @@ export const content = {
         { name: "Travel", text: "Bookings with an expiry window defined per charge." },
         { name: "Education", text: "Tuition and enrolment with per-student reconciliation." },
         { name: "Digital services", text: "One-off payments by link, with no development." },
+        { name: "iGaming and Digital Entertainment", text: "24/7 instant Pix PayIn and Payout with legal compliance and predictable settlement." },
       ],
+    },
+    orchestration: {
+      label: "Orchestration",
+      title: "Local Orchestration and Resilience",
+      intro:
+        "We connect your operation to multiple regional acquirer partners. The router automatically picks the best route, ensuring redundancy and optimized rates.",
+      partners: [
+        { name: "Cielo", region: "Brazil" },
+        { name: "Kushki", region: "Latam" },
+        { name: "Bamboo", region: "Latam" },
+        { name: "Monnet", region: "Mexico" },
+        { name: "Klap", region: "Chile" },
+      ],
+      hub: "CruziaPay",
+      badgeActive: "Active",
+      badgeBackup: "Backup",
+      cta: "Talk to the team",
     },
     security: {
       label: "Compliance",
