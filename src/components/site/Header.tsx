@@ -51,7 +51,7 @@ export function Header() {
           <LocaleToggle locale={locale} setLocale={setLocale} />
           <a
             href="/#contato"
-            className="rounded-lg bg-cobalt px-4 py-2 text-sm font-medium text-paper transition-opacity hover:opacity-90"
+            className="rounded-lg bg-cobalt px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             {t.nav.cta}
           </a>
@@ -86,7 +86,7 @@ export function Header() {
               <a
                 href="/#contato"
                 onClick={() => setOpen(false)}
-                className="rounded-lg bg-cobalt px-4 py-2 text-sm font-medium text-paper"
+                className="rounded-lg bg-cobalt px-4 py-2 text-sm font-medium text-primary-foreground"
               >
                 {t.nav.cta}
               </a>

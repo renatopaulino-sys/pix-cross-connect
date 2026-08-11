@@ -13,11 +13,12 @@ export function Hero() {
         aria-hidden="true"
         width={1920}
         height={960}
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-25"
+        loading="eager"
+        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.6] object-cover object-[58%_42%] opacity-60 contrast-150 saturate-0 mix-blend-multiply sm:scale-[1.15] sm:object-center lg:scale-100 dark:opacity-55 dark:invert dark:mix-blend-screen"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-paper via-paper/70 to-paper"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background"
       />
       <div className="relative container-site">
         <div className="max-w-3xl">
@@ -35,7 +36,7 @@ export function Hero() {
           <div className="mt-9 flex flex-wrap gap-3">
             <a
               href="#contato"
-              className="rounded-lg bg-cobalt px-5 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-90"
+              className="rounded-lg bg-cobalt px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               {t.hero.primary}
             </a>

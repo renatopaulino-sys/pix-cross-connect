@@ -159,7 +159,7 @@ export function ContactSection() {
             <button
               type="submit"
               disabled={sending}
-              className="mt-6 rounded-lg bg-cobalt px-5 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-90 disabled:opacity-60"
+              className="mt-6 rounded-lg bg-cobalt px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
             >
               {sending ? t.contact.sending : t.contact.submit}
             </button>
