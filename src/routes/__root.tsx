@@ -81,14 +81,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CruziaPay | Pagamentos Pix e cross-border para LATAM" },
-      {
-        name: "description",
-        content:
-          "Infraestrutura de pagamentos cross-border para empresas que vendem no Brasil.",
-      },
       { name: "author", content: "CruziaPay" },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "CruziaPay" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -102,6 +97,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://cruziapay.com.br/#organization",
+              name: "CruziaPay",
+              url: "https://cruziapay.com.br",
+              logo: "https://cruziapay.com.br/favicon.png",
+              description:
+                "Infraestrutura de pagamentos cross-border com Pix por API para empresas que vendem no Brasil.",
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://cruziapay.com.br/#website",
+              url: "https://cruziapay.com.br",
+              name: "CruziaPay",
+              inLanguage: "pt-BR",
+              publisher: { "@id": "https://cruziapay.com.br/#organization" },
+            },
+          ],
+        }),
       },
     ],
   }),
