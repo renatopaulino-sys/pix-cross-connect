@@ -111,7 +111,6 @@ function OnboardingPage() {
               <Select
                 value={form.country}
                 onValueChange={(value) => setForm({ ...form, country: value })}
-                required={f.required}
               >
                 <SelectTrigger id={f.key} className="w-full">
                   <SelectValue placeholder="Selecione o país" />
