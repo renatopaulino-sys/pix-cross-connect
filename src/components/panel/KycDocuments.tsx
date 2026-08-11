@@ -134,34 +134,3 @@ export function KycDocuments({ country, merchantId }: { country: string; merchan
     </section>
   );
 }
-
-export function AdminDocuments({ merchantId }: { merchantId: string }) {
-  return <AdminDocsInner merchantId={merchantId} />;
-}
-
-function AdminDocsInner({ merchantId }: { merchantId: string }) {
-  const { useServerFn: _u } = { useServerFn };
-  void _u;
-  return <AdminDocsList merchantId={merchantId} />;
-}
-
-function AdminDocsList({ merchantId }: { merchantId: string }) {
-  return <AdminDocsBody merchantId={merchantId} />;
-}
-
-function AdminDocsBody({ merchantId }: { merchantId: string }) {
-  return <AdminDocsView merchantId={merchantId} />;
-}
-
-function AdminDocsView({ merchantId }: { merchantId: string }) {
-  return <AdminDocsPanel merchantId={merchantId} />;
-}
-
-function AdminDocsPanel({ merchantId }: { merchantId: string }) {
-  return <AdminDocs merchantId={merchantId} />;
-}
-
-function AdminDocs({ merchantId }: { merchantId: string }) {
-  void merchantId;
-  return null;
-}
