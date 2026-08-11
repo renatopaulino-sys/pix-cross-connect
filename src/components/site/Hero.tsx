@@ -14,11 +14,11 @@ export function Hero() {
         width={1920}
         height={960}
         loading="eager"
-        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.6] object-cover object-[58%_42%] opacity-45 contrast-125 saturate-0 mix-blend-multiply sm:scale-[1.15] sm:object-center lg:scale-100 dark:opacity-35 dark:invert dark:mix-blend-screen"
+        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.6] object-cover object-[58%_42%] opacity-60 contrast-150 saturate-0 mix-blend-multiply sm:scale-[1.15] sm:object-center lg:scale-100 dark:opacity-55 dark:invert dark:mix-blend-screen"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-background/55 to-background"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background"
       />
       <div className="relative container-site">
         <div className="max-w-3xl">
