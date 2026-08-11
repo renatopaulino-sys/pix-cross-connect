@@ -9,6 +9,7 @@ import {
   createRoutingRule,
   toggleRoutingRule,
   deleteRoutingRule,
+  listMerchants,
 } from "@/lib/panel.functions";
 import { PageHeader } from "@/components/panel/PanelLayout";
 import { Button } from "@/components/ui/button";
@@ -28,11 +29,14 @@ type Rule = {
   criteria: { country?: string; method?: string } | null;
   destination_connector_id: string | null;
   is_active: boolean | null;
+  merchant_id: string | null;
 };
+type Merchant = { id: string; fantasy_name: string | null; legal_name: string | null; email: string };
 
 function RoutingPage() {
   const fetchConnectors = useServerFn(listConnectors);
   const fetchRules = useServerFn(listRoutingRules);
+  const fetchMerchants = useServerFn(listMerchants);
   const create = useServerFn(createRoutingRule);
   const toggle = useServerFn(toggleRoutingRule);
   const remove = useServerFn(deleteRoutingRule);
@@ -40,6 +44,7 @@ function RoutingPage() {
 
   const connectors = useQuery({ queryKey: ["connectors"], queryFn: () => fetchConnectors() });
   const rules = useQuery({ queryKey: ["routing-rules"], queryFn: () => fetchRules() });
+  const merchants = useQuery({ queryKey: ["merchants"], queryFn: () => fetchMerchants() });
 
   const [form, setForm] = useState({
     rule_name: "",
@@ -47,13 +52,20 @@ function RoutingPage() {
     country: "MX",
     method: "card",
     destination_connector_id: "",
+    merchant_id: "",
   });
   const [busy, setBusy] = useState(false);
 
   const connectorList = (connectors.data ?? []) as Connector[];
   const ruleList = (rules.data ?? []) as Rule[];
+  const merchantList = (merchants.data ?? []) as Merchant[];
   const connectorName = (id: string | null) =>
     connectorList.find((c) => c.id === id)?.connector_name ?? "—";
+  const merchantName = (id: string | null) => {
+    if (!id) return "Global";
+    const m = merchantList.find((x) => x.id === id);
+    return m?.fantasy_name || m?.legal_name || m?.email || "—";
+  };
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -99,6 +111,7 @@ function RoutingPage() {
               <thead className="border-b border-border text-left text-xs uppercase text-muted-foreground">
                 <tr>
                   <th className="px-4 py-3">Regra</th>
+                  <th className="px-4 py-3">Cliente</th>
                   <th className="px-4 py-3">Critério</th>
                   <th className="px-4 py-3">Destino</th>
                   <th className="px-4 py-3">Prio.</th>
@@ -110,6 +123,15 @@ function RoutingPage() {
                 {ruleList.map((r) => (
                   <tr key={r.id} className="border-b border-border/50 last:border-0">
                     <td className="px-4 py-3 font-medium">{r.rule_name}</td>
+                    <td className="px-4 py-3">
+                      {r.merchant_id ? (
+                        merchantName(r.merchant_id)
+                      ) : (
+                        <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                          Global
+                        </span>
+                      )}
+                    </td>
                     <td className="px-4 py-3 font-mono text-xs">
                       {r.criteria?.country ?? "*"} / {r.criteria?.method ?? "*"}
                     </td>
@@ -149,7 +171,7 @@ function RoutingPage() {
                 ))}
                 {ruleList.length === 0 && (
                   <tr>
-                    <td colSpan={6} className="px-4 py-6 text-center text-muted-foreground">
+                    <td colSpan={7} className="px-4 py-6 text-center text-muted-foreground">
                       Nenhuma regra criada.
                     </td>
                   </tr>
@@ -208,6 +230,22 @@ function RoutingPage() {
               {connectorList.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.connector_name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="merchant">Cliente (Merchant)</Label>
+            <select
+              id="merchant"
+              className="h-9 w-full rounded-md border border-input bg-background px-3 text-sm"
+              value={form.merchant_id}
+              onChange={(e) => setForm({ ...form, merchant_id: e.target.value })}
+            >
+              <option value="">Todos os Clientes (Regra Global)</option>
+              {merchantList.map((m) => (
+                <option key={m.id} value={m.id}>
+                  {m.fantasy_name || m.legal_name || m.email}
                 </option>
               ))}
             </select>

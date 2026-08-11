@@ -312,6 +312,7 @@ export const createRoutingRule = createServerFn({ method: "POST" })
       country: string;
       method: string;
       destination_connector_id: string;
+      merchant_id?: string | null;
     }) => {
       if (!data.rule_name.trim()) throw new Error("Nome da regra é obrigatório");
       if (!data.destination_connector_id) throw new Error("Selecione um conector de destino");
@@ -329,6 +330,7 @@ export const createRoutingRule = createServerFn({ method: "POST" })
         priority: Number(data.priority) || 100,
         criteria: { country: data.country, method: data.method },
         destination_connector_id: data.destination_connector_id,
+        merchant_id: data.merchant_id ? data.merchant_id : null,
         is_active: true,
       })
       .select("id")
@@ -346,6 +348,7 @@ export const createRoutingRule = createServerFn({ method: "POST" })
         priority: Number(data.priority) || 100,
         criteria: { country: data.country, method: data.method },
         destination_connector_id: data.destination_connector_id,
+        merchant_id: data.merchant_id ?? null,
       },
     });
 
