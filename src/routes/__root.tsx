@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -15,6 +16,7 @@ import { I18nProvider } from "@/lib/i18n";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CookieBanner } from "@/components/site/CookieBanner";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -149,15 +151,18 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isPanel = pathname.startsWith("/app") || pathname.startsWith("/auth");
 
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
-        <Header />
+        {!isPanel && <Header />}
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
-        <Footer />
-        <CookieBanner />
+        {!isPanel && <Footer />}
+        {!isPanel && <CookieBanner />}
+        <Toaster />
       </I18nProvider>
     </QueryClientProvider>
   );
