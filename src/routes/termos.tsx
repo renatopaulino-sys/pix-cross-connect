@@ -13,7 +13,9 @@ export const Route = createFileRoute("/termos")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "https://cruziapay.com.br/termos" },
     ],
+    links: [{ rel: "canonical", href: "https://cruziapay.com.br/termos" }],
   }),
   component: TermsPage,
 });
