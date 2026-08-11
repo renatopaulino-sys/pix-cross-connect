@@ -36,7 +36,7 @@ export function Hero() {
           <div className="mt-9 flex flex-wrap gap-3">
             <a
               href="#contato"
-              className="rounded-lg bg-cobalt px-5 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-90"
+              className="rounded-lg bg-cobalt px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               {t.hero.primary}
             </a>
