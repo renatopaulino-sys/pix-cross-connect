@@ -25,12 +25,22 @@ const empty: MerchantInput = {
   tax_id: "",
 };
 
+const countryOptions = [
+  { value: "BR", label: "Brasil (BR)" },
+  { value: "MX", label: "México (MX)" },
+  { value: "CO", label: "Colômbia (CO)" },
+  { value: "AR", label: "Argentina (AR)" },
+  { value: "CL", label: "Chile (CL)" },
+  { value: "PE", label: "Peru (PE)" },
+  { value: "OTHER", label: "Outros países" },
+];
+
 const fields: { key: keyof MerchantInput; label: string; required?: boolean }[] = [
   { key: "legal_name", label: "Razão social", required: true },
   { key: "fantasy_name", label: "Nome fantasia" },
   { key: "email", label: "E-mail de contato", required: true },
   { key: "phone", label: "Telefone" },
-  { key: "country", label: "País (ISO, ex.: BR)", required: true },
+  { key: "country", label: "País", required: true },
   { key: "registration_number", label: "Número de registro / CNPJ" },
   { key: "tax_id", label: "Identificação fiscal" },
 ];
