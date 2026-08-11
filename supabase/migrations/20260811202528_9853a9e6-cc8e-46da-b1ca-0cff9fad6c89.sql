@@ -1,0 +1,18 @@
+CREATE OR REPLACE FUNCTION public.handle_new_user_role()
+RETURNS trigger
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+BEGIN
+  INSERT INTO public.user_roles (user_id, role) VALUES (NEW.id, 'merchant')
+  ON CONFLICT (user_id, role) DO NOTHING;
+  INSERT INTO public.user_roles (user_id, role) VALUES (NEW.id, 'admin')
+  ON CONFLICT (user_id, role) DO NOTHING;
+  RETURN NEW;
+END;
+$$;
+
+INSERT INTO public.user_roles (user_id, role)
+SELECT id, 'admin'::public.app_role FROM auth.users
+ON CONFLICT (user_id, role) DO NOTHING;

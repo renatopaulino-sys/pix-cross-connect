@@ -1,0 +1,13 @@
+ALTER ROLE authenticator SET pgrst.db_schemas = 'public, graphql_public, cbm_funnels, gateway, provider_catalog';
+GRANT USAGE ON SCHEMA cbm_funnels TO anon, authenticated, service_role;
+GRANT USAGE ON SCHEMA gateway TO anon, authenticated, service_role;
+GRANT USAGE ON SCHEMA provider_catalog TO anon, authenticated, service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA cbm_funnels TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA gateway TO authenticated;
+GRANT SELECT ON ALL TABLES IN SCHEMA provider_catalog TO authenticated;
+GRANT ALL ON ALL TABLES IN SCHEMA cbm_funnels TO service_role;
+GRANT ALL ON ALL TABLES IN SCHEMA gateway TO service_role;
+GRANT ALL ON ALL TABLES IN SCHEMA provider_catalog TO service_role;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA cbm_funnels TO authenticated, service_role;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA gateway TO authenticated, service_role;
+NOTIFY pgrst, 'reload config';
