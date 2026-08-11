@@ -16,6 +16,29 @@ async function isAdmin(db: AnyClient, userId: string) {
   return Boolean(data);
 }
 
+async function writeAudit(
+  db: AnyClient,
+  entry: {
+    actorUserId: string;
+    actorEmail?: string | null;
+    action: string;
+    entityType: string;
+    entityId?: string | null;
+    entityLabel?: string | null;
+    details?: Record<string, unknown>;
+  },
+) {
+  await db.from("audit_logs").insert({
+    actor_user_id: entry.actorUserId,
+    actor_email: entry.actorEmail ?? null,
+    action: entry.action,
+    entity_type: entry.entityType,
+    entity_id: entry.entityId ?? null,
+    entity_label: entry.entityLabel ?? null,
+    details: entry.details ?? {},
+  });
+}
+
 export const getMe = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
@@ -236,6 +259,23 @@ export const decideKyc = createServerFn({ method: "POST" })
         monitoring_required: data.decision === "approved",
       });
 
+    const { data: merchant } = await db
+      .schema("cbm_funnels")
+      .from("merchants")
+      .select("legal_name, email")
+      .eq("id", data.merchantId)
+      .maybeSingle();
+
+    await writeAudit(db, {
+      actorUserId: context.userId,
+      actorEmail: (context.claims as { email?: string }).email ?? null,
+      action: data.decision === "approved" ? "kyc.approved" : "kyc.rejected",
+      entityType: "merchant",
+      entityId: data.merchantId,
+      entityLabel: merchant?.legal_name ?? merchant?.email ?? data.merchantId,
+      details: { notes: data.notes ?? null },
+    });
+
     return { ok: true };
   });
 
@@ -281,7 +321,7 @@ export const createRoutingRule = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const db = await admin();
     if (!(await isAdmin(db, context.userId))) throw new Error("Forbidden");
-    const { error } = await db
+    const { data: inserted, error } = await db
       .schema("gateway")
       .from("routing_rules")
       .insert({
@@ -290,8 +330,25 @@ export const createRoutingRule = createServerFn({ method: "POST" })
         criteria: { country: data.country, method: data.method },
         destination_connector_id: data.destination_connector_id,
         is_active: true,
-      });
+      })
+      .select("id")
+      .single();
     if (error) throw new Error(error.message);
+
+    await writeAudit(db, {
+      actorUserId: context.userId,
+      actorEmail: (context.claims as { email?: string }).email ?? null,
+      action: "routing_rule.created",
+      entityType: "routing_rule",
+      entityId: inserted?.id ?? null,
+      entityLabel: data.rule_name,
+      details: {
+        priority: Number(data.priority) || 100,
+        criteria: { country: data.country, method: data.method },
+        destination_connector_id: data.destination_connector_id,
+      },
+    });
+
     return { ok: true };
   });
 
@@ -301,11 +358,70 @@ export const toggleRoutingRule = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const db = await admin();
     if (!(await isAdmin(db, context.userId))) throw new Error("Forbidden");
-    const { error } = await db
+    const { data: updated, error } = await db
       .schema("gateway")
       .from("routing_rules")
       .update({ is_active: data.is_active })
-      .eq("id", data.id);
+      .eq("id", data.id)
+      .select("rule_name")
+      .maybeSingle();
     if (error) throw new Error(error.message);
+
+    await writeAudit(db, {
+      actorUserId: context.userId,
+      actorEmail: (context.claims as { email?: string }).email ?? null,
+      action: "routing_rule.updated",
+      entityType: "routing_rule",
+      entityId: data.id,
+      entityLabel: updated?.rule_name ?? data.id,
+      details: { is_active: data.is_active },
+    });
+
     return { ok: true };
+  });
+
+export const deleteRoutingRule = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { id: string }) => {
+    if (!data.id) throw new Error("Regra inválida");
+    return data;
+  })
+  .handler(async ({ data, context }) => {
+    const db = await admin();
+    if (!(await isAdmin(db, context.userId))) throw new Error("Forbidden");
+
+    const { data: existing } = await db
+      .schema("gateway")
+      .from("routing_rules")
+      .select("*")
+      .eq("id", data.id)
+      .maybeSingle();
+
+    const { error } = await db.schema("gateway").from("routing_rules").delete().eq("id", data.id);
+    if (error) throw new Error(error.message);
+
+    await writeAudit(db, {
+      actorUserId: context.userId,
+      actorEmail: (context.claims as { email?: string }).email ?? null,
+      action: "routing_rule.deleted",
+      entityType: "routing_rule",
+      entityId: data.id,
+      entityLabel: existing?.rule_name ?? data.id,
+      details: { removed: existing ?? null },
+    });
+
+    return { ok: true };
+  });
+
+export const listAuditLogs = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const db = await admin();
+    if (!(await isAdmin(db, context.userId))) throw new Error("Forbidden");
+    const { data } = await db
+      .from("audit_logs")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(200);
+    return data ?? [];
   });
