@@ -33,7 +33,7 @@ export function AdminKycDocuments({ merchantId }: { merchantId: string }) {
   async function act(documentId: string, status: "approved" | "rejected", rejection_reason?: string) {
     setBusy(true);
     try {
-      await decide({ data: { documentId, status, rejection_reason } });
+      await decide({ data: { documentId, status, ...(rejection_reason ? { rejection_reason } : {}) } });
       toast.success(status === "approved" ? "Documento aprovado" : "Documento recusado");
       setRejecting(null);
       setReason("");
