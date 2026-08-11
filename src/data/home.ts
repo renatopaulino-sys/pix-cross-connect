@@ -71,11 +71,12 @@ export const latamCoverage: Record<
 export const countryOrder: CountryCode[] = ["BR", "MX", "CO", "PE", "AR", "CL"];
 
 export const acquirers = [
-  { id: "cielo", name: "Cielo", market: "BR", note: { pt: "Adquirência doméstica e Pix", en: "Domestic acquiring and Pix" } },
-  { id: "kushki", name: "Kushki", market: "LATAM", note: { pt: "Cobertura regional multi-país", en: "Regional multi-country coverage" } },
-  { id: "bamboo", name: "Bamboo", market: "LATAM", note: { pt: "Cartões cross-border", en: "Cross-border cards" } },
-  { id: "monnet", name: "Monnet", market: "AND", note: { pt: "Trilhos locais andinos", en: "Andean local rails" } },
-  { id: "klap", name: "Klap", market: "CL", note: { pt: "Pagamentos locais no Chile", en: "Local payments in Chile" } },
+  { id: "p1", name: "Provider 1", market: "BR", note: { pt: "Adquirência local — Brasil", en: "Local acquirer — Brazil" } },
+  { id: "p2", name: "Provider 2", market: "MX", note: { pt: "Adquirência local — México", en: "Local acquirer — Mexico" } },
+  { id: "p3", name: "Provider 3", market: "CO", note: { pt: "Adquirência local — Colômbia", en: "Local acquirer — Colombia" } },
+  { id: "p4", name: "Provider 4", market: "PE", note: { pt: "Adquirência local — Peru", en: "Local acquirer — Peru" } },
+  { id: "p5", name: "Provider 5", market: "AR", note: { pt: "Adquirência local — Argentina", en: "Local acquirer — Argentina" } },
+  { id: "p6", name: "Provider 6", market: "CL", note: { pt: "Adquirência local — Chile", en: "Local acquirer — Chile" } },
 ];
 
 type HomeCopy = {
