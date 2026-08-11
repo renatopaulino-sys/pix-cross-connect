@@ -49,6 +49,12 @@ export function Header() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <LocaleToggle locale={locale} setLocale={setLocale} />
+          <Link
+            to="/auth"
+            className="rounded-lg border border-cobalt px-4 py-2 text-sm font-medium text-cobalt transition-colors hover:bg-cobalt hover:text-primary-foreground"
+          >
+            {t.nav.login}
+          </Link>
           <a
             href="/#contato"
             className="rounded-lg bg-cobalt px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
