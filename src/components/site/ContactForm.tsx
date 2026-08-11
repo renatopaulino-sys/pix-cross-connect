@@ -1,7 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { CheckCircle2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
 import { CONTACT_PREFILL_EVENT, type ContactPrefill } from "@/lib/contact-prefill";
 
@@ -65,21 +64,31 @@ export function ContactSection() {
     if (Object.keys(e).length > 0) return;
 
     setSending(true);
-    const { error } = await supabase.from("leads").insert({
-      name: values.name.trim(),
-      company: values.company.trim(),
-      email: values.email.trim(),
-      phone: values.phone.trim(),
-      country: values.country.trim(),
-      vertical: values.vertical,
-      monthly_volume: values.volume,
-      message: values.message.trim() || null,
-      consent: values.consent,
-      locale,
-    });
+    let ok = false;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          company: values.company.trim(),
+          email: values.email.trim(),
+          phone: values.phone.trim(),
+          country: values.country.trim(),
+          vertical: values.vertical,
+          volume: values.volume,
+          message: values.message.trim(),
+          consent: true,
+          locale,
+        }),
+      });
+      ok = response.ok;
+    } catch {
+      ok = false;
+    }
     setSending(false);
 
-    if (error) {
+    if (!ok) {
       setErrors({ submit: t.contact.errors.submit });
       return;
     }
