@@ -9,6 +9,7 @@ import { KycDocuments } from "@/components/panel/KycDocuments";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const Route = createFileRoute("/_authenticated/app/onboarding")({
   component: OnboardingPage,
@@ -24,12 +25,22 @@ const empty: MerchantInput = {
   tax_id: "",
 };
 
+const countryOptions = [
+  { value: "BR", label: "Brasil (BR)" },
+  { value: "MX", label: "México (MX)" },
+  { value: "CO", label: "Colômbia (CO)" },
+  { value: "AR", label: "Argentina (AR)" },
+  { value: "CL", label: "Chile (CL)" },
+  { value: "PE", label: "Peru (PE)" },
+  { value: "OTHER", label: "Outros países" },
+];
+
 const fields: { key: keyof MerchantInput; label: string; required?: boolean }[] = [
   { key: "legal_name", label: "Razão social", required: true },
   { key: "fantasy_name", label: "Nome fantasia" },
   { key: "email", label: "E-mail de contato", required: true },
   { key: "phone", label: "Telefone" },
-  { key: "country", label: "País (ISO, ex.: BR)", required: true },
+  { key: "country", label: "País", required: true },
   { key: "registration_number", label: "Número de registro / CNPJ" },
   { key: "tax_id", label: "Identificação fiscal" },
 ];
@@ -96,12 +107,30 @@ function OnboardingPage() {
               {f.label}
               {f.required && " *"}
             </Label>
-            <Input
-              id={f.key}
-              required={f.required}
-              value={form[f.key]}
-              onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-            />
+            {f.key === "country" ? (
+              <Select
+                value={form.country}
+                onValueChange={(value) => setForm({ ...form, country: value })}
+              >
+                <SelectTrigger id={f.key} className="w-full">
+                  <SelectValue placeholder="Selecione o país" />
+                </SelectTrigger>
+                <SelectContent>
+                  {countryOptions.map((opt) => (
+                    <SelectItem key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            ) : (
+              <Input
+                id={f.key}
+                required={f.required}
+                value={form[f.key]}
+                onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
+              />
+            )}
           </div>
         ))}
         <div className="sm:col-span-2">
