@@ -13,7 +13,9 @@ export const Route = createFileRoute("/privacidade")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "https://cruziapay.com.br/privacidade" },
     ],
+    links: [{ rel: "canonical", href: "https://cruziapay.com.br/privacidade" }],
   }),
   component: PrivacyPage,
 });

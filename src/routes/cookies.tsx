@@ -13,7 +13,9 @@ export const Route = createFileRoute("/cookies")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "https://cruziapay.com.br/cookies" },
     ],
+    links: [{ rel: "canonical", href: "https://cruziapay.com.br/cookies" }],
   }),
   component: CookiesPage,
 });
