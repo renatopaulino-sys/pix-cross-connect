@@ -48,7 +48,7 @@ export function LatamSimulator() {
                   : "border border-border bg-paper text-ink hover:border-brand")
               }
             >
-              <span aria-hidden="true" className="mr-1.5">{latamCoverage[code].flag}</span>
+              <span aria-hidden="true" className="label-mono mr-2 opacity-70">{code}</span>
               {names[code][locale]}
             </button>
           ))}

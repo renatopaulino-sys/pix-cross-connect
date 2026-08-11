@@ -31,7 +31,7 @@ export function SmartRouting() {
       <div className="mt-12 rounded-2xl border border-border bg-paper p-4 sm:p-8">
         <svg viewBox="0 0 800 350" className="h-auto w-full" role="img" aria-label={c.routing.title}>
           <defs>
-            <linearGradient id="cp-grad" x1="0" y1="0" x2="1" y2="0">
+            <linearGradient id="cp-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="0">
               <stop offset="0%" stopColor="oklch(0.626 0.152 244)" />
               <stop offset="100%" stopColor="oklch(0.804 0.146 219.5)" />
             </linearGradient>
