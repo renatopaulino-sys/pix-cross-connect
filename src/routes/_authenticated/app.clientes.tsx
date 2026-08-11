@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { listMerchants, getMerchantDetail, decideKyc } from "@/lib/panel.functions";
 import { PageHeader, StatusPill } from "@/components/panel/PanelLayout";
+import { AdminKycDocuments } from "@/components/panel/AdminKycDocuments";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
@@ -144,6 +145,8 @@ function ClientsPage() {
                   </dd>
                 </div>
               </dl>
+
+              <AdminKycDocuments merchantId={current.id} />
 
               <div>
                 <p className="label-mono text-xs uppercase text-muted-foreground">Observações da decisão</p>
