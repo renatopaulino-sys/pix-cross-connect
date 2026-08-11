@@ -7,7 +7,19 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden pt-36 pb-24 lg:pt-44 lg:pb-32">
-      <div className="container-site">
+      <img
+        src={worldMap}
+        alt=""
+        aria-hidden="true"
+        width={1920}
+        height={960}
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-25"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-paper via-paper/70 to-paper"
+      />
+      <div className="relative container-site">
         <div className="max-w-3xl">
           <p className="label-mono text-slateink">Cross-border · LATAM</p>
           <h1 className="mt-5 text-4xl leading-[1.05] font-extrabold text-ink sm:text-5xl lg:text-6xl">
