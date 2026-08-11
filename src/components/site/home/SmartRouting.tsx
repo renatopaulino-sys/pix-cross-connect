@@ -11,7 +11,7 @@ export function SmartRouting() {
   const nodes = acquirers.map((a, i) => ({
     ...a,
     x: 700,
-    y: 40 + i * 62,
+    y: 35 + i * 52,
   }));
 
   const tooltip =
@@ -112,7 +112,7 @@ export function SmartRouting() {
                 fontFamily="Inter, sans-serif"
                 fontWeight="600"
               >
-                {n.name}
+                {n.name} · {n.market}
               </text>
             </g>
           ))}
