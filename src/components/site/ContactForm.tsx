@@ -1,8 +1,9 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { CheckCircle2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
+import { CONTACT_PREFILL_EVENT, type ContactPrefill } from "@/lib/contact-prefill";
 
 type Values = {
   name: string; company: string; email: string; phone: string;
@@ -23,6 +24,21 @@ export function ContactSection() {
   const [errors, setErrors] = useState<Partial<Record<keyof Values | "submit", string>>>({});
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    const onPrefill = (event: Event) => {
+      const detail = (event as CustomEvent<ContactPrefill>).detail ?? {};
+      setDone(false);
+      setValues((v) => ({
+        ...v,
+        country: detail.country ?? v.country,
+        vertical: detail.vertical ?? v.vertical,
+        message: detail.message ?? v.message,
+      }));
+    };
+    window.addEventListener(CONTACT_PREFILL_EVENT, onPrefill);
+    return () => window.removeEventListener(CONTACT_PREFILL_EVENT, onPrefill);
+  }, []);
 
   const set = <K extends keyof Values>(key: K, value: Values[K]) => {
     setValues((v) => ({ ...v, [key]: value }));
