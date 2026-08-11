@@ -5,6 +5,7 @@ import {
   SecuritySection, DevelopersSection, FaqSection,
 } from "@/components/site/Sections";
 import { ContactSection } from "@/components/site/ContactForm";
+import { content } from "@/data/content";
 
 const title = "CruziaPay | Pagamentos Pix e cross-border para LATAM";
 const description =
@@ -17,6 +18,22 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "https://cruziapay.com.br/" },
+    ],
+    links: [{ rel: "canonical", href: "https://cruziapay.com.br/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: content.pt.faq.items.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }),
+      },
     ],
   }),
   component: Index,
