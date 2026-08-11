@@ -87,12 +87,19 @@ export function Header() {
                 {l.label}
               </a>
             ))}
-            <div className="mt-3 flex items-center justify-between gap-3">
+            <div className="mt-3 flex flex-col gap-3">
               <LocaleToggle locale={locale} setLocale={setLocale} />
+              <Link
+                to="/auth"
+                onClick={() => setOpen(false)}
+                className="rounded-lg border border-cobalt px-4 py-2 text-center text-sm font-medium text-cobalt transition-colors hover:bg-cobalt hover:text-primary-foreground"
+              >
+                {t.nav.login}
+              </Link>
               <a
                 href="/#contato"
                 onClick={() => setOpen(false)}
-                className="rounded-lg bg-cobalt px-4 py-2 text-sm font-medium text-primary-foreground"
+                className="rounded-lg bg-cobalt px-4 py-2 text-center text-sm font-medium text-primary-foreground"
               >
                 {t.nav.cta}
               </a>
