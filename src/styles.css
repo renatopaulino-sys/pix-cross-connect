@@ -4,6 +4,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-ink: oklch(0.244 0.049 250);
+  --color-cobalt: oklch(0.472 0.216 267);
+  --color-signal: oklch(0.733 0.113 183);
+  --color-sand: oklch(0.933 0.008 85);
+  --color-paper: oklch(1 0 0);
+  --color-slateink: oklch(0.475 0.014 249);
+  --container-site: 1200px;
+}
+
 /*
  * Design system definition.
  *
@@ -141,4 +154,91 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.244 0.049 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.244 0.049 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.244 0.049 250);
+  --primary: oklch(0.472 0.216 267);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.933 0.008 85);
+  --secondary-foreground: oklch(0.244 0.049 250);
+  --muted: oklch(0.933 0.008 85);
+  --muted-foreground: oklch(0.475 0.014 249);
+  --accent: oklch(0.933 0.008 85);
+  --accent-foreground: oklch(0.244 0.049 250);
+  --border: oklch(0.885 0.008 250);
+  --input: oklch(0.885 0.008 250);
+  --ring: oklch(0.472 0.216 267);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt);
+    outline-offset: 2px;
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes cp-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes cp-dash-travel {
+  to { stroke-dashoffset: -1200; }
+}
+@keyframes cp-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.35); }
+}
+
+.cp-route-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: cp-draw 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+.cp-route-pulse {
+  stroke-dasharray: 40 1160;
+  stroke-dashoffset: 0;
+  animation: cp-dash-travel 3.2s linear 1.8s infinite;
+}
+.cp-status-dot {
+  animation: cp-pulse-dot 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cp-route-line { animation: none; stroke-dashoffset: 0; }
+  .cp-route-pulse { display: none; }
+  .cp-status-dot { animation: none; }
 }
