@@ -74,16 +74,25 @@ export const content = {
       title: "Orquestração e Resiliência Local",
       intro:
         "Conectamos sua operação a múltiplos parceiros de adquirência regionais. O roteador escolhe automaticamente a melhor rota, garantindo redundância e taxas otimizadas.",
-      partners: [
-        { name: "Cielo", region: "Brasil" },
-        { name: "Kushki", region: "Latam" },
-        { name: "Bamboo", region: "Latam" },
-        { name: "Monnet", region: "México" },
-        { name: "Klap", region: "Chile" },
+      countries: [
+        { code: "BR", name: "Brasil", rails: "Pix · Boleto · Cartão", live: true },
+        { code: "MX", name: "México", rails: "SPEI · Cartão", live: true },
+        { code: "CO", name: "Colômbia", rails: "PSE · Cartão", live: true },
+        { code: "CL", name: "Chile", rails: "Transferência · Cartão", live: false },
+        { code: "PE", name: "Peru", rails: "Transferência · Cartão", live: false },
+        { code: "AR", name: "Argentina", rails: "Transferência · Cartão", live: false },
       ],
       hub: "CruziaPay",
+      hubNote: "Roteador de pagamentos",
+      flow: { source: "Sua operação", router: "Roteamento dinâmico", target: "Trilhos locais" },
+      colHeaders: { market: "Mercado", rails: "Trilhos locais", status: "Status" },
       badgeActive: "Ativo",
-      badgeBackup: "Backup",
+      badgeBackup: "Em habilitação",
+      stats: [
+        { value: "2+", label: "Parceiros de adquirência por mercado" },
+        { value: "<1s", label: "Failover automático entre rotas" },
+        { value: "24/7", label: "Monitoramento de disponibilidade" },
+      ],
       cta: "Falar com o time",
     },
     security: {
