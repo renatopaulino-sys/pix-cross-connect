@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/cruziapay-logo.png.asset.json";
+import mark from "@/assets/cruziapay-mark.png.asset.json";
 import { useI18n } from "@/lib/i18n";
 
 export function Header() {
@@ -34,8 +34,9 @@ export function Header() {
       }
     >
       <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 lg:flex lg:justify-between">
-        <Link to="/" className="flex min-w-0 items-center" aria-label="CruziaPay">
-          <img src={logo.url} alt="CruziaPay" className="h-9 w-auto shrink-0" width={140} height={36} />
+        <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="CruziaPay">
+          <img src={mark.url} alt="" aria-hidden="true" className="h-8 w-auto shrink-0" width={51} height={32} />
+          <span className="font-display truncate text-lg font-extrabold tracking-tight text-ink">CruziaPay</span>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label={t.nav.solutions}>

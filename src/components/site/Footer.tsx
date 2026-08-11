@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/cruziapay-logo.png.asset.json";
+import mark from "@/assets/cruziapay-mark.png.asset.json";
 import { useI18n } from "@/lib/i18n";
 
 export function Footer() {
@@ -10,7 +10,10 @@ export function Footer() {
     <footer className="border-t border-border bg-paper py-16">
       <div className="container-site grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,2fr)]">
         <div className="max-w-sm">
-          <img src={logo.url} alt="CruziaPay" className="h-10 w-auto" width={160} height={40} />
+          <div className="flex items-center gap-2">
+            <img src={mark.url} alt="" aria-hidden="true" className="h-9 w-auto" width={57} height={36} />
+            <span className="font-display text-xl font-extrabold tracking-tight text-ink">CruziaPay</span>
+          </div>
           <p className="mt-4 text-sm leading-relaxed text-slateink">{t.footer.description}</p>
         </div>
 
