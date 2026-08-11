@@ -10,7 +10,7 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --color-ink: oklch(0.244 0.049 250);
   --color-cobalt: oklch(0.472 0.216 267);
-  --color-current: oklch(0.733 0.113 183);
+  --color-signal: oklch(0.733 0.113 183);
   --color-sand: oklch(0.933 0.008 85);
   --color-paper: oklch(1 0 0);
   --color-slateink: oklch(0.475 0.014 249);

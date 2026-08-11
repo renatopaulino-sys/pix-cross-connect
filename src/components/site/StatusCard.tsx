@@ -43,7 +43,7 @@ export function StatusCard({ item }: { item: Method }) {
         <span
           className={
             live
-              ? "label-mono shrink-0 rounded-lg border border-current/40 bg-current/10 px-2 py-1 text-ink"
+              ? "label-mono shrink-0 rounded-lg border border-signal/40 bg-signal/10 px-2 py-1 text-ink"
               : "label-mono shrink-0 rounded-lg border border-border bg-sand px-2 py-1 text-slateink"
           }
         >
