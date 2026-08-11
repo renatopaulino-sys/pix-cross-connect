@@ -1,0 +1,1 @@
+ALTER TABLE gateway.routing_rules ADD COLUMN IF NOT EXISTS merchant_id UUID REFERENCES cbm_funnels.merchants(id) ON DELETE CASCADE;
