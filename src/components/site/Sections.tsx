@@ -88,142 +88,79 @@ export function VerticalsSection() {
   );
 }
 
-function PartnerNode({
-  name,
-  region,
-  active,
-  x,
-  y,
-}: {
-  name: string;
-  region: string;
-  active: boolean;
-  x: number;
-  y: number;
-}) {
-  return (
-    <g transform={`translate(${x}, ${y})`}>
-      <circle r="34" className="fill-background stroke-border" strokeWidth="1.5" />
-      <circle r="30" className="fill-sand" />
-      <text
-        y="-4"
-        textAnchor="middle"
-        className="fill-ink text-[11px] font-semibold"
-        style={{ fontFamily: "var(--font-sans)" }}
-      >
-        {name}
-      </text>
-      <text
-        y="12"
-        textAnchor="middle"
-        className="fill-slateink text-[9px]"
-        style={{ fontFamily: "var(--font-sans)" }}
-      >
-        {region}
-      </text>
-      <circle r="4" cx="26" cy="-26" className={active ? "fill-signal" : "fill-cobalt/60"} />
-      <circle
-        r="4"
-        cx="26"
-        cy="-26"
-        className={active ? "fill-signal cp-status-dot" : "fill-cobalt/60"}
-      />
-    </g>
-  );
-}
-
 export function OrchestrationSection() {
   const { t } = useI18n();
   const data = t.orchestration;
-  const partners = data.partners;
-
-  const centerX = 220;
-  const centerY = 180;
-  const radius = 140;
+  const countries = data.countries;
 
   return (
     <section id="orquestracao" className="border-t border-border bg-sand py-24 lg:py-32">
       <div className="container-site">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:gap-16">
           <div>
             <SectionHead label={data.label} title={data.title} intro={data.intro} />
-            <div className="mt-8 flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-ink">
-                <span className="h-2 w-2 rounded-full bg-signal" />
-                {data.badgeActive}
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-ink">
-                <span className="h-2 w-2 rounded-full bg-cobalt/60" />
-                {data.badgeBackup}
-              </span>
-            </div>
+            <dl className="mt-10 grid gap-6 sm:grid-cols-3 lg:grid-cols-1 lg:gap-5">
+              {data.stats.map((s) => (
+                <div key={s.label} className="border-t border-ink/20 pt-4">
+                  <dt className="text-2xl font-bold tracking-tight text-ink">{s.value}</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-slateink">{s.label}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <div className="relative">
-            <svg
-              viewBox="0 0 440 360"
-              className="h-auto w-full"
-              role="img"
-              aria-label={`${data.title}: ${data.hub} conectado a ${partners.length} parceiros regionais`}
-            >
-              <defs>
-                <marker id="arrow-signal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                  <path d="M0,0 L8,4 L0,8 L2,4 Z" className="fill-signal" />
-                </marker>
-                <marker id="arrow-cobalt" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                  <path d="M0,0 L8,4 L0,8 L2,4 Z" className="fill-cobalt" />
-                </marker>
-              </defs>
+          <div className="rounded-xl border border-border bg-background p-6 sm:p-8">
+            {/* Fluxo horizontal */}
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+              <div className="flex-1 rounded-lg border border-border px-4 py-3">
+                <p className="label-mono text-slateink">01</p>
+                <p className="mt-1 text-sm font-semibold text-ink">{data.flow.source}</p>
+              </div>
+              <div className="flex-1 rounded-lg border border-cobalt/40 bg-cobalt px-4 py-3">
+                <p className="label-mono text-paper/70">02</p>
+                <p className="mt-1 text-sm font-semibold text-paper">{data.hub}</p>
+                <p className="text-xs text-paper/70">{data.flow.router}</p>
+              </div>
+              <div className="flex-1 rounded-lg border border-border px-4 py-3">
+                <p className="label-mono text-slateink">03</p>
+                <p className="mt-1 text-sm font-semibold text-ink">{data.flow.target}</p>
+              </div>
+            </div>
 
-              {partners.map((p, i) => {
-                const angle = (i / partners.length) * Math.PI * 2 - Math.PI / 2;
-                const x = centerX + Math.cos(angle) * radius;
-                const y = centerY + Math.sin(angle) * radius;
-                return (
-                  <g key={p.name}>
-                    <line
-                      x1={centerX}
-                      y1={centerY}
-                      x2={x}
-                      y2={y}
-                      className="stroke-border"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 4"
-                    />
-                    <line
-                      x1={centerX}
-                      y1={centerY}
-                      x2={x * 0.85 + centerX * 0.15}
-                      y2={y * 0.85 + centerY * 0.15}
-                      className="cp-route-line stroke-signal"
-                      strokeWidth="2"
-                      markerEnd={`url(#arrow-${i === 0 ? "signal" : "cobalt"})`}
-                      style={{ animationDelay: `${i * 0.3}s` }}
-                    />
-                  </g>
-                );
-              })}
+            <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-signal to-transparent" />
 
-              {partners.map((p, i) => {
-                const angle = (i / partners.length) * Math.PI * 2 - Math.PI / 2;
-                const x = centerX + Math.cos(angle) * radius;
-                const y = centerY + Math.sin(angle) * radius;
-                return <PartnerNode key={p.name} name={p.name} region={p.region} active={i === 0} x={x} y={y} />;
-              })}
-
-              <g transform={`translate(${centerX}, ${centerY})`}>
-                <circle r="48" className="fill-background stroke-border" strokeWidth="2" />
-                <circle r="42" className="fill-cobalt" />
-                <text
-                  y="4"
-                  textAnchor="middle"
-                  className="fill-paper text-[13px] font-bold"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {data.hub}
-                </text>
-              </g>
-            </svg>
+            {/* Tabela de mercados */}
+            <div className="mt-6 overflow-hidden">
+              <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] gap-4 border-b border-border pb-3">
+                <span className="label-mono text-slateink">{data.colHeaders.market}</span>
+                <span className="label-mono hidden text-slateink sm:block">{data.colHeaders.rails}</span>
+                <span className="label-mono text-right text-slateink">{data.colHeaders.status}</span>
+              </div>
+              <ul className="divide-y divide-border">
+                {countries.map((c) => (
+                  <li
+                    key={c.code}
+                    className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] items-center gap-4 py-3.5"
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className="label-mono rounded border border-border px-1.5 py-0.5 text-ink">
+                        {c.code}
+                      </span>
+                      <span className="text-sm font-medium text-ink">{c.name}</span>
+                    </span>
+                    <span className="hidden text-sm text-slateink sm:block">{c.rails}</span>
+                    <span className="flex items-center justify-end gap-2 text-xs font-medium text-slateink">
+                      <span
+                        className={
+                          "h-2 w-2 rounded-full " + (c.live ? "cp-status-dot bg-signal" : "bg-cobalt/50")
+                        }
+                      />
+                      {c.live ? data.badgeActive : data.badgeBackup}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
