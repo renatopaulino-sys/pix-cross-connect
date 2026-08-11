@@ -1,7 +1,9 @@
 import { useI18n } from "@/lib/i18n";
+import worldMap from "@/assets/world-map.png";
 
 export function Hero() {
   const { t } = useI18n();
+  const headlineLines = t.hero.headline.split(/(?<=\.)\s+/);
 
   return (
     <section className="relative overflow-hidden pt-36 pb-24 lg:pt-44 lg:pb-32">
@@ -9,9 +11,14 @@ export function Hero() {
         <div className="max-w-3xl">
           <p className="label-mono text-slateink">Cross-border · LATAM</p>
           <h1 className="mt-5 text-4xl leading-[1.05] font-extrabold text-ink sm:text-5xl lg:text-6xl">
-            {t.hero.headline}
+            {headlineLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slateink">{t.hero.sub}</p>
+
 
           <div className="mt-9 flex flex-wrap gap-3">
             <a
@@ -58,13 +65,39 @@ function CrossingDiagram({
   const path = "M 40 120 C 200 120, 240 40, 400 40 S 600 120, 760 120";
 
   return (
-    <div className="mt-16 lg:mt-20">
+    <div className="relative mt-16 lg:mt-20">
+      <img
+        src={worldMap}
+        alt=""
+        aria-hidden="true"
+        width={1920}
+        height={960}
+        loading="lazy"
+        className="pointer-events-none absolute inset-0 m-auto h-full w-full scale-110 object-contain opacity-60"
+      />
       <svg
         viewBox="0 0 800 170"
-        className="h-auto w-full"
+        className="relative h-auto w-full"
         role="img"
         aria-label={`${buyer} → ${gateway} → ${account}`}
       >
+        <path
+          d="M 40 120 C 180 60, 300 150, 400 90 S 620 30, 760 120"
+          fill="none"
+          stroke="oklch(0.733 0.113 183)"
+          strokeWidth="1"
+          strokeDasharray="2 6"
+          opacity="0.5"
+        />
+        <path
+          d="M 40 120 C 220 20, 520 160, 760 120"
+          fill="none"
+          stroke="oklch(0.472 0.216 267)"
+          strokeWidth="1"
+          strokeDasharray="2 6"
+          opacity="0.35"
+        />
+
         <path d={path} fill="none" stroke="oklch(0.885 0.008 250)" strokeWidth="1" strokeDasharray="3 5" />
         <path d={path} fill="none" stroke="oklch(0.733 0.113 183)" strokeWidth="2" className="cp-route-line" />
         <path
