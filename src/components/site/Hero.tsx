@@ -1,7 +1,9 @@
 import { useI18n } from "@/lib/i18n";
+import worldMap from "@/assets/world-map.png";
 
 export function Hero() {
   const { t } = useI18n();
+  const headlineLines = t.hero.headline.split(/(?<=\.)\s+/);
 
   return (
     <section className="relative overflow-hidden pt-36 pb-24 lg:pt-44 lg:pb-32">
@@ -9,9 +11,14 @@ export function Hero() {
         <div className="max-w-3xl">
           <p className="label-mono text-slateink">Cross-border · LATAM</p>
           <h1 className="mt-5 text-4xl leading-[1.05] font-extrabold text-ink sm:text-5xl lg:text-6xl">
-            {t.hero.headline}
+            {headlineLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slateink">{t.hero.sub}</p>
+
 
           <div className="mt-9 flex flex-wrap gap-3">
             <a
