@@ -279,16 +279,25 @@ export const content = {
       title: "Local Orchestration and Resilience",
       intro:
         "We connect your operation to multiple regional acquirer partners. The router automatically picks the best route, ensuring redundancy and optimized rates.",
-      partners: [
-        { name: "Cielo", region: "Brazil" },
-        { name: "Kushki", region: "Latam" },
-        { name: "Bamboo", region: "Latam" },
-        { name: "Monnet", region: "Mexico" },
-        { name: "Klap", region: "Chile" },
+      countries: [
+        { code: "BR", name: "Brazil", rails: "Pix · Boleto · Cards", live: true },
+        { code: "MX", name: "Mexico", rails: "SPEI · Cards", live: true },
+        { code: "CO", name: "Colombia", rails: "PSE · Cards", live: true },
+        { code: "CL", name: "Chile", rails: "Bank transfer · Cards", live: false },
+        { code: "PE", name: "Peru", rails: "Bank transfer · Cards", live: false },
+        { code: "AR", name: "Argentina", rails: "Bank transfer · Cards", live: false },
       ],
       hub: "CruziaPay",
-      badgeActive: "Active",
-      badgeBackup: "Backup",
+      hubNote: "Payment router",
+      flow: { source: "Your operation", router: "Dynamic routing", target: "Local rails" },
+      colHeaders: { market: "Market", rails: "Local rails", status: "Status" },
+      badgeActive: "Live",
+      badgeBackup: "Enabling",
+      stats: [
+        { value: "2+", label: "Acquiring partners per market" },
+        { value: "<1s", label: "Automatic failover between routes" },
+        { value: "24/7", label: "Availability monitoring" },
+      ],
       cta: "Talk to the team",
     },
     security: {
