@@ -1,0 +1,25 @@
+/*
+ * CruziaPay theme tokens.
+ * Brand gradient: #0A8FDC -> #00D4FF · success #00C853 · warning #FFAB00
+ * Typography: Inter (headings) + Roboto (body) + JetBrains Mono (labels/code)
+ */
+
+@theme {
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-brand: oklch(0.626 0.152 244);
+  --color-brand-light: oklch(0.804 0.146 219.5);
+  --color-cobalt: oklch(0.626 0.152 244);
+  --color-signal: oklch(0.804 0.146 219.5);
+  --color-success: oklch(0.727 0.208 148.3);
+  --color-warning: oklch(0.803 0.17 73.8);
+
+  --color-ink: oklch(0.248 0 90);
+  --color-paper: oklch(1 0 0);
+  --color-sand: oklch(0.985 0 90);
+  --color-slateink: oklch(0.554 0.041 257.4);
+
+  --container-site: 1200px;
+}
