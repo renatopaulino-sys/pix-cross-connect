@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { getMyMerchant, saveMyMerchant, type MerchantInput } from "@/lib/panel.functions";
 import { PageHeader, StatusPill } from "@/components/panel/PanelLayout";
+import { KycDocuments } from "@/components/panel/KycDocuments";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -109,6 +110,11 @@ function OnboardingPage() {
           </Button>
         </div>
       </form>
+
+      <KycDocuments
+        country={(form.country || "BR").toUpperCase()}
+        merchantId={(data?.merchant as { id?: string } | null)?.id ?? null}
+      />
     </div>
   );
 }
