@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import worldMap from "@/assets/world-map.png";
+import { PixCheckoutModal } from "./PixCheckoutModal";
 
 export function Hero() {
   const { t } = useI18n();
+  const [openPixModal, setOpenPixModal] = useState(false);
   const headlineLines = t.hero.headline.split(/(?<=\.)\s+/);
 
   return (
@@ -34,6 +37,13 @@ export function Hero() {
 
 
           <div className="mt-9 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => setOpenPixModal(true)}
+              className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-emerald-700 hover:shadow-emerald-600/20 cursor-pointer"
+            >
+              <span>⚡ Testar Checkout Pix Vivo</span>
+            </button>
             <a
               href="#contato"
               className="rounded-lg bg-cobalt px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
@@ -47,6 +57,8 @@ export function Hero() {
               {t.hero.secondary}
             </a>
           </div>
+
+          <PixCheckoutModal open={openPixModal} onOpenChange={setOpenPixModal} />
 
           <p className="mt-6 flex items-center gap-2 text-sm text-slateink">
             <span className="relative flex h-2 w-2 shrink-0">

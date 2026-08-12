@@ -74,34 +74,61 @@ export function ContactSection() {
     if (Object.keys(e).length > 0) return;
 
     setSending(true);
-    let ok = false;
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: values.name.trim(),
-          company: values.company.trim(),
-          email: values.email.trim(),
-          phone: values.phone.trim(),
-          country: values.country.trim(),
-          vertical: values.vertical,
-          volume: values.volume,
-          message: values.message.trim(),
-          consent: true,
-          locale,
-        }),
-      });
-      ok = response.ok;
-    } catch {
-      ok = false;
+
+    const payload = {
+      timestamp: new Date().toISOString(),
+      name: values.name.trim(),
+      company: values.company.trim(),
+      email: values.email.trim(),
+      phone: values.phone.trim(),
+      country: values.country.trim(),
+      vertical: values.vertical,
+      volume: values.volume,
+      message: values.message.trim() || null,
+      consent: values.consent,
+      locale,
+    };
+
+    // 1️⃣ Save to Supabase (Database / Back-office)
+    const { error: dbError } = await supabase.from("leads").insert({
+      name: payload.name,
+      company: payload.company,
+      email: payload.email,
+      phone: payload.phone,
+      country: payload.country,
+      vertical: payload.vertical,
+      monthly_volume: payload.volume,
+      message: payload.message,
+      consent: payload.consent,
+      locale: payload.locale,
+    });
+
+    // 2️⃣ Forward to Google Apps Script (Google Sheets + Email Notification)
+    const webhookUrl =
+      import.meta.env.VITE_GOOGLE_SHEET_WEBHOOK ||
+      "https://script.google.com/macros/s/AKfycbz_CFEcshUq_lrBYRoYwCcIGf1ZRcmH2h77uybb8u7z1k7yw-ExEUA3JHKjETd0LUSmfA/exec";
+
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload),
+        });
+      } catch (err) {
+        console.error("Error sending lead to webhook:", err);
+      }
     }
+
     setSending(false);
 
-    if (!ok) {
+    if (dbError) {
+      console.error("Supabase error:", dbError);
       setErrors({ submit: t.contact.errors.submit });
       return;
     }
+
     setDone(true);
     setValues(empty);
   };
