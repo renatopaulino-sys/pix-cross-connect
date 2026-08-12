@@ -33,13 +33,14 @@ export function Hero() {
       />
 
       <div className="relative container-site">
-        <div className="cp-reveal glass-panel max-w-3xl rounded-2xl p-5 shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] sm:rounded-3xl sm:p-8 lg:p-10">
+        <div className="grid w-full items-stretch gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] xl:gap-8">
+        <div className="cp-reveal glass-panel w-full min-w-0 rounded-2xl p-5 shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] sm:rounded-3xl sm:p-8 lg:p-10 xl:p-12">
           <p className="label-mono text-gradient-brand text-[0.7rem] font-semibold break-words sm:text-xs">{c.hero.eyebrow}</p>
-          <h1 className="font-display mt-3 text-[clamp(1.65rem,7.2vw,2.5rem)] leading-[1.1] font-extrabold tracking-tight text-pretty break-words hyphens-auto text-ink sm:mt-5 sm:text-[clamp(2.25rem,5vw,3rem)] lg:text-6xl">
+          <h1 className="font-display mt-3 text-[clamp(1.65rem,7.2vw,2.5rem)] leading-[1.1] font-extrabold tracking-tight text-pretty break-words hyphens-auto text-ink sm:mt-5 sm:text-[clamp(2.25rem,5vw,3rem)] lg:text-[clamp(2.75rem,4.2vw,4.25rem)]">
             <span className="block">{c.hero.headline1}</span>
             <span className="text-gradient-brand block">{c.hero.headline2}</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-slateink sm:mt-6 sm:text-lg">{c.hero.sub}</p>
+          <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-slateink sm:mt-6 sm:text-lg lg:max-w-none lg:text-xl">{c.hero.sub}</p>
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center">
             <button
@@ -63,7 +64,21 @@ export function Hero() {
           </p>
         </div>
 
-        <ul className="mt-8 grid gap-3 min-[420px]:grid-cols-2 sm:mt-10 sm:gap-4 lg:grid-cols-4">
+        <aside className="cp-reveal glass-panel hidden min-w-0 flex-col justify-center rounded-3xl p-8 lg:flex xl:p-10">
+          <p className="label-mono text-gradient-brand text-xs font-semibold">{c.heroAside.title}</p>
+          <dl className="mt-6 grid grid-cols-2 gap-5 xl:gap-6">
+            {c.heroAside.stats.map((s) => (
+              <div key={s.label} className="min-w-0">
+                <dt className="font-display text-3xl font-extrabold tracking-tight text-ink xl:text-4xl">{s.value}</dt>
+                <dd className="mt-1 text-sm leading-snug text-slateink">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-7 border-t border-border pt-5 text-sm leading-relaxed text-slateink">{c.heroAside.note}</p>
+        </aside>
+        </div>
+
+        <ul className="mt-8 grid w-full gap-3 min-[420px]:grid-cols-2 sm:mt-10 sm:gap-4 lg:grid-cols-4">
           {c.bullets.map((b, i) => {
             const Icon = icons[i] ?? Zap;
             return (
