@@ -15,6 +15,8 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
       return;
     }
 
+    const reveal = (el: HTMLElement) => el.classList.add("is-visible");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -28,7 +30,24 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
     );
 
     targets.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    // Fail-safe: if the observer never fires (hash jumps, restored scroll,
+    // instant navigation), never leave content stuck at opacity 0.
+    const fallback = window.setTimeout(() => {
+      targets.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 1.2) reveal(el);
+      });
+    }, 900);
+
+    const onHash = () => targets.forEach(reveal);
+    window.addEventListener("hashchange", onHash);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+      window.removeEventListener("hashchange", onHash);
+    };
   }, []);
 
   return ref;
