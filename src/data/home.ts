@@ -81,6 +81,7 @@ export const acquirers = [
 
 type HomeCopy = {
   hero: { eyebrow: string; headline1: string; headline2: string; sub: string; primary: string; secondary: string; status: string };
+  heroAside: { title: string; note: string; stats: { value: string; label: string }[] };
   bullets: { title: string; text: string }[];
   highlights: {
     label: string; title: string; intro: string; contactLink: string;
@@ -108,6 +109,16 @@ export const home: Record<Locale, HomeCopy> = {
       primary: "Falar com o time",
       secondary: "Ver documentação",
       status: "Pix ativo no Brasil. Demais métodos em habilitação.",
+    },
+    heroAside: {
+      title: "Cobertura em tempo real",
+      note: "Roteamento inteligente entre provedores locais, com failover automático.",
+      stats: [
+        { value: "6", label: "Mercados na América Latina" },
+        { value: "< 5s", label: "Confirmação média do Pix" },
+        { value: "99,9%", label: "Disponibilidade da API" },
+        { value: "24/7", label: "Monitoramento e suporte" },
+      ],
     },
     bullets: [
       { title: "Instantâneo", text: "Pagamento confirmado em segundos." },
@@ -169,6 +180,16 @@ export const home: Record<Locale, HomeCopy> = {
       primary: "Talk to the team",
       secondary: "See documentation",
       status: "Pix live in Brazil. Other methods being enabled.",
+    },
+    heroAside: {
+      title: "Coverage in real time",
+      note: "Smart routing across local providers, with automatic failover.",
+      stats: [
+        { value: "6", label: "Latin American markets" },
+        { value: "< 5s", label: "Average Pix confirmation" },
+        { value: "99.9%", label: "API availability" },
+        { value: "24/7", label: "Monitoring and support" },
+      ],
     },
     bullets: [
       { title: "Instant", text: "Payments confirmed in seconds." },
