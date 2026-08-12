@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { Zap, TrendingUp, Globe2, ShieldCheck } from "lucide-react";
 import worldMap from "@/assets/world-map.png";
 import { useI18n } from "@/lib/i18n";
 import { home } from "@/data/home";
 import { requestContact } from "@/lib/contact-prefill";
 import { useReveal } from "@/hooks/use-reveal";
+import { PixCheckoutModal } from "../PixCheckoutModal";
 
 const icons = [Zap, TrendingUp, Globe2, ShieldCheck];
 
 export function Hero() {
   const { locale } = useI18n();
+  const [openPixModal, setOpenPixModal] = useState(false);
   const c = home[locale];
   const ref = useReveal<HTMLElement>();
 
@@ -45,6 +48,13 @@ export function Hero() {
           <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center">
             <button
               type="button"
+              onClick={() => setOpenPixModal(true)}
+              className="btn-lift inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3.5 text-center text-sm font-semibold text-white shadow-lg transition-all hover:bg-emerald-700 hover:shadow-emerald-600/20 cursor-pointer sm:w-auto sm:px-6"
+            >
+              <span>⚡ Testar Checkout Pix Vivo</span>
+            </button>
+            <button
+              type="button"
               onClick={() => requestContact()}
               className="btn-lift gradient-brand w-full rounded-xl px-5 py-3.5 text-center text-sm font-semibold text-white sm:w-auto sm:px-6"
             >
@@ -57,6 +67,8 @@ export function Hero() {
               {c.hero.secondary}
             </a>
           </div>
+
+          <PixCheckoutModal open={openPixModal} onOpenChange={setOpenPixModal} />
 
           <p className="mt-6 flex items-start gap-2 text-sm text-slateink">
             <span className="cp-status-dot h-2 w-2 shrink-0 rounded-full bg-success" />
