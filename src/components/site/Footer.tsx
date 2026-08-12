@@ -18,15 +18,25 @@ export function Footer() {
         </div>
 
         <div className="grid gap-8 sm:grid-cols-3">
-          <FooterCol title={t.nav.solutions} links={[{ href: "/#solucoes", label: t.nav.solutions }, { href: "/#como-funciona", label: t.nav.how }]} />
-          <FooterCol title={t.nav.methods} links={[{ href: "/#metodos", label: t.nav.methods }, { href: "/#contato", label: t.nav.contact }]} />
+          <FooterCol
+            title={t.footer.product}
+            links={[
+              { href: "/#solucoes", label: t.nav.solutions },
+              { href: "/#metodos", label: t.nav.methods },
+              { href: "/#como-funciona", label: t.nav.how },
+              { href: "/#desenvolvedores", label: t.nav.developers },
+            ]}
+          />
+          <FooterCol
+            title={t.footer.company}
+            links={[{ href: "/#contato", label: t.nav.contact }]}
+          />
           <div>
             <p className="label-mono text-slateink">{t.footer.legal}</p>
             <ul className="mt-4 space-y-2">
               <li><Link to="/termos" className="text-sm text-slateink hover:text-ink">{t.footer.terms}</Link></li>
               <li><Link to="/privacidade" className="text-sm text-slateink hover:text-ink">{t.footer.privacy}</Link></li>
               <li><Link to="/cookies" className="text-sm text-slateink hover:text-ink">{t.footer.cookies}</Link></li>
-              <li><a href="/#desenvolvedores" className="text-sm text-slateink hover:text-ink">{t.nav.developers}</a></li>
             </ul>
           </div>
         </div>

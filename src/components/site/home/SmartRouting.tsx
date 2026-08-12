@@ -29,7 +29,34 @@ export function SmartRouting() {
       <SectionHead label={c.routing.label} title={c.routing.title} intro={c.routing.intro} />
 
       <div className="mt-12 rounded-2xl border border-border bg-paper p-4 sm:p-8">
-        <svg viewBox="0 0 800 350" className="h-auto w-full" role="img" aria-label={c.routing.title}>
+        {/* Mobile: stacked, readable layout */}
+        <div className="sm:hidden">
+          <div className="rounded-xl bg-ink px-4 py-3 text-center text-sm font-semibold text-paper">
+            {c.routing.source}
+          </div>
+          <div className="mx-auto h-6 w-px bg-border" aria-hidden="true" />
+          <div className="gradient-brand rounded-xl px-4 py-3 text-center text-sm font-bold text-white">
+            {c.routing.hub}
+          </div>
+          <div className="mx-auto h-6 w-px bg-border" aria-hidden="true" />
+          <ul className="grid grid-cols-2 gap-2">
+            {acquirers.map((a) => (
+              <li
+                key={a.id}
+                className="rounded-xl border border-border bg-paper px-3 py-2 text-center text-xs font-semibold text-ink"
+              >
+                {a.name} · {a.market}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <svg
+          viewBox="0 0 800 350"
+          className="hidden h-auto w-full sm:block"
+          role="img"
+          aria-label={c.routing.title}
+        >
           <defs>
             <linearGradient id="cp-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="0">
               <stop offset="0%" stopColor="oklch(0.626 0.152 244)" />
@@ -62,6 +89,7 @@ export function SmartRouting() {
           <g
             onMouseEnter={() => setHovered("source")}
             onMouseLeave={() => setHovered(null)}
+            onClick={() => setHovered("source")}
             className="cursor-pointer"
           >
             <rect x="20" y="150" width="110" height="50" rx="12" fill="oklch(0.248 0 90)" />
@@ -74,6 +102,7 @@ export function SmartRouting() {
           <g
             onMouseEnter={() => setHovered("hub")}
             onMouseLeave={() => setHovered(null)}
+            onClick={() => setHovered("hub")}
             className="cursor-pointer"
           >
             <rect x="360" y="140" width="80" height="70" rx="16" fill="url(#cp-grad)" />
@@ -91,6 +120,7 @@ export function SmartRouting() {
               key={n.id}
               onMouseEnter={() => setHovered(n.id)}
               onMouseLeave={() => setHovered(null)}
+              onClick={() => setHovered(n.id)}
               className="cursor-pointer"
             >
               <rect
@@ -118,7 +148,7 @@ export function SmartRouting() {
           ))}
         </svg>
 
-        <div className="mt-4 min-h-14 rounded-xl border border-border bg-sand px-4 py-3">
+        <div className="mt-4 hidden min-h-14 rounded-xl border border-border bg-sand px-4 py-3 sm:block">
           {tooltip ? (
             <>
               <p className="font-display text-sm font-bold text-ink">{tooltip.title}</p>

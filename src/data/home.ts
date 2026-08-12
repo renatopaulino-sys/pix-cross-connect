@@ -134,7 +134,7 @@ export const home: Record<Locale, HomeCopy> = {
       hubNote: "Roteador de pagamentos",
       source: "Sua operação",
       sourceNote: "API · Checkout · Links",
-      tooltipHint: "Passe o mouse sobre os nós para ver detalhes.",
+      tooltipHint: "Toque ou passe o mouse sobre os nós para ver detalhes.",
     },
     simulator: {
       label: "Cobertura",
@@ -153,7 +153,7 @@ export const home: Record<Locale, HomeCopy> = {
     finalCta: {
       title: "Comece a receber Pix hoje",
       text: "Fale com o time e receba o desenho de integração para a sua operação.",
-      button: "Comece a receber Pix hoje — Experimente o sandbox grátis",
+      button: "Falar com o time",
       secondary: "Falar com o time",
     },
     verticalsAvailable: "Disponível",
@@ -195,7 +195,7 @@ export const home: Record<Locale, HomeCopy> = {
       hubNote: "Payment router",
       source: "Your operation",
       sourceNote: "API · Checkout · Links",
-      tooltipHint: "Hover the nodes to see details.",
+      tooltipHint: "Tap or hover the nodes to see details.",
     },
     simulator: {
       label: "Coverage",
@@ -214,7 +214,7 @@ export const home: Record<Locale, HomeCopy> = {
     finalCta: {
       title: "Start accepting Pix today",
       text: "Talk to the team and get an integration design for your operation.",
-      button: "Start accepting Pix today — Try the sandbox for free",
+      button: "Talk to the team",
       secondary: "Talk to the team",
     },
     verticalsAvailable: "Available",
