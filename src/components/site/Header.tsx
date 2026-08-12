@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import mark from "@/assets/cruziapay-mark.png.asset.json";
 import { useI18n } from "@/lib/i18n";
+import { PixCheckoutModal } from "./PixCheckoutModal";
 
 export function Header() {
   const { t, locale, setLocale } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openPixModal, setOpenPixModal] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -48,6 +50,13 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <button
+            type="button"
+            onClick={() => setOpenPixModal(true)}
+            className="rounded-lg bg-emerald-600 px-3.5 py-2 text-sm font-semibold text-white shadow-md transition-all hover:bg-emerald-700 cursor-pointer"
+          >
+            ⚡ Testar Pix
+          </button>
           <LocaleToggle locale={locale} setLocale={setLocale} />
           <Link
             to="/auth"
@@ -62,6 +71,8 @@ export function Header() {
             {t.nav.cta}
           </a>
         </div>
+
+        <PixCheckoutModal open={openPixModal} onOpenChange={setOpenPixModal} />
 
         <button
           type="button"
