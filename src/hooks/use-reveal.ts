@@ -26,7 +26,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
           }
         });
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
+      { rootMargin: "0px 0px 10% 0px", threshold: 0.01 },
     );
 
     targets.forEach((el) => observer.observe(el));
@@ -36,9 +36,12 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
     const fallback = window.setTimeout(() => {
       targets.forEach((el) => {
         const r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight * 1.2) reveal(el);
+        if (r.top < window.innerHeight * 1.4) reveal(el);
       });
-    }, 900);
+    }, 300);
+
+    // Last resort: never leave anything invisible.
+    const hardFallback = window.setTimeout(() => targets.forEach(reveal), 2500);
 
     const onHash = () => targets.forEach(reveal);
     window.addEventListener("hashchange", onHash);
@@ -46,6 +49,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
     return () => {
       observer.disconnect();
       window.clearTimeout(fallback);
+      window.clearTimeout(hardFallback);
       window.removeEventListener("hashchange", onHash);
     };
   }, []);

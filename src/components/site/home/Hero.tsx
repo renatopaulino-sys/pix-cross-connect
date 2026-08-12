@@ -13,7 +13,7 @@ export function Hero() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
+    <section ref={ref} className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
       <img
         src={worldMap}
         alt=""
@@ -33,44 +33,43 @@ export function Hero() {
       />
 
       <div className="relative container-site">
-        <div className="cp-reveal glass-panel max-w-3xl rounded-3xl p-8 shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] sm:p-10">
+        <div className="cp-reveal glass-panel max-w-3xl rounded-3xl p-6 shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] sm:p-10">
           <p className="label-mono text-gradient-brand font-semibold">{c.hero.eyebrow}</p>
-          <h1 className="font-display mt-5 text-4xl leading-[1.05] font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+          <h1 className="font-display mt-4 text-[clamp(1.9rem,8vw,2.5rem)] leading-[1.08] font-extrabold tracking-tight text-balance text-ink sm:mt-5 sm:text-5xl lg:text-6xl">
             <span className="block">{c.hero.headline1}</span>
             <span className="text-gradient-brand block">{c.hero.headline2}</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slateink">{c.hero.sub}</p>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-slateink sm:mt-6 sm:text-lg">{c.hero.sub}</p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <button
               type="button"
               onClick={() => requestContact()}
-              className="btn-lift gradient-brand rounded-xl px-6 py-3.5 text-sm font-semibold text-white"
+              className="btn-lift gradient-brand w-full rounded-xl px-6 py-3.5 text-center text-sm font-semibold text-white sm:w-auto"
             >
               {c.hero.primary}
             </button>
             <a
               href="#desenvolvedores"
-              className="btn-lift rounded-xl border border-border bg-paper/70 px-6 py-3.5 text-sm font-semibold text-ink"
+              className="btn-lift w-full rounded-xl border border-border bg-paper/70 px-6 py-3.5 text-center text-sm font-semibold text-ink sm:w-auto"
             >
               {c.hero.secondary}
             </a>
           </div>
 
-          <p className="mt-6 flex items-center gap-2 text-sm text-slateink">
+          <p className="mt-6 flex items-start gap-2 text-sm text-slateink">
             <span className="cp-status-dot h-2 w-2 shrink-0 rounded-full bg-success" />
-            {c.hero.status}
+            <span className="min-w-0">{c.hero.status}</span>
           </p>
         </div>
 
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
           {c.bullets.map((b, i) => {
             const Icon = icons[i] ?? Zap;
             return (
               <li
                 key={b.title}
-                className="cp-reveal rounded-2xl border border-border bg-paper/80 p-5 backdrop-blur-sm"
-                style={{ transitionDelay: `${i * 80}ms` }}
+                className="min-w-0 rounded-2xl border border-border bg-paper/80 p-5 backdrop-blur-sm"
               >
                 <Icon className="h-5 w-5 text-brand" strokeWidth={1.6} />
                 <p className="font-display mt-3 text-sm font-bold text-ink">{b.title}</p>
