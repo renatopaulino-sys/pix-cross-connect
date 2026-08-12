@@ -10,6 +10,8 @@ import {
   ArrowLeftRight,
   Menu,
   ScrollText,
+  Wallet,
+  Code2,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -18,9 +20,11 @@ import { cn } from "@/lib/utils";
 import mark from "@/assets/cruziapay-mark.png.asset.json";
 
 const merchantNav = [
-  { to: "/app", label: "Início / Dashboard", icon: LayoutDashboard, exact: true },
+  { to: "/app", label: "Início / Volumetria", icon: LayoutDashboard, exact: true },
+  { to: "/app/saques", label: "Saques & Repasses Pix", icon: Wallet },
   { to: "/app/onboarding", label: "Onboarding (KYC)", icon: FileCheck2 },
-  { to: "/app/configuracoes", label: "Configurações", icon: Settings },
+  { to: "/app/configuracoes", label: "API & Webhooks", icon: Settings },
+  { to: "/docs", label: "Documentação API", icon: Code2 },
 ] as const;
 
 const adminNav = [
