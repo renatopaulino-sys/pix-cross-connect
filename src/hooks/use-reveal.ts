@@ -7,15 +7,14 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
-    const targets = Array.from(root.querySelectorAll<HTMLElement>(".cp-reveal"));
-    if (targets.length === 0) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      targets.forEach((el) => el.classList.add("is-visible"));
-      return;
-    }
 
     const reveal = (el: HTMLElement) => el.classList.add("is-visible");
+    const collect = () => Array.from(root.querySelectorAll<HTMLElement>(".cp-reveal"));
+
+    if (typeof IntersectionObserver === "undefined") {
+      collect().forEach(reveal);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -29,25 +28,40 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
       { rootMargin: "0px 0px 10% 0px", threshold: 0.01 },
     );
 
-    targets.forEach((el) => observer.observe(el));
+    const observeAll = () => {
+      collect().forEach((el) => {
+        if (el.classList.contains("is-visible")) return;
+        observer.observe(el);
+        // Already on screen (e.g. after a language switch re-render)? show now.
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 1.4 && r.bottom > -window.innerHeight * 0.4) reveal(el);
+      });
+    };
+
+    observeAll();
+
+    // New nodes appear whenever content re-renders (locale switch), so keep watching.
+    const mutation = new MutationObserver(() => observeAll());
+    mutation.observe(root, { childList: true, subtree: true });
 
     // Fail-safe: if the observer never fires (hash jumps, restored scroll,
     // instant navigation), never leave content stuck at opacity 0.
     const fallback = window.setTimeout(() => {
-      targets.forEach((el) => {
+      collect().forEach((el) => {
         const r = el.getBoundingClientRect();
         if (r.top < window.innerHeight * 1.4) reveal(el);
       });
     }, 300);
 
     // Last resort: never leave anything invisible.
-    const hardFallback = window.setTimeout(() => targets.forEach(reveal), 2500);
+    const hardFallback = window.setTimeout(() => collect().forEach(reveal), 2500);
 
-    const onHash = () => targets.forEach(reveal);
+    const onHash = () => collect().forEach(reveal);
     window.addEventListener("hashchange", onHash);
 
     return () => {
       observer.disconnect();
+      mutation.disconnect();
       window.clearTimeout(fallback);
       window.clearTimeout(hardFallback);
       window.removeEventListener("hashchange", onHash);
