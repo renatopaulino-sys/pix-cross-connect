@@ -46,7 +46,7 @@ export function DeveloperHub() {
   return (
     <section id="desenvolvedores" className="bg-ink py-20 text-paper lg:py-28">
       <div className="container-site grid gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
+        <div className="min-w-0">
           <p className="label-mono text-gradient-brand font-semibold">{t.developers.label}</p>
           <h2 className="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{t.developers.title}</h2>
           <div className="mt-6 space-y-5">
@@ -63,9 +63,9 @@ export function DeveloperHub() {
           </div>
         </div>
 
-        <div>
+        <div className="min-w-0">
           <div className="overflow-hidden rounded-2xl border border-paper/15 bg-[oklch(0.16_0.02_260)]">
-            <div className="flex border-b border-paper/15" role="tablist" aria-label="API">
+            <div className="flex overflow-x-auto border-b border-paper/15" role="tablist" aria-label="API">
               {tabs.map((x) => (
                 <button
                   key={x.id}
@@ -82,7 +82,7 @@ export function DeveloperHub() {
                 </button>
               ))}
             </div>
-            <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-paper/85">
+            <pre className="max-w-full overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-paper/85 sm:text-[13px]">
               <Highlighted code={codeSamples[tab]} />
             </pre>
           </div>

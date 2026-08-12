@@ -17,6 +17,16 @@ const empty: Values = {
 const field =
   "w-full rounded-lg border border-border bg-paper px-3 py-2.5 text-sm text-ink placeholder:text-slateink/60 focus-visible:border-cobalt";
 
+const countryNames: { pt: string; en: string }[] = [
+  { pt: "Brasil", en: "Brazil" },
+  { pt: "México", en: "Mexico" },
+  { pt: "Colômbia", en: "Colombia" },
+  { pt: "Peru", en: "Peru" },
+  { pt: "Argentina", en: "Argentina" },
+  { pt: "Chile", en: "Chile" },
+  { pt: "Outro país", en: "Other country" },
+];
+
 export function ContactSection() {
   const { t, locale } = useI18n();
   const [values, setValues] = useState<Values>(empty);
@@ -129,7 +139,12 @@ export function ContactSection() {
                 <input id="phone" className={field} placeholder="+55 11 90000-0000" value={values.phone} onChange={(e) => set("phone", e.target.value)} autoComplete="tel" />
               </Field>
               <Field id="country" label={t.contact.fields.country} error={errors.country}>
-                <input id="country" className={field} value={values.country} onChange={(e) => set("country", e.target.value)} autoComplete="country-name" />
+                <select id="country" className={field} value={values.country} onChange={(e) => set("country", e.target.value)}>
+                  <option value="">{t.contact.fields.select}</option>
+                  {countryNames.map((n) => (
+                    <option key={n.en} value={n[locale]}>{n[locale]}</option>
+                  ))}
+                </select>
               </Field>
               <Field id="vertical" label={t.contact.fields.vertical} error={errors.vertical}>
                 <select id="vertical" className={field} value={values.vertical} onChange={(e) => set("vertical", e.target.value)}>

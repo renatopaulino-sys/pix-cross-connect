@@ -202,6 +202,8 @@ export const content = {
       description:
         "Infraestrutura de pagamentos cross-border para América Latina, com operação inicial no Brasil.",
       legal: "Legal",
+      product: "Produto",
+      company: "Empresa",
       terms: "Termos de uso",
       privacy: "Política de privacidade",
       cookies: "Política de cookies",
@@ -407,6 +409,8 @@ export const content = {
       description:
         "Cross-border payment infrastructure for Latin America, starting in Brazil.",
       legal: "Legal",
+      product: "Product",
+      company: "Company",
       terms: "Terms of use",
       privacy: "Privacy policy",
       cookies: "Cookie policy",
