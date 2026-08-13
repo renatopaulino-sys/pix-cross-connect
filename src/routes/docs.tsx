@@ -121,7 +121,7 @@ function ApiDocsPage() {
       object: "charge",
       amount: 5000,
       currency: "BRL",
-      status: "pending",
+      payment_status: "pending",
       pix_payload: "00020126580014br.gov.bcb.pix0136cruziapay-pix-gateway-id-9981240192520400005303986540550.005802BR5920CruziaPay Pagamentos6009SAO PAULO62070503***6304E8A2",
       qr_code_url: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014br.gov.bcb.pix0136cruziapay-pix-gateway",
       created_at: new Date().toISOString()

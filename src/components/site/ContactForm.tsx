@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { CheckCircle2 } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { CONTACT_PREFILL_EVENT, type ContactPrefill } from "@/lib/contact-prefill";
+import { supabase } from "@/integrations/supabase/client";
 
 type Values = {
   name: string; company: string; email: string; phone: string;
@@ -105,7 +106,7 @@ export function ContactSection() {
 
     // 2️⃣ Forward to Google Apps Script (Google Sheets + Email Notification)
     const webhookUrl =
-      import.meta.env.VITE_GOOGLE_SHEET_WEBHOOK ||
+      import.meta.env["VITE_GOOGLE_SHEET_WEBHOOK"] ||
       "https://script.google.com/macros/s/AKfycbz_CFEcshUq_lrBYRoYwCcIGf1ZRcmH2h77uybb8u7z1k7yw-ExEUA3JHKjETd0LUSmfA/exec";
 
     if (webhookUrl) {
