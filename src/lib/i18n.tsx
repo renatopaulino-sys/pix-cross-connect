@@ -8,7 +8,7 @@ type Ctx = {
 };
 
 // Keep a single context instance across HMR reloads so provider/consumers never diverge.
-const g = globalThis as typeof globalThis & { __cruziaI18nCtx?: React.Context<Ctx | null> };
+const g = globalThis as typeof globalThis & { __cruziaI18nCtx?: Context<Ctx | null> };
 const I18nContext = g.__cruziaI18nCtx ?? (g.__cruziaI18nCtx = createContext<Ctx | null>(null));
 
 export function I18nProvider({ children }: { children: ReactNode }) {
