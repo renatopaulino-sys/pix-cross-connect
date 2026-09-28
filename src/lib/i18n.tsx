@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode, type Context } from "react";
 import { content, type Locale } from "@/data/content";
 
 type Ctx = {
@@ -7,7 +7,9 @@ type Ctx = {
   t: (typeof content)["pt"];
 };
 
-const I18nContext = createContext<Ctx | null>(null);
+// Keep a single context instance across HMR reloads so provider/consumers never diverge.
+const g = globalThis as typeof globalThis & { __cruziaI18nCtx?: React.Context<Ctx | null> };
+const I18nContext = g.__cruziaI18nCtx ?? (g.__cruziaI18nCtx = createContext<Ctx | null>(null));
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
