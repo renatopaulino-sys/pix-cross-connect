@@ -26,12 +26,12 @@ export function Verticals() {
           return (
             <article
               key={v.name}
-              className={`cp-reveal relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-sand p-5 sm:p-6 ${span}`}
+              className={`cp-reveal relative flex h-full min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-sand p-5 transition-colors hover:border-brand/35 sm:p-6 ${span}`}
               style={{ transitionDelay: `${(i % 3) * 70}ms` }}
             >
               <span
                 aria-hidden="true"
-                className="gradient-brand pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full opacity-20 blur-3xl"
+                className="gradient-brand pointer-events-none absolute top-0 right-0 h-px w-24 opacity-70"
               />
               <div className="relative grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3 sm:flex sm:justify-between">
                 <Icon className="h-6 w-6 shrink-0 text-brand" strokeWidth={1.5} />

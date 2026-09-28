@@ -4,6 +4,7 @@ import { useI18n } from "@/lib/i18n";
 import { home, latamCoverage, countryOrder, type CountryCode } from "@/data/home";
 import { requestContact } from "@/lib/contact-prefill";
 import { SectionShell, SectionHead, Badge } from "./SectionShell";
+import { Button } from "@/components/ui/button";
 
 const names: Record<CountryCode, { pt: string; en: string }> = {
   BR: { pt: "Brasil", en: "Brazil" },
@@ -36,13 +37,15 @@ export function LatamSimulator() {
         <div className="flex flex-wrap items-center gap-2 border-b border-border p-4 sm:p-6">
           <span className="label-mono mr-2 text-slateink">{c.simulator.country}</span>
           {countryOrder.map((code) => (
-            <button
+            <Button
               key={code}
               type="button"
+              size="sm"
+              variant={country === code ? "default" : "outline"}
               onClick={() => setCountry(code)}
               aria-pressed={country === code}
               className={
-                "btn-lift rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors " +
+                "btn-lift h-10 rounded-xl px-3.5 text-sm font-semibold transition-colors " +
                 (country === code
                   ? "gradient-brand text-white"
                   : "border border-border bg-paper text-ink hover:border-brand")
@@ -50,7 +53,7 @@ export function LatamSimulator() {
             >
               <span aria-hidden="true" className="label-mono mr-2 opacity-70">{code}</span>
               {names[code][locale]}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -95,18 +98,19 @@ export function LatamSimulator() {
             </div>
           )}
 
-          <button
+          <Button
             type="button"
+            size="lg"
             onClick={() =>
               requestContact({
                 country: names[country][locale],
                 message: `${c.simulator.cta} — ${names[country][locale]}`,
               })
             }
-            className="btn-lift gradient-brand mt-8 rounded-xl px-5 py-3 text-sm font-semibold text-white"
+            className="btn-lift gradient-brand mt-8 h-12 px-5 font-semibold text-primary-foreground"
           >
             {c.simulator.cta}
-          </button>
+          </Button>
         </div>
       </div>
     </SectionShell>

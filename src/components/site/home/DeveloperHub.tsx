@@ -3,6 +3,7 @@ import { Terminal } from "lucide-react";
 import { codeSamples } from "@/data/content";
 import { useI18n } from "@/lib/i18n";
 import { home } from "@/data/home";
+import { Button } from "@/components/ui/button";
 
 const tabs = [
   { id: "curl", label: "cURL" },
@@ -11,11 +12,11 @@ const tabs = [
 ] as const;
 
 const tokenClass = (token: string) => {
-  if (/^"[^"]*":$/.test(token)) return "text-[oklch(0.804_0.146_219.5)]";
-  if (/^".*"$/.test(token) || /^'.*'$/.test(token) || /^`.*`$/.test(token)) return "text-[oklch(0.8_0.14_150)]";
-  if (/^\d+$/.test(token)) return "text-[oklch(0.82_0.15_74)]";
+  if (/^"[^"]*":$/.test(token)) return "text-brand-light";
+  if (/^".*"$/.test(token) || /^'.*'$/.test(token) || /^`.*`$/.test(token)) return "text-success";
+  if (/^\d+$/.test(token)) return "text-warning";
   if (/^(const|await|import|from|method|POST|def|print|console|log|fetch|requests|headers|json|body|res|charge)$/.test(token))
-    return "text-[oklch(0.78_0.12_290)]";
+    return "text-accent-foreground";
   return "";
 };
 
@@ -67,19 +68,20 @@ export function DeveloperHub() {
           <div className="overflow-hidden rounded-2xl border border-paper/15 bg-[oklch(0.16_0.02_260)]">
             <div className="flex overflow-x-auto border-b border-paper/15" role="tablist" aria-label="API">
               {tabs.map((x) => (
-                <button
+                <Button
                   key={x.id}
                   type="button"
+                  variant="ghost"
                   role="tab"
                   aria-selected={tab === x.id}
                   onClick={() => setTab(x.id)}
                   className={
-                    "label-mono px-4 py-3 transition-colors " +
+                    "label-mono h-11 rounded-none px-4 transition-colors " +
                     (tab === x.id ? "bg-paper/10 text-paper" : "text-paper/50 hover:text-paper")
                   }
                 >
                   {x.label}
-                </button>
+                </Button>
               ))}
             </div>
             <pre className="max-w-full overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-paper/85 sm:text-[13px]">

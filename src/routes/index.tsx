@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/site/home/Hero";
 import { ProductHighlights } from "@/components/site/home/ProductHighlights";
+import { CrossBorder } from "@/components/site/home/CrossBorder";
 import { HowItWorks } from "@/components/site/home/HowItWorks";
 import { Verticals } from "@/components/site/home/Verticals";
 import { SmartRouting } from "@/components/site/home/SmartRouting";
@@ -12,9 +13,9 @@ import { MethodsSection, SecuritySection } from "@/components/site/Sections";
 import { ContactSection } from "@/components/site/ContactForm";
 import { content } from "@/data/content";
 
-const title = "CruziaPay | Pagamentos Pix e cross-border para LATAM";
+const title = "CruziaPay | Pagamentos cross-border e Pix no Brasil";
 const description =
-  "Infraestrutura de pagamentos cross-border para empresas que vendem no Brasil. Cobrança Pix por API, webhooks e liquidação previsível fora do país.";
+  "Infraestrutura cross-border para empresas globais venderem no Brasil com Pix, API, webhooks, conciliação e liquidação internacional.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,9 +24,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://cruziapay.com.br/" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.cruziapay.com/" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://cruziapay.com.br/" }],
+    links: [{ rel: "canonical", href: "https://www.cruziapay.com/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -49,6 +52,7 @@ function Index() {
     <main>
       <Hero />
       <ProductHighlights />
+      <CrossBorder />
       <MethodsSection />
       <HowItWorks />
       <Verticals />

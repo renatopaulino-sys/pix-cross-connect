@@ -6,6 +6,7 @@ import { home } from "@/data/home";
 import { requestContact } from "@/lib/contact-prefill";
 import { useReveal } from "@/hooks/use-reveal";
 import { PixCheckoutModal } from "../PixCheckoutModal";
+import { Button } from "@/components/ui/button";
 
 const icons = [Zap, TrendingUp, Globe2, ShieldCheck];
 
@@ -16,7 +17,7 @@ export function Hero() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="relative overflow-x-clip pt-24 pb-14 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
+    <section ref={ref} className="relative min-h-[min(900px,100svh)] overflow-x-clip pt-24 pb-14 sm:pt-32 sm:pb-20 lg:flex lg:items-center lg:pt-36 lg:pb-24">
       <img
         src={worldMap}
         alt=""
@@ -24,7 +25,7 @@ export function Hero() {
         width={1920}
         height={960}
         loading="eager"
-        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.25] object-cover object-[62%_45%] opacity-40 contrast-150 saturate-0 mix-blend-multiply sm:scale-[1.15] sm:object-center lg:scale-100 dark:opacity-50 dark:invert dark:mix-blend-screen"
+        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.35] object-cover object-[62%_45%] opacity-30 contrast-150 saturate-0 mix-blend-multiply sm:scale-[1.15] sm:object-center lg:scale-100 dark:opacity-45 dark:invert dark:mix-blend-screen"
       />
       <div
         aria-hidden="true"
@@ -36,36 +37,35 @@ export function Hero() {
       />
 
       <div className="relative container-site">
-        <div className="grid w-full items-stretch gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] xl:gap-8">
-        <div className="cp-reveal glass-panel w-full min-w-0 rounded-2xl p-5 shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] sm:rounded-3xl sm:p-8 lg:p-10 xl:p-12">
+        <div className="grid w-full items-stretch gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.65fr)] xl:gap-8">
+        <div className="cp-reveal glass-panel w-full min-w-0 rounded-xl p-5 shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] sm:p-8 lg:p-10 xl:p-12">
           <p className="label-mono text-gradient-brand text-[0.7rem] font-semibold break-words sm:text-xs">{c.hero.eyebrow}</p>
-          <h1 className="font-display mt-3 text-[clamp(1.65rem,7.2vw,2.5rem)] leading-[1.1] font-extrabold tracking-tight text-pretty break-words hyphens-auto text-ink sm:mt-5 sm:text-[clamp(2.25rem,5vw,3rem)] lg:text-[clamp(2.75rem,4.2vw,4.25rem)]">
+          <h1 className="font-display mt-3 max-w-4xl text-[clamp(1.9rem,7.2vw,2.75rem)] leading-[1.08] font-extrabold text-pretty break-words hyphens-auto text-ink sm:mt-5 sm:text-[clamp(2.5rem,5vw,3.5rem)] lg:text-[clamp(3rem,4.2vw,4.5rem)]">
             <span className="block">{c.hero.headline1}</span>
             <span className="text-gradient-brand block">{c.hero.headline2}</span>
           </h1>
           <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-slateink sm:mt-6 sm:text-lg lg:max-w-none lg:text-xl">{c.hero.sub}</p>
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center">
-            <button
+            <Button
               type="button"
               onClick={() => setOpenPixModal(true)}
-              className="btn-lift inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3.5 text-center text-sm font-semibold text-white shadow-lg transition-all hover:bg-emerald-700 hover:shadow-emerald-600/20 cursor-pointer sm:w-auto sm:px-6"
+              size="lg"
+              className="btn-lift h-12 w-full bg-success px-5 font-semibold text-primary-foreground shadow-lg hover:bg-success/90 sm:w-auto sm:px-6"
             >
-              <span>⚡ Testar Checkout Pix Vivo</span>
-            </button>
-            <button
+              <span>⚡ {c.hero.testPix}</span>
+            </Button>
+            <Button
               type="button"
               onClick={() => requestContact()}
-              className="btn-lift gradient-brand w-full rounded-xl px-5 py-3.5 text-center text-sm font-semibold text-white sm:w-auto sm:px-6"
+              size="lg"
+              className="btn-lift gradient-brand h-12 w-full px-5 font-semibold text-primary-foreground sm:w-auto sm:px-6"
             >
               {c.hero.primary}
-            </button>
-            <a
-              href="#desenvolvedores"
-              className="btn-lift w-full rounded-xl border border-border bg-paper/70 px-5 py-3.5 text-center text-sm font-semibold text-ink sm:w-auto sm:px-6"
-            >
-              {c.hero.secondary}
-            </a>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="btn-lift h-12 w-full bg-paper/70 font-semibold sm:w-auto">
+              <a href="#desenvolvedores">{c.hero.secondary}</a>
+            </Button>
           </div>
 
           <PixCheckoutModal open={openPixModal} onOpenChange={setOpenPixModal} />
@@ -76,17 +76,21 @@ export function Hero() {
           </p>
         </div>
 
-        <aside className="cp-reveal glass-panel hidden min-w-0 flex-col justify-center rounded-3xl p-8 lg:flex xl:p-10">
+        <aside className="cp-reveal hidden min-w-0 flex-col justify-center rounded-xl border border-ink/10 bg-ink p-7 text-paper shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] lg:flex xl:p-9">
           <p className="label-mono text-gradient-brand text-xs font-semibold">{c.heroAside.title}</p>
-          <dl className="mt-6 grid grid-cols-2 gap-5 xl:gap-6">
-            {c.heroAside.stats.map((s) => (
-              <div key={s.label} className="min-w-0">
-                <dt className="font-display text-3xl font-extrabold tracking-tight text-ink xl:text-4xl">{s.value}</dt>
-                <dd className="mt-1 text-sm leading-snug text-slateink">{s.label}</dd>
+          <dl className="mt-6 space-y-3">
+            {c.heroAside.steps.map((step, index) => (
+              <div key={step.code} className="relative grid grid-cols-[2rem_minmax(0,1fr)] gap-3 border-b border-paper/10 pb-4 last:border-0 last:pb-0">
+                <dt className="label-mono pt-0.5 text-brand-light">{step.code}</dt>
+                <dd>
+                  <p className="font-display text-sm font-bold text-paper">{step.title}</p>
+                  <p className="mt-1 text-sm leading-snug text-paper/55">{step.text}</p>
+                  {index < c.heroAside.steps.length - 1 ? <span aria-hidden="true" className="absolute -bottom-1 left-3 h-2 w-px bg-brand/60" /> : null}
+                </dd>
               </div>
             ))}
           </dl>
-          <p className="mt-7 border-t border-border pt-5 text-sm leading-relaxed text-slateink">{c.heroAside.note}</p>
+          <p className="mt-7 border-t border-paper/10 pt-5 text-sm leading-relaxed text-paper/65">{c.heroAside.note}</p>
         </aside>
         </div>
 
@@ -96,7 +100,7 @@ export function Hero() {
             return (
               <li
                 key={b.title}
-                className="min-w-0 rounded-2xl border border-border bg-paper/80 p-4 backdrop-blur-sm sm:p-5"
+                className="min-w-0 border-t border-ink/15 bg-paper/45 p-4 backdrop-blur-sm sm:p-5"
               >
                 <Icon className="h-5 w-5 text-brand" strokeWidth={1.6} />
                 <p className="font-display mt-3 text-sm font-bold break-words text-ink">{b.title}</p>

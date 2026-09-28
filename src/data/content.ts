@@ -4,12 +4,14 @@ export const content = {
   pt: {
     nav: {
       solutions: "Soluções",
+      crossBorder: "Cross-border",
       methods: "Métodos",
       how: "Como funciona",
       developers: "Desenvolvedores",
       contact: "Contato",
       cta: "Falar com o time",
       login: "Entrar",
+      testPix: "Testar Pix",
     },
     badge: { live: "Disponível", soon: "Em breve" },
     hero: {
@@ -223,12 +225,14 @@ export const content = {
   en: {
     nav: {
       solutions: "Solutions",
+      crossBorder: "Cross-border",
       methods: "Methods",
       how: "How it works",
       developers: "Developers",
       contact: "Contact",
       cta: "Talk to the team",
       login: "Log in",
+      testPix: "Test Pix",
     },
     badge: { live: "Available", soon: "Coming soon" },
     hero: {

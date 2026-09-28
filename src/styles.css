@@ -207,7 +207,7 @@
   }
   h1, h2, h3 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
   }
   :focus-visible {
     outline: 2px solid var(--color-cobalt);
@@ -298,6 +298,14 @@
 
 @keyframes cp-spin { to { transform: rotate(360deg); } }
 .cp-spinner { animation: cp-spin 0.7s linear infinite; }
+
+.cross-border-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--color-brand) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-brand) 9%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .cp-reveal { opacity: 1; transform: none; transition: none; }

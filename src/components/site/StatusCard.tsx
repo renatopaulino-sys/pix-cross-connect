@@ -30,8 +30,8 @@ export function StatusCard({ item }: { item: Method }) {
     <div
       className={
         live
-          ? "group rounded-lg border border-border bg-paper p-6 transition-shadow hover:shadow-[0_8px_28px_-16px_oklch(0.244_0.049_250/0.45)]"
-          : "rounded-lg border border-border bg-paper p-6 opacity-55"
+          ? "group rounded-lg border border-border bg-paper p-6 transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_8px_28px_-16px_color-mix(in_oklab,var(--color-brand)_50%,transparent)]"
+          : "rounded-lg border border-border bg-paper p-6 opacity-60"
       }
     >
       <div className="flex items-start justify-between gap-4">

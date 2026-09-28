@@ -3,6 +3,7 @@ import { useI18n } from "@/lib/i18n";
 import { home } from "@/data/home";
 import { requestContact } from "@/lib/contact-prefill";
 import { SectionShell, SectionHead, Badge } from "./SectionShell";
+import { Button } from "@/components/ui/button";
 
 const icons = { pix: QrCode, cards: CreditCard, payouts: Send } as const;
 
@@ -19,7 +20,7 @@ export function ProductHighlights() {
           return (
             <article
               key={item.key}
-              className="cp-reveal group flex flex-col rounded-2xl border border-border bg-paper p-7 transition-shadow hover:shadow-[0_24px_60px_-40px_color-mix(in_oklab,var(--color-brand)_80%,transparent)]"
+              className="cp-reveal group flex flex-col rounded-lg border border-border bg-paper p-7 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_24px_60px_-40px_color-mix(in_oklab,var(--color-brand)_80%,transparent)]"
               style={{ transitionDelay: `${i * 90}ms` }}
             >
               <span className="gradient-brand inline-flex h-11 w-11 items-center justify-center rounded-xl text-white">
@@ -33,14 +34,15 @@ export function ProductHighlights() {
               </div>
               <p className="mt-4 flex-1 text-sm leading-relaxed text-slateink">{item.text}</p>
               {!item.live ? (
-                <button
+                <Button
                   type="button"
+                  variant="link"
                   onClick={() => requestContact({ message: item.name })}
-                  className="mt-5 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-brand underline-offset-4 hover:underline"
+                  className="mt-5 h-auto self-start p-0 text-sm font-semibold text-brand"
                 >
                   {c.highlights.contactLink}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={1.8} />
-                </button>
+                </Button>
               ) : null}
             </article>
           );
