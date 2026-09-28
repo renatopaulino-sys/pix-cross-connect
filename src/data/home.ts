@@ -81,11 +81,16 @@ export const acquirers = [
 
 type HomeCopy = {
   hero: { eyebrow: string; headline1: string; headline2: string; sub: string; primary: string; secondary: string; status: string };
-  heroAside: { title: string; note: string; stats: { value: string; label: string }[] };
+  heroAside: { title: string; note: string; steps: { code: string; title: string; text: string }[] };
   bullets: { title: string; text: string }[];
   highlights: {
     label: string; title: string; intro: string; contactLink: string;
     items: { key: string; name: string; text: string; live: boolean }[];
+  };
+  crossBorder: {
+    label: string; title: string; intro: string; cta: string; availability: string;
+    steps: { title: string; text: string; meta: string }[];
+    benefits: { title: string; text: string }[];
   };
   routing: { label: string; title: string; intro: string; hub: string; hubNote: string; source: string; sourceNote: string; tooltipHint: string };
   simulator: {
@@ -102,22 +107,21 @@ type HomeCopy = {
 export const home: Record<Locale, HomeCopy> = {
   pt: {
     hero: {
-      eyebrow: "Cross-border · América Latina",
-      headline1: "Receba com Pix.",
-      headline2: "Liquide onde precisar.",
-      sub: "Plataforma de pagamentos cross-border focada no Brasil, pronta para expandir para toda a América Latina.",
+      eyebrow: "Infraestrutura cross-border · América Latina",
+      headline1: "Venda no Brasil.",
+      headline2: "Receba onde sua empresa opera.",
+      sub: "Uma integração para oferecer Pix aos seus clientes, acompanhar cada pagamento e organizar a liquidação internacional da sua operação.",
       primary: "Falar com o time",
       secondary: "Ver documentação",
       status: "Pix ativo no Brasil. Demais métodos em habilitação.",
     },
     heroAside: {
-      title: "Cobertura em tempo real",
-      note: "Roteamento inteligente entre provedores locais, com failover automático.",
-      stats: [
-        { value: "6", label: "Mercados na América Latina" },
-        { value: "< 5s", label: "Confirmação média do Pix" },
-        { value: "99,9%", label: "Disponibilidade da API" },
-        { value: "24/7", label: "Monitoramento e suporte" },
+      title: "Uma operação, ponta a ponta",
+      note: "Do checkout local à conciliação, com visibilidade em uma única integração.",
+      steps: [
+        { code: "01", title: "Pay-in local", text: "Pix disponível no Brasil" },
+        { code: "02", title: "Orquestração", text: "Roteamento e confirmação" },
+        { code: "03", title: "Settlement", text: "Liquidação conforme contrato" },
       ],
     },
     bullets: [
@@ -135,6 +139,24 @@ export const home: Record<Locale, HomeCopy> = {
         { key: "pix", name: "Pix — pagamentos instantâneos (Brasil)", text: "QR Code dinâmico, Copia e Cola e link de pagamento, com confirmação por webhook em segundos.", live: true },
         { key: "cards", name: "Cartões & Split", text: "Cartões domésticos e internacionais com split automático entre sellers e parceiros.", live: false },
         { key: "payouts", name: "Payouts & Global Rails", text: "Repasses para beneficiários locais e liquidação internacional em múltiplas moedas.", live: false },
+      ],
+    },
+    crossBorder: {
+      label: "Cross-border",
+      title: "Cobrança local. Operação global.",
+      intro: "Entre no Brasil com uma experiência de pagamento familiar para o cliente e uma camada única para integrar, acompanhar e conciliar sua operação.",
+      cta: "Desenhar minha operação",
+      availability: "Pix disponível no Brasil · Demais mercados em habilitação",
+      steps: [
+        { title: "Seu cliente paga localmente", text: "Ofereça Pix no checkout, com QR Code, Copia e Cola ou link de pagamento.", meta: "Brasil · BRL · Pix" },
+        { title: "A CruziaPay processa", text: "A transação é confirmada por webhook e organizada para conciliação na sua integração.", meta: "API · Webhooks · Smart routing" },
+        { title: "Sua empresa liquida", text: "O recebimento internacional segue moeda, prazo e condições definidos comercialmente.", meta: "Conforme contratação" },
+      ],
+      benefits: [
+        { title: "Experiência local", text: "Um meio de pagamento conhecido pelo comprador brasileiro." },
+        { title: "Integração centralizada", text: "Uma conexão para cobrança, status e conciliação." },
+        { title: "Visibilidade operacional", text: "Referências próprias e eventos para acompanhar cada transação." },
+        { title: "Compliance desde o início", text: "Onboarding com análise de KYC e AML para a sua operação." },
       ],
     },
     routing: {
@@ -173,22 +195,21 @@ export const home: Record<Locale, HomeCopy> = {
   },
   en: {
     hero: {
-      eyebrow: "Cross-border · Latin America",
-      headline1: "Get paid with Pix.",
-      headline2: "Settle wherever you need.",
-      sub: "Cross-border payment platform focused on Brazil, ready to expand across Latin America.",
+      eyebrow: "Cross-border infrastructure · Latin America",
+      headline1: "Sell in Brazil.",
+      headline2: "Settle where your business operates.",
+      sub: "One integration to offer Pix to your customers, track every payment and organize international settlement for your operation.",
       primary: "Talk to the team",
       secondary: "See documentation",
       status: "Pix live in Brazil. Other methods being enabled.",
     },
     heroAside: {
-      title: "Coverage in real time",
-      note: "Smart routing across local providers, with automatic failover.",
-      stats: [
-        { value: "6", label: "Latin American markets" },
-        { value: "< 5s", label: "Average Pix confirmation" },
-        { value: "99.9%", label: "API availability" },
-        { value: "24/7", label: "Monitoring and support" },
+      title: "One end-to-end operation",
+      note: "From local checkout to reconciliation, visible through a single integration.",
+      steps: [
+        { code: "01", title: "Local pay-in", text: "Pix available in Brazil" },
+        { code: "02", title: "Orchestration", text: "Routing and confirmation" },
+        { code: "03", title: "Settlement", text: "Settlement under contract" },
       ],
     },
     bullets: [
@@ -206,6 +227,24 @@ export const home: Record<Locale, HomeCopy> = {
         { key: "pix", name: "Pix — instant payments (Brazil)", text: "Dynamic QR Code, copy-and-paste codes and payment links, confirmed by webhook in seconds.", live: true },
         { key: "cards", name: "Cards & Split", text: "Domestic and international cards with automatic split between sellers and partners.", live: false },
         { key: "payouts", name: "Payouts & Global Rails", text: "Payouts to local beneficiaries and international settlement in multiple currencies.", live: false },
+      ],
+    },
+    crossBorder: {
+      label: "Cross-border",
+      title: "Local collection. Global operations.",
+      intro: "Enter Brazil with a familiar payment experience for customers and one layer to integrate, monitor and reconcile your operation.",
+      cta: "Design my payment flow",
+      availability: "Pix available in Brazil · Other markets being enabled",
+      steps: [
+        { title: "Your customer pays locally", text: "Offer Pix at checkout through QR Code, copy-and-paste or a payment link.", meta: "Brazil · BRL · Pix" },
+        { title: "CruziaPay processes", text: "The payment is confirmed by webhook and organized for reconciliation in your integration.", meta: "API · Webhooks · Smart routing" },
+        { title: "Your business settles", text: "International settlement follows the currency, timing and terms agreed commercially.", meta: "Subject to contract" },
+      ],
+      benefits: [
+        { title: "Local experience", text: "A familiar payment method for Brazilian customers." },
+        { title: "Centralized integration", text: "One connection for collection, status and reconciliation." },
+        { title: "Operational visibility", text: "Your own references and events to track each transaction." },
+        { title: "Compliance from day one", text: "KYC and AML onboarding designed around your operation." },
       ],
     },
     routing: {
