@@ -11,7 +11,7 @@ export function FinalCta() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="border-t border-border bg-ink py-20 lg:py-28">
+    <section ref={ref} className="border-t border-border bg-background py-16 sm:py-20 lg:py-28">
       <div className="container-site">
         <div className="cp-reveal relative overflow-hidden rounded-xl bg-onyx px-8 py-14 text-center sm:px-14">
           <span aria-hidden="true" className="gradient-brand absolute inset-x-0 top-0 h-1" />
