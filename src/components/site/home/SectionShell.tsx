@@ -11,13 +11,13 @@ export function SectionShell({
 }) {
   const ref = useReveal<HTMLElement>();
   const bg =
-    tone === "sand" ? "bg-sand" : tone === "ink" ? "bg-ink text-paper" : "bg-paper";
+    tone === "sand" ? "bg-sand" : tone === "ink" ? "bg-onyx text-ink" : "bg-background";
 
   return (
     <section
       id={id}
       ref={ref}
-      className={`border-t border-border ${bg} py-20 lg:py-28 ${className}`}
+      className={`border-t border-border ${bg} py-16 sm:py-20 lg:py-28 ${className}`}
     >
       <div className="container-site">{children}</div>
     </section>

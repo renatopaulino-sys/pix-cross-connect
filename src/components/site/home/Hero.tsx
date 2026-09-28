@@ -25,7 +25,7 @@ export function Hero() {
         width={1920}
         height={960}
         loading="eager"
-        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.35] object-cover object-[62%_45%] opacity-30 contrast-150 saturate-0 mix-blend-multiply sm:scale-[1.15] sm:object-center lg:scale-100 dark:opacity-45 dark:invert dark:mix-blend-screen"
+        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.35] object-cover object-[62%_45%] opacity-25 invert contrast-125 saturate-0 mix-blend-screen sm:scale-[1.15] sm:object-center lg:scale-100"
       />
       <div
         aria-hidden="true"
@@ -76,21 +76,21 @@ export function Hero() {
           </p>
         </div>
 
-        <aside className="cp-reveal hidden min-w-0 flex-col justify-center rounded-xl border border-ink/10 bg-ink p-7 text-paper shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] lg:flex xl:p-9">
+        <aside className="cp-reveal hidden min-w-0 flex-col justify-center rounded-xl border border-ink/10 bg-onyx p-7 text-ink shadow-[0_30px_80px_-50px_color-mix(in_oklab,var(--color-brand)_70%,transparent)] lg:flex xl:p-9">
           <p className="label-mono text-gradient-brand text-xs font-semibold">{c.heroAside.title}</p>
           <dl className="mt-6 space-y-3">
             {c.heroAside.steps.map((step, index) => (
-              <div key={step.code} className="relative grid grid-cols-[2rem_minmax(0,1fr)] gap-3 border-b border-paper/10 pb-4 last:border-0 last:pb-0">
+              <div key={step.code} className="relative grid grid-cols-[2rem_minmax(0,1fr)] gap-3 border-b border-ink/10 pb-4 last:border-0 last:pb-0">
                 <dt className="label-mono pt-0.5 text-brand-light">{step.code}</dt>
                 <dd>
-                  <p className="font-display text-sm font-bold text-paper">{step.title}</p>
-                  <p className="mt-1 text-sm leading-snug text-paper/55">{step.text}</p>
+                  <p className="font-display text-sm font-bold text-ink">{step.title}</p>
+                  <p className="mt-1 text-sm leading-snug text-ink/55">{step.text}</p>
                   {index < c.heroAside.steps.length - 1 ? <span aria-hidden="true" className="absolute -bottom-1 left-3 h-2 w-px bg-brand/60" /> : null}
                 </dd>
               </div>
             ))}
           </dl>
-          <p className="mt-7 border-t border-paper/10 pt-5 text-sm leading-relaxed text-paper/65">{c.heroAside.note}</p>
+          <p className="mt-7 border-t border-ink/10 pt-5 text-sm leading-relaxed text-ink/65">{c.heroAside.note}</p>
         </aside>
         </div>
 
