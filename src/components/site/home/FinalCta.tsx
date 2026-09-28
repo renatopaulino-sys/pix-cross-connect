@@ -23,7 +23,7 @@ export function FinalCta() {
             type="button"
             size="lg"
             onClick={() => requestContact({ message: c.finalCta.button })}
-            className="btn-lift relative mt-8 h-12 bg-brand-light px-7 font-bold text-ink hover:bg-brand-light/90"
+            className="btn-lift relative mt-8 h-12 bg-brand-light px-7 font-bold text-onyx hover:bg-brand-light/90"
           >
             {c.finalCta.button}
             <ArrowRight className="h-4 w-4" strokeWidth={2} />
