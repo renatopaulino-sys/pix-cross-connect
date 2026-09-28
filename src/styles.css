@@ -207,7 +207,7 @@
   }
   h1, h2, h3 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
   }
   :focus-visible {
     outline: 2px solid var(--color-cobalt);
