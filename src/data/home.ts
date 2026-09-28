@@ -126,9 +126,9 @@ export const home: Record<Locale, HomeCopy> = {
     },
     bullets: [
       { title: "Instantâneo", text: "Pagamento confirmado em segundos." },
-      { title: "Escalável", text: "Suporta volumes de € 10 M+ por mês." },
-      { title: "Global-ready", text: "APIs e SDKs multilíngues (EN / PT)." },
-      { title: "Compliance total", text: "KYC/AML alinhado à LGPD e ao GDPR." },
+      { title: "Integrável", text: "API REST, webhooks e referências próprias." },
+      { title: "Cross-border", text: "Cobrança local conectada à sua operação global." },
+      { title: "Compliance", text: "Onboarding com análise de KYC e AML." },
     ],
     highlights: {
       label: "Produtos",
@@ -214,9 +214,9 @@ export const home: Record<Locale, HomeCopy> = {
     },
     bullets: [
       { title: "Instant", text: "Payments confirmed in seconds." },
-      { title: "Scalable", text: "Handles volumes of €10M+ per month." },
-      { title: "Global-ready", text: "Multilingual APIs and SDKs (EN / PT)." },
-      { title: "Fully compliant", text: "KYC/AML aligned with LGPD and GDPR." },
+      { title: "Integration-ready", text: "REST API, webhooks and your own references." },
+      { title: "Cross-border", text: "Local collection connected to your global operation." },
+      { title: "Compliance", text: "Onboarding with KYC and AML review." },
     ],
     highlights: {
       label: "Products",

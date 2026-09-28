@@ -109,20 +109,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "https://cruziapay.com.br/#organization",
+              "@id": "https://www.cruziapay.com/#organization",
               name: "CruziaPay",
-              url: "https://cruziapay.com.br",
-              logo: "https://cruziapay.com.br/favicon.png",
+              url: "https://www.cruziapay.com",
+              logo: "https://www.cruziapay.com/favicon.png",
               description:
                 "Infraestrutura de pagamentos cross-border com Pix por API para empresas que vendem no Brasil.",
             },
             {
               "@type": "WebSite",
-              "@id": "https://cruziapay.com.br/#website",
-              url: "https://cruziapay.com.br",
+              "@id": "https://www.cruziapay.com/#website",
+              url: "https://www.cruziapay.com",
               name: "CruziaPay",
               inLanguage: "pt-BR",
-              publisher: { "@id": "https://cruziapay.com.br/#organization" },
+              publisher: { "@id": "https://www.cruziapay.com/#organization" },
             },
           ],
         }),
