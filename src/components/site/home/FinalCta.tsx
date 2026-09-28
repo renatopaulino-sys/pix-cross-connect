@@ -11,14 +11,14 @@ export function FinalCta() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="border-t border-border bg-paper py-20 lg:py-28">
+    <section ref={ref} className="border-t border-border bg-ink py-20 lg:py-28">
       <div className="container-site">
-        <div className="cp-reveal relative overflow-hidden rounded-xl bg-ink px-8 py-14 text-center sm:px-14">
+        <div className="cp-reveal relative overflow-hidden rounded-xl bg-onyx px-8 py-14 text-center sm:px-14">
           <span aria-hidden="true" className="gradient-brand absolute inset-x-0 top-0 h-1" />
-          <h2 className="font-display relative text-3xl font-extrabold text-paper sm:text-4xl">
+          <h2 className="font-display relative text-3xl font-extrabold text-ink sm:text-4xl">
             {c.finalCta.title}
           </h2>
-          <p className="relative mx-auto mt-4 max-w-xl text-base text-paper/70">{c.finalCta.text}</p>
+          <p className="relative mx-auto mt-4 max-w-xl text-base text-ink/70">{c.finalCta.text}</p>
           <Button
             type="button"
             size="lg"

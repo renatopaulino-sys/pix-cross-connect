@@ -117,9 +117,9 @@ export function OrchestrationSection() {
                 <p className="mt-1 text-sm font-semibold text-ink">{data.flow.source}</p>
               </div>
               <div className="flex-1 rounded-lg border border-cobalt/40 bg-cobalt px-4 py-3">
-                <p className="label-mono text-paper/70">02</p>
-                <p className="mt-1 text-sm font-semibold text-paper">{data.hub}</p>
-                <p className="text-xs text-paper/70">{data.flow.router}</p>
+                <p className="label-mono text-primary-foreground/70">02</p>
+                <p className="mt-1 text-sm font-semibold text-primary-foreground">{data.hub}</p>
+                <p className="text-xs text-primary-foreground/70">{data.flow.router}</p>
               </div>
               <div className="flex-1 rounded-lg border border-border px-4 py-3">
                 <p className="label-mono text-slateink">03</p>
@@ -197,29 +197,29 @@ export function DevelopersSection() {
   const [tab, setTab] = useState<(typeof tabs)[number]["id"]>("curl");
 
   return (
-    <section id="desenvolvedores" className="bg-ink py-24 text-paper lg:py-32">
+    <section id="desenvolvedores" className="bg-onyx py-24 text-ink lg:py-32">
       <div className="container-site grid gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="label-mono text-signal">{t.developers.label}</p>
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl">{t.developers.title}</h2>
           <div className="mt-6 space-y-5">
             {t.developers.text.map((p) => (
-              <p key={p.slice(0, 24)} className="text-base leading-relaxed text-paper/70">
+              <p key={p.slice(0, 24)} className="text-base leading-relaxed text-ink/70">
                 {p}
               </p>
             ))}
           </div>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-lg border border-paper/20 px-4 py-3">
-            <span className="text-sm font-medium text-paper/70">{t.developers.docs}</span>
-            <span className="label-mono rounded-lg border border-paper/20 bg-paper/10 px-2 py-1 text-paper/70">
+          <div className="mt-8 inline-flex items-center gap-3 rounded-lg border border-ink/20 px-4 py-3">
+            <span className="text-sm font-medium text-ink/70">{t.developers.docs}</span>
+            <span className="label-mono rounded-lg border border-ink/20 bg-ink/10 px-2 py-1 text-ink/70">
               {t.badge.soon}
             </span>
           </div>
         </div>
 
         <div>
-          <div className="overflow-hidden rounded-lg border border-paper/15">
-            <div className="flex border-b border-paper/15" role="tablist" aria-label="API">
+          <div className="overflow-hidden rounded-lg border border-ink/15">
+            <div className="flex border-b border-ink/15" role="tablist" aria-label="API">
               {tabs.map((x) => (
                 <button
                   key={x.id}
@@ -229,18 +229,18 @@ export function DevelopersSection() {
                   onClick={() => setTab(x.id)}
                   className={
                     "label-mono px-4 py-3 transition-colors " +
-                    (tab === x.id ? "bg-paper/10 text-paper" : "text-paper/50 hover:text-paper")
+                    (tab === x.id ? "bg-ink/10 text-ink" : "text-ink/50 hover:text-ink")
                   }
                 >
                   {x.label}
                 </button>
               ))}
             </div>
-            <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-paper/85">
+            <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-ink/85">
               <code>{codeSamples[tab]}</code>
             </pre>
           </div>
-          <p className="mt-3 text-xs text-paper/50">{t.developers.note}</p>
+          <p className="mt-3 text-xs text-ink/50">{t.developers.note}</p>
         </div>
       </div>
     </section>
