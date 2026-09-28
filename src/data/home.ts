@@ -80,7 +80,7 @@ export const acquirers = [
 ];
 
 type HomeCopy = {
-  hero: { eyebrow: string; headline1: string; headline2: string; sub: string; primary: string; secondary: string; status: string };
+  hero: { eyebrow: string; headline1: string; headline2: string; sub: string; primary: string; secondary: string; status: string; testPix: string };
   heroAside: { title: string; note: string; steps: { code: string; title: string; text: string }[] };
   bullets: { title: string; text: string }[];
   highlights: {
@@ -114,6 +114,7 @@ export const home: Record<Locale, HomeCopy> = {
       primary: "Falar com o time",
       secondary: "Ver documentação",
       status: "Pix ativo no Brasil. Demais métodos em habilitação.",
+      testPix: "Testar Checkout Pix",
     },
     heroAside: {
       title: "Uma operação, ponta a ponta",
@@ -202,6 +203,7 @@ export const home: Record<Locale, HomeCopy> = {
       primary: "Talk to the team",
       secondary: "See documentation",
       status: "Pix live in Brazil. Other methods being enabled.",
+      testPix: "Test Pix Checkout",
     },
     heroAside: {
       title: "One end-to-end operation",

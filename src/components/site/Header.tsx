@@ -57,7 +57,7 @@ export function Header() {
             onClick={() => setOpenPixModal(true)}
             className="bg-success px-3.5 text-primary-foreground shadow-md hover:bg-success/90"
           >
-            ⚡ Testar Pix
+            ⚡ {t.nav.testPix}
           </Button>
           <LocaleToggle locale={locale} setLocale={setLocale} />
           <Link

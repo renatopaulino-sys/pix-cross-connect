@@ -53,7 +53,7 @@ export function Hero() {
               size="lg"
               className="btn-lift h-12 w-full bg-success px-5 font-semibold text-primary-foreground shadow-lg hover:bg-success/90 sm:w-auto sm:px-6"
             >
-              <span>⚡ Testar Checkout Pix Vivo</span>
+              <span>⚡ {c.hero.testPix}</span>
             </Button>
             <Button
               type="button"
