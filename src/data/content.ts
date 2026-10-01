@@ -6,14 +6,16 @@ export const content = {
       solutions: "Soluções",
       crossBorder: "Cross-border",
       methods: "Métodos",
+      pricing: "Preços",
       how: "Como funciona",
       developers: "Desenvolvedores",
+      company: "Empresa",
       contact: "Contato",
       cta: "Falar com o time",
-      login: "Entrar",
+      login: "Portal do merchant",
       testPix: "Testar Pix",
     },
-    badge: { live: "Disponível", soon: "Disponível" },
+    badge: { available: "Disponível", on_request: "Disponível sob consulta", soon: "Em breve" },
     hero: {
       headline: "Receba com Pix. Liquide onde você precisa.",
       sub: "Infraestrutura de pagamentos cross-border para empresas que vendem no Brasil e precisam de liquidação previsível fora dele.",
@@ -28,7 +30,7 @@ export const content = {
       label: "Métodos",
       title: "Métodos de pagamento",
       intro:
-        "Todos os métodos disponíveis em uma única integração e no mesmo endpoint.",
+        "Pix disponível no Brasil. Demais métodos disponíveis sob consulta, sujeitos a onboarding, ou em breve.",
     },
     solutions: {
       label: "Soluções",
@@ -68,43 +70,17 @@ export const content = {
         { name: "Travel", text: "Reservas com janela de expiração definida por cobrança." },
         { name: "Educação", text: "Mensalidades e matrículas com conciliação por aluno." },
         { name: "Serviços digitais", text: "Pagamentos avulsos por link, sem desenvolvimento." },
-        { name: "iGaming e Entretenimento Digital", text: "Pix PayIn e Payout instantâneo 24/7, com conformidade legal e liquidação previsível." },
+        { name: "iGaming e Entretenimento Digital", text: "Disponível apenas para operadores com licença válida em cada mercado onde atuam, sujeito a due diligence reforçada." },
       ],
-    },
-    orchestration: {
-      label: "Orquestração",
-      title: "Orquestração e Resiliência Local",
-      intro:
-        "Conectamos sua operação a múltiplos parceiros de adquirência regionais. O roteador escolhe automaticamente a melhor rota, garantindo redundância e taxas otimizadas.",
-      countries: [
-        { code: "BR", name: "Brasil", rails: "Pix · Boleto · Cartão", live: true },
-        { code: "MX", name: "México", rails: "SPEI · Cartão", live: true },
-        { code: "CO", name: "Colômbia", rails: "PSE · Cartão", live: true },
-        { code: "CL", name: "Chile", rails: "Transferência · Cartão", live: true },
-        { code: "PE", name: "Peru", rails: "Transferência · Cartão", live: true },
-        { code: "AR", name: "Argentina", rails: "Transferência · Cartão", live: true },
-      ],
-      hub: "CruziaPay",
-      hubNote: "Roteador de pagamentos",
-      flow: { source: "Sua operação", router: "Roteamento dinâmico", target: "Trilhos locais" },
-      colHeaders: { market: "Mercado", rails: "Trilhos locais", status: "Status" },
-      badgeActive: "Ativo",
-      badgeBackup: "Ativo",
-      stats: [
-        { value: "2+", label: "Parceiros de adquirência por mercado" },
-        { value: "<1s", label: "Failover automático entre rotas" },
-        { value: "24/7", label: "Monitoramento de disponibilidade" },
-      ],
-      cta: "Falar com o time",
     },
     security: {
       label: "Compliance",
       title: "Segurança e compliance",
       paragraphs: [
-        "Dados trafegam sob criptografia em trânsito e são armazenados criptografados em repouso. O acesso interno é controlado por perfis, com registro de auditoria das operações sensíveis.",
-        "O monitoramento antifraude avalia padrões de cobrança e liquidação. Os processos de cadastro seguem políticas de KYC e AML, incluindo verificação documental da empresa e de seus sócios.",
-        "O tratamento de dados pessoais segue a LGPD, com base legal definida por finalidade e retenção limitada ao necessário.",
-        "A operação de pagamentos é realizada em parceria com instituição autorizada a operar no arranjo Pix. O CruziaPay não é a instituição licenciada e não se apresenta como tal.",
+        "Os dados trafegam criptografados em trânsito e são armazenados criptografados em repouso. O acesso interno é controlado por perfis, com registro de auditoria das operações sensíveis. O monitoramento antifraude avalia padrões de cobrança e liquidação. O onboarding segue políticas de KYC e AML, incluindo verificação documental da empresa e de seus sócios. O tratamento de dados pessoais segue a LGPD.",
+        "A CruziaPay atua como facilitadora de pagamentos. O processamento é realizado em parceria com instituições autorizadas em cada mercado onde os serviços são oferecidos. A CruziaPay não é uma instituição financeira ou de pagamento licenciada e não se apresenta como tal.",
+        "Os dados de cartão são processados por parceiros certificados PCI DSS. A CruziaPay não armazena dados completos de cartão.",
+        "Não fazemos onboarding de empresas da nossa lista de atividades proibidas. Operadores de gaming devem possuir licença válida em cada mercado e cumprir requisitos de jogo responsável e verificação de idade (18+).",
       ],
     },
     developers: {
@@ -123,7 +99,7 @@ export const content = {
       items: [
         {
           q: "Quais métodos já estão disponíveis?",
-          a: "Pix, cartões, split, payouts e trilhos locais estão disponíveis para contratação conforme o mercado e o desenho da operação.",
+          a: "Pix está disponível no Brasil. Cartões, split, Pix out e métodos LATAM estão disponíveis sob consulta, sujeitos a onboarding. Boleto, Pix parcelado e carteiras digitais estão em breve.",
         },
         {
           q: "Qual o prazo de liquidação do Pix?",
@@ -142,8 +118,8 @@ export const content = {
           a: "Sim. É o caso de uso central do produto: empresas fora do Brasil que vendem para clientes brasileiros e precisam receber em Pix com liquidação fora do país. O processo de KYC é adaptado à jurisdição da empresa.",
         },
         {
-          q: "Os métodos estão disponíveis agora?",
-          a: "Sim. Pix, cartões, boleto, carteiras digitais, split, payouts e trilhos locais estão disponíveis para contratação conforme o mercado e o desenho da operação.",
+          q: "Em quantos mercados vocês atuam?",
+          a: "Métodos locais em 12 mercados da América Latina, sob consulta e sujeitos a onboarding. Veja a seção de preços para detalhes por país.",
         },
       ],
     },
@@ -162,6 +138,8 @@ export const content = {
         volume: "Volume mensal estimado",
         message: "Mensagem",
         select: "Selecione",
+        website: "Website",
+        markets: "Mercados de interesse (opcional)",
       },
       verticals: [
         "E-commerce",
@@ -183,6 +161,7 @@ export const content = {
       consent:
         "Autorizo o CruziaPay a tratar meus dados para retorno comercial, conforme a",
       consentLink: "Política de privacidade",
+      license: "Confirmo que minha empresa possui as licenças exigidas nos mercados onde opera.",
       submit: "Enviar contato",
       sending: "Enviando...",
       successTitle: "Contato enviado",
@@ -192,23 +171,37 @@ export const content = {
         name: "Informe o nome completo.",
         company: "Informe o nome da empresa.",
         email: "Informe um e-mail corporativo válido.",
-        phone: "Informe o telefone com DDI, por exemplo +55 11 90000-0000.",
+        phone: "Informe o telefone com DDI.",
         country: "Informe o país de operação.",
         vertical: "Selecione a vertical da operação.",
         volume: "Selecione a faixa de volume mensal.",
         consent: "É necessário autorizar o tratamento dos dados.",
+        website: "Informe o website da empresa.",
+        license: "É necessário confirmar as licenças.",
         submit: "Não foi possível enviar agora. Tente novamente em instantes.",
       },
     },
     footer: {
       description:
-        "Infraestrutura de pagamentos cross-border para América Latina, com operação inicial no Brasil.",
+        "Infraestrutura de pagamentos cross-border para a América Latina.",
       legal: "Legal",
       product: "Produto",
       company: "Empresa",
       terms: "Termos de uso",
       privacy: "Política de privacidade",
       cookies: "Política de cookies",
+      refund: "Reembolso e chargeback",
+      aml: "AML e KYC",
+      prohibited: "Atividades proibidas",
+      complaints: "Reclamações",
+      about: "Sobre",
+      igaming: "iGaming",
+      insights: "Insights",
+      brandLine: "CruziaPay é uma marca operada por",
+      commercial: "Comercial",
+      compliance: "Compliance",
+      privacyContact: "Privacidade",
+      hours: "Horário de atendimento",
       rights: "Todos os direitos reservados.",
     },
     cookies: {
@@ -227,14 +220,16 @@ export const content = {
       solutions: "Solutions",
       crossBorder: "Cross-border",
       methods: "Methods",
+      pricing: "Pricing",
       how: "How it works",
       developers: "Developers",
+      company: "Company",
       contact: "Contact",
       cta: "Talk to the team",
-      login: "Log in",
+      login: "Merchant portal",
       testPix: "Test Pix",
     },
-    badge: { live: "Available", soon: "Available" },
+    badge: { available: "Available", on_request: "Available on request", soon: "Coming soon" },
     hero: {
       headline: "Get paid with Pix. Settle where you need it.",
       sub: "Cross-border payment infrastructure for companies selling in Brazil that need predictable settlement outside of it.",
@@ -249,7 +244,7 @@ export const content = {
       label: "Methods",
       title: "Payment methods",
       intro:
-        "All payment methods are available through one integration and the same endpoint.",
+        "Pix available in Brazil. Other methods available on request, subject to onboarding, or coming soon.",
     },
     solutions: {
       label: "Solutions",
@@ -277,43 +272,17 @@ export const content = {
         { name: "Travel", text: "Bookings with an expiry window defined per charge." },
         { name: "Education", text: "Tuition and enrolment with per-student reconciliation." },
         { name: "Digital services", text: "One-off payments by link, with no development." },
-        { name: "iGaming and Digital Entertainment", text: "24/7 instant Pix PayIn and Payout with legal compliance and predictable settlement." },
+        { name: "iGaming and Digital Entertainment", text: "Available only to operators holding a valid license in each market where they operate, subject to enhanced due diligence." },
       ],
-    },
-    orchestration: {
-      label: "Orchestration",
-      title: "Local Orchestration and Resilience",
-      intro:
-        "We connect your operation to multiple regional acquirer partners. The router automatically picks the best route, ensuring redundancy and optimized rates.",
-      countries: [
-        { code: "BR", name: "Brazil", rails: "Pix · Boleto · Cards", live: true },
-        { code: "MX", name: "Mexico", rails: "SPEI · Cards", live: true },
-        { code: "CO", name: "Colombia", rails: "PSE · Cards", live: true },
-        { code: "CL", name: "Chile", rails: "Bank transfer · Cards", live: true },
-        { code: "PE", name: "Peru", rails: "Bank transfer · Cards", live: true },
-        { code: "AR", name: "Argentina", rails: "Bank transfer · Cards", live: true },
-      ],
-      hub: "CruziaPay",
-      hubNote: "Payment router",
-      flow: { source: "Your operation", router: "Dynamic routing", target: "Local rails" },
-      colHeaders: { market: "Market", rails: "Local rails", status: "Status" },
-      badgeActive: "Live",
-      badgeBackup: "Live",
-      stats: [
-        { value: "2+", label: "Acquiring partners per market" },
-        { value: "<1s", label: "Automatic failover between routes" },
-        { value: "24/7", label: "Availability monitoring" },
-      ],
-      cta: "Talk to the team",
     },
     security: {
       label: "Compliance",
       title: "Security and compliance",
       paragraphs: [
-        "Data travels encrypted in transit and is stored encrypted at rest. Internal access is role-controlled, with audit logging of sensitive operations.",
-        "Anti-fraud monitoring evaluates charge and settlement patterns. Onboarding follows KYC and AML policies, including document verification of the company and its shareholders.",
-        "Personal data processing follows Brazil's LGPD, with a legal basis defined per purpose and retention limited to what is necessary.",
-        "Payment operations are carried out in partnership with an institution authorised to operate in the Pix scheme. CruziaPay is not the licensed institution and does not present itself as one.",
+        "Data travels encrypted in transit and is stored encrypted at rest. Internal access is role controlled, with audit logging of sensitive operations. Anti fraud monitoring evaluates charge and settlement patterns. Onboarding follows KYC and AML policies, including document verification of the company and its shareholders. Personal data processing follows Brazil's LGPD.",
+        "CruziaPay operates as a payment facilitator. Payment processing is carried out in partnership with institutions authorised in each market where services are offered. CruziaPay is not a licensed financial or payment institution and does not present itself as one.",
+        "Card data is processed by PCI DSS certified partners. CruziaPay does not store full card data.",
+        "We do not onboard businesses on our prohibited list. Gaming operators must hold a valid license in each market and comply with responsible gaming and age verification (18+) requirements.",
       ],
     },
     developers: {
@@ -332,7 +301,7 @@ export const content = {
       items: [
         {
           q: "Which methods are available today?",
-          a: "Pix, cards, split payments, payouts and local rails are available for contracting according to the market and operating model.",
+          a: "Pix is available in Brazil. Cards, split, Pix out and LATAM methods are available on request, subject to onboarding. Boleto, Pix in installments and digital wallets are coming soon.",
         },
         {
           q: "What is the Pix settlement window?",
@@ -351,8 +320,8 @@ export const content = {
           a: "Yes. That is the core use case: companies outside Brazil selling to Brazilian customers that need to collect via Pix and settle abroad. KYC is adapted to the company's jurisdiction.",
         },
         {
-          q: "Are all payment methods available now?",
-          a: "Yes. Pix, cards, boleto, digital wallets, split payments, payouts and local rails are available for contracting according to the market and operating model.",
+          q: "How many markets do you cover?",
+          a: "Local methods in 12 Latin American markets, on request and subject to onboarding. See the pricing section for details per country.",
         },
       ],
     },
@@ -371,6 +340,8 @@ export const content = {
         volume: "Estimated monthly volume",
         message: "Message",
         select: "Select",
+        website: "Website",
+        markets: "Markets of interest (optional)",
       },
       verticals: [
         "E-commerce",
@@ -392,6 +363,7 @@ export const content = {
       consent:
         "I authorise CruziaPay to process my data for commercial follow-up, under the",
       consentLink: "Privacy policy",
+      license: "I confirm my business holds the licenses required in the markets where it operates.",
       submit: "Send message",
       sending: "Sending...",
       successTitle: "Message sent",
@@ -401,23 +373,37 @@ export const content = {
         name: "Enter your full name.",
         company: "Enter the company name.",
         email: "Enter a valid work email.",
-        phone: "Enter the phone with country code, e.g. +55 11 90000-0000.",
+        phone: "Enter the phone with country code.",
         country: "Enter the country of operation.",
         vertical: "Select the operation vertical.",
         volume: "Select the monthly volume range.",
         consent: "You must authorise data processing.",
+        website: "Enter the company website.",
+        license: "You must confirm the required licenses.",
         submit: "Could not send right now. Please try again shortly.",
       },
     },
     footer: {
       description:
-        "Cross-border payment infrastructure for Latin America, starting in Brazil.",
+        "Cross-border payment infrastructure for Latin America.",
       legal: "Legal",
       product: "Product",
       company: "Company",
       terms: "Terms of use",
       privacy: "Privacy policy",
       cookies: "Cookie policy",
+      refund: "Refund & Chargeback",
+      aml: "AML & KYC",
+      prohibited: "Prohibited Businesses",
+      complaints: "Complaints",
+      about: "About",
+      igaming: "iGaming",
+      insights: "Insights",
+      brandLine: "CruziaPay is a brand operated by",
+      commercial: "Commercial",
+      compliance: "Compliance",
+      privacyContact: "Privacy",
+      hours: "Business hours",
       rights: "All rights reserved.",
     },
     cookies: {
@@ -435,7 +421,7 @@ export const content = {
 
 export const codeSamples = {
   curl: `POST https://api.cruziapay.com/v1/charges
-Authorization: Bearer sk_live_xxx
+Authorization: Bearer sk_test_xxx
 Content-Type: application/json
 
 {
@@ -446,7 +432,7 @@ Content-Type: application/json
   "expires_in": 3600,
   "customer": {
     "name": "Maria Souza",
-    "tax_id": "000.000.000-00"
+    "tax_id": "000.000.000-00 (test data)"
   }
 }`,
   node: `const res = await fetch("https://api.cruziapay.com/v1/charges", {
@@ -461,7 +447,7 @@ Content-Type: application/json
     currency: "BRL",
     reference: "order_10482",
     expires_in: 3600,
-    customer: { name: "Maria Souza", tax_id: "000.000.000-00" },
+    customer: { name: "Maria Souza", tax_id: "000.000.000-00 (test data)" },
   }),
 });
 
@@ -481,7 +467,7 @@ res = requests.post(
         "currency": "BRL",
         "reference": "order_10482",
         "expires_in": 3600,
-        "customer": {"name": "Maria Souza", "tax_id": "000.000.000-00"},
+        "customer": {"name": "Maria Souza", "tax_id": "000.000.000-00 (test data)"},
     },
 )
 

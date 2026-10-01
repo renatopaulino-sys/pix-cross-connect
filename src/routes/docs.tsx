@@ -24,7 +24,7 @@ const codeExamples = {
     "customer": {
       "name": "João da Silva",
       "email": "joao@cliente.com",
-      "tax_id": "12345678900"
+      "tax_id": "000.000.000-00 (test data)"
     },
     "webhook_url": "https://sua-loja.com/api/webhooks/pix"
   }'`,
@@ -42,7 +42,7 @@ const charge = await gateway.charges.create({
   customer: {
     name: "João da Silva",
     email: "joao@cliente.com",
-    taxId: "12345678900"
+    taxId: "000.000.000-00 (test data)"
   }
 });
 
@@ -62,7 +62,7 @@ payload = {
     "customer": {
         "name": "João da Silva",
         "email": "joao@cliente.com",
-        "tax_id": "12345678900"
+        "tax_id": "000.000.000-00 (test data)"
     }
 }
 
@@ -83,7 +83,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
     'customer' => [
         'name' => 'João da Silva',
         'email' => 'joao@cliente.com',
-        'tax_id' => '12345678900'
+        'tax_id' => '000.000.000-00 (test data)'
     ]
 ]));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
