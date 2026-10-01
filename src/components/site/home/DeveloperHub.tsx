@@ -58,8 +58,8 @@ export function DeveloperHub() {
           <div className="mt-8 inline-flex items-center gap-3 rounded-xl border border-ink/20 px-4 py-3">
             <Terminal className="h-4 w-4 text-ink/70" strokeWidth={1.6} />
             <span className="text-sm font-medium text-ink/80">{c.devhub.sandbox}</span>
-            <span className="label-mono rounded-lg bg-warning/20 px-2 py-1 font-semibold text-warning">
-              {c.devhub.sandboxSoon}
+            <span className="label-mono rounded-lg bg-success/15 px-2 py-1 font-semibold text-success">
+              {locale === "pt" ? "Disponível" : "Available"}
             </span>
           </div>
         </div>

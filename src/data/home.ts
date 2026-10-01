@@ -18,7 +18,7 @@ export const latamCoverage: Record<
   },
   MX: {
     flag: "🇲🇽",
-    live: false,
+    live: true,
     methods: ["SPEI transfer", "Cards (soon)", "Cash vouchers (soon)"],
     settlement: { pt: "D+1 a D+2 úteis", en: "D+1 to D+2 business days" },
     kyc: {
@@ -28,7 +28,7 @@ export const latamCoverage: Record<
   },
   CO: {
     flag: "🇨🇴",
-    live: false,
+    live: true,
     methods: ["PSE", "Bank transfer", "Cards (soon)"],
     settlement: { pt: "D+2 úteis", en: "D+2 business days" },
     kyc: {
@@ -38,7 +38,7 @@ export const latamCoverage: Record<
   },
   PE: {
     flag: "🇵🇪",
-    live: false,
+    live: true,
     methods: ["Bank transfer", "Yape / PagoEfectivo (soon)", "Cards (soon)"],
     settlement: { pt: "D+2 a D+3 úteis", en: "D+2 to D+3 business days" },
     kyc: {
@@ -48,7 +48,7 @@ export const latamCoverage: Record<
   },
   AR: {
     flag: "🇦🇷",
-    live: false,
+    live: true,
     methods: ["Transferencia 3.0", "Cards (soon)"],
     settlement: { pt: "D+2 a D+3 úteis", en: "D+2 to D+3 business days" },
     kyc: {
@@ -58,7 +58,7 @@ export const latamCoverage: Record<
   },
   CL: {
     flag: "🇨🇱",
-    live: false,
+    live: true,
     methods: ["Bank transfer", "Webpay (soon)", "Cards (soon)"],
     settlement: { pt: "D+2 úteis", en: "D+2 business days" },
     kyc: {
@@ -138,8 +138,8 @@ export const home: Record<Locale, HomeCopy> = {
       contactLink: "Entre em contato para mais informações",
       items: [
         { key: "pix", name: "Pix — pagamentos instantâneos (Brasil)", text: "QR Code dinâmico, Copia e Cola e link de pagamento, com confirmação por webhook em segundos.", live: true },
-        { key: "cards", name: "Cartões & Split", text: "Cartões domésticos e internacionais com split automático entre sellers e parceiros.", live: false },
-        { key: "payouts", name: "Payouts & Global Rails", text: "Repasses para beneficiários locais e liquidação internacional em múltiplas moedas.", live: false },
+        { key: "cards", name: "Cartões & Split", text: "Cartões domésticos e internacionais com split automático entre sellers e parceiros.", live: true },
+        { key: "payouts", name: "Payouts & Global Rails", text: "Repasses para beneficiários locais e liquidação internacional em múltiplas moedas.", live: true },
       ],
     },
     crossBorder: {
@@ -227,8 +227,8 @@ export const home: Record<Locale, HomeCopy> = {
       contactLink: "Contact us for more information",
       items: [
         { key: "pix", name: "Pix — instant payments (Brazil)", text: "Dynamic QR Code, copy-and-paste codes and payment links, confirmed by webhook in seconds.", live: true },
-        { key: "cards", name: "Cards & Split", text: "Domestic and international cards with automatic split between sellers and partners.", live: false },
-        { key: "payouts", name: "Payouts & Global Rails", text: "Payouts to local beneficiaries and international settlement in multiple currencies.", live: false },
+        { key: "cards", name: "Cards & Split", text: "Domestic and international cards with automatic split between sellers and partners.", live: true },
+        { key: "payouts", name: "Payouts & Global Rails", text: "Payouts to local beneficiaries and international settlement in multiple currencies.", live: true },
       ],
     },
     crossBorder: {
@@ -286,5 +286,5 @@ export const home: Record<Locale, HomeCopy> = {
 };
 
 export const verticalStatus: Record<number, boolean> = {
-  0: true, 1: true, 2: true, 3: false, 4: true, 5: true, 6: false,
+  0: true, 1: true, 2: true, 3: true, 4: true, 5: true, 6: true,
 };

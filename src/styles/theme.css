@@ -20,6 +20,8 @@
   /* Text */
   --color-ink: oklch(0.98 0 0);
   --color-slateink: oklch(0.75 0.012 250);
+  --color-footer-ink: oklch(0.16 0.012 260);
+  --color-footer-muted: oklch(0.43 0.018 255);
 
   /* Surfaces (dark) */
   --color-paper: oklch(0.16 0.008 260);

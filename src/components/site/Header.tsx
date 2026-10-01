@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import mark from "@/assets/cruziapay-mark.png.asset.json";
+import mark from "@/assets/cruziapay-mark-transparent.png";
 import { useI18n } from "@/lib/i18n";
 import { PixCheckoutModal } from "./PixCheckoutModal";
 import { Button } from "@/components/ui/button";
@@ -39,7 +39,7 @@ export function Header() {
     >
       <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 lg:flex lg:justify-between">
         <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="CruziaPay">
-          <img src={mark.url} alt="" aria-hidden="true" className="h-8 w-auto shrink-0" width={51} height={32} />
+          <img src={mark} alt="" aria-hidden="true" className="h-9 w-10 shrink-0 object-contain" width={40} height={36} />
           <span className="font-display truncate text-lg font-extrabold tracking-tight text-ink">CruziaPay</span>
         </Link>
 
