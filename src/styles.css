@@ -267,14 +267,24 @@
   border: 1px solid color-mix(in oklab, var(--color-brand) 18%, transparent);
 }
 
-@utility footer-rise {
+@utility footer-crest {
   background-image: linear-gradient(
     to bottom,
     var(--color-background) 0%,
-    oklch(0.22 0.01 260) 3rem,
-    oklch(0.56 0.012 255) 6rem,
-    oklch(0.94 0.006 250) 10rem,
-    oklch(0.97 0.004 250) 100%
+    oklch(0.93 0.008 252) 5rem,
+    oklch(0.95 0.005 250) calc(100% - 4rem),
+    var(--color-background) 100%
+  );
+}
+
+@utility header-crest {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.97 0.004 250) 0%,
+    oklch(0.94 0.006 250) 2.25rem,
+    color-mix(in oklab, var(--color-background) 85%, transparent) 4rem,
+    color-mix(in oklab, var(--color-background) 40%, transparent) 5rem,
+    transparent 6rem
   );
 }
 
