@@ -59,7 +59,7 @@ export function DeveloperHub() {
             <Terminal className="h-4 w-4 text-ink/70" strokeWidth={1.6} />
             <span className="text-sm font-medium text-ink/80">{c.devhub.sandbox}</span>
             <span className="label-mono rounded-lg bg-success/15 px-2 py-1 font-semibold text-success">
-              {locale === "pt" ? "Disponível" : "Available"}
+              {c.devhub.sandboxSoon}
             </span>
           </div>
         </div>
