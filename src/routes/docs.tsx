@@ -14,7 +14,7 @@ export const Route = createFileRoute("/docs")({
 
 const codeExamples = {
   charge: {
-    curl: `curl -X POST "https://hyperswitch-web-production-0076.up.railway.app/v1/charges" \\
+    curl: `curl -X POST "https://api.cruziapay.com/v1/charges" \\
   -H "Authorization: Bearer live_sk_cruziapay_8f92a10b" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -50,7 +50,7 @@ console.log("Pix Copia e Cola:", charge.pixPayload);
 console.log("QR Code SVG:", charge.qrCodeUrl);`,
     python: `import requests
 
-url = "https://hyperswitch-web-production-0076.up.railway.app/v1/charges"
+url = "https://api.cruziapay.com/v1/charges"
 headers = {
     "Authorization": "Bearer live_sk_cruziapay_8f92a10b",
     "Content-Type": "application/json"
@@ -70,7 +70,7 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())`,
     php: `<?php
 
-$ch = curl_init('https://hyperswitch-web-production-0076.up.railway.app/v1/charges');
+$ch = curl_init('https://api.cruziapay.com/v1/charges');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Authorization: Bearer live_sk_cruziapay_8f92a10b',
     'Content-Type: application/json'
@@ -180,7 +180,7 @@ function ApiDocsPage() {
                 <span>Base URL Produção</span>
               </div>
               <code className="block rounded bg-muted p-2 font-mono text-[11px] break-all text-primary">
-                https://hyperswitch-web-production-0076.up.railway.app
+                https://api.cruziapay.com
               </code>
               <p className="text-muted-foreground text-[11px]">
                 Todas as requisições requerem o cabeçalho <code className="text-foreground font-mono">Authorization: Bearer YOUR_API_KEY</code>.
