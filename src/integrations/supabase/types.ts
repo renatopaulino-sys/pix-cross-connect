@@ -60,6 +60,7 @@ export type Database = {
           id: string
           licenses_confirmed: boolean
           locale: string
+          markets_interest: string[]
           message: string | null
           monthly_volume: string
           name: string
@@ -76,6 +77,7 @@ export type Database = {
           id?: string
           licenses_confirmed?: boolean
           locale?: string
+          markets_interest?: string[]
           message?: string | null
           monthly_volume: string
           name: string
@@ -92,6 +94,7 @@ export type Database = {
           id?: string
           licenses_confirmed?: boolean
           locale?: string
+          markets_interest?: string[]
           message?: string | null
           monthly_volume?: string
           name?: string
