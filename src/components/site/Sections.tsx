@@ -212,7 +212,7 @@ export function DevelopersSection() {
           <div className="mt-8 inline-flex items-center gap-3 rounded-lg border border-ink/20 px-4 py-3">
             <span className="text-sm font-medium text-ink/70">{t.developers.docs}</span>
             <span className="label-mono rounded-lg border border-ink/20 bg-ink/10 px-2 py-1 text-ink/70">
-              {t.badge.soon}
+              {t.badge.live}
             </span>
           </div>
         </div>

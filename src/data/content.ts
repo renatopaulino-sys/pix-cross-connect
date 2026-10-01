@@ -13,13 +13,13 @@ export const content = {
       login: "Entrar",
       testPix: "Testar Pix",
     },
-    badge: { live: "Disponível", soon: "Em breve" },
+    badge: { live: "Disponível", soon: "Disponível" },
     hero: {
       headline: "Receba com Pix. Liquide onde você precisa.",
       sub: "Infraestrutura de pagamentos cross-border para empresas que vendem no Brasil e precisam de liquidação previsível fora dele.",
       primary: "Falar com o time",
       secondary: "Ver documentação",
-      status: "Pix ativo. Cartões e demais rails em homologação.",
+      status: "Pix, cartões e demais trilhos de pagamento disponíveis.",
       nodeBuyer: "Comprador no Brasil",
       nodeGateway: "CruziaPay",
       nodeAccount: "Sua conta",
@@ -28,7 +28,7 @@ export const content = {
       label: "Métodos",
       title: "Métodos de pagamento",
       intro:
-        "Um único contrato de integração. Novos métodos entram no mesmo endpoint conforme entram em produção.",
+        "Todos os métodos disponíveis em uma única integração e no mesmo endpoint.",
     },
     solutions: {
       label: "Soluções",
@@ -142,8 +142,8 @@ export const content = {
           a: "Sim. É o caso de uso central do produto: empresas fora do Brasil que vendem para clientes brasileiros e precisam receber em Pix com liquidação fora do país. O processo de KYC é adaptado à jurisdição da empresa.",
         },
         {
-          q: "Quando os demais métodos entram no ar?",
-          a: "O roadmap está em execução e as datas dependem de homologações com parceiros e emissores. Não divulgamos mês específico. Clientes cadastrados são comunicados diretamente conforme cada método entra em produção.",
+          q: "Os métodos estão disponíveis agora?",
+          a: "Sim. Pix, cartões, boleto, carteiras digitais, split, payouts e trilhos locais estão disponíveis para contratação conforme o mercado e o desenho da operação.",
         },
       ],
     },
@@ -234,13 +234,13 @@ export const content = {
       login: "Log in",
       testPix: "Test Pix",
     },
-    badge: { live: "Available", soon: "Coming soon" },
+    badge: { live: "Available", soon: "Available" },
     hero: {
       headline: "Get paid with Pix. Settle where you need it.",
       sub: "Cross-border payment infrastructure for companies selling in Brazil that need predictable settlement outside of it.",
       primary: "Talk to the team",
       secondary: "See documentation",
-      status: "Pix live. Cards and other rails in certification.",
+      status: "Pix, cards and other payment rails are available.",
       nodeBuyer: "Buyer in Brazil",
       nodeGateway: "CruziaPay",
       nodeAccount: "Your account",
@@ -249,7 +249,7 @@ export const content = {
       label: "Methods",
       title: "Payment methods",
       intro:
-        "One integration contract. New methods land on the same endpoint as they go into production.",
+        "All payment methods are available through one integration and the same endpoint.",
     },
     solutions: {
       label: "Solutions",
@@ -351,8 +351,8 @@ export const content = {
           a: "Yes. That is the core use case: companies outside Brazil selling to Brazilian customers that need to collect via Pix and settle abroad. KYC is adapted to the company's jurisdiction.",
         },
         {
-          q: "When do the other methods go live?",
-          a: "The roadmap is in execution and dates depend on certification with partners and issuers. We do not announce a specific month. Registered clients are informed directly as each method reaches production.",
+          q: "Are all payment methods available now?",
+          a: "Yes. Pix, cards, boleto, digital wallets, split payments, payouts and local rails are available for contracting according to the market and operating model.",
         },
       ],
     },

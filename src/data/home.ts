@@ -181,7 +181,7 @@ export const home: Record<Locale, HomeCopy> = {
       docs: "Documentos de KYC",
       cta: "Solicitar demo",
       liveBadge: "Disponível",
-      soonBadge: "Em breve",
+      soonBadge: "Disponível",
     },
     devhub: { sandbox: "Acessar o sandbox", sandboxSoon: "Disponível" },
     finalCta: {
@@ -191,7 +191,7 @@ export const home: Record<Locale, HomeCopy> = {
       secondary: "Falar com o time",
     },
     verticalsAvailable: "Disponível",
-    verticalsUpcoming: "Em breve",
+    verticalsUpcoming: "Disponível",
     footerSocial: "Redes",
   },
   en: {
@@ -270,7 +270,7 @@ export const home: Record<Locale, HomeCopy> = {
       docs: "KYC documents",
       cta: "Request a demo",
       liveBadge: "Available",
-      soonBadge: "Upcoming",
+      soonBadge: "Available",
     },
     devhub: { sandbox: "Open the sandbox", sandboxSoon: "Available" },
     finalCta: {
@@ -280,7 +280,7 @@ export const home: Record<Locale, HomeCopy> = {
       secondary: "Talk to the team",
     },
     verticalsAvailable: "Available",
-    verticalsUpcoming: "Upcoming",
+    verticalsUpcoming: "Available",
     footerSocial: "Social",
   },
 };
