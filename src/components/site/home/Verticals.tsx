@@ -1,7 +1,8 @@
 import { ShoppingCart, Layers, Store, Plane, GraduationCap, MonitorSmartphone, Dices } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
-import { home, verticalStatus } from "@/data/home";
-import { SectionShell, SectionHead, Badge } from "./SectionShell";
+import { Link } from "@tanstack/react-router";
+import { home } from "@/data/home";
+import { SectionShell, SectionHead, StatusPill } from "./SectionShell";
 
 const icons = [ShoppingCart, Layers, Store, Plane, GraduationCap, MonitorSmartphone, Dices];
 
@@ -15,7 +16,7 @@ export function Verticals() {
       <div className="mt-10 grid items-stretch gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {t.verticals.items.map((v, i, arr) => {
           const Icon = icons[i] ?? Layers;
-          const available = verticalStatus[i] ?? true;
+          const isIgaming = i === 6;
           const isLast = i === arr.length - 1;
           const span = [
             isLast && arr.length % 2 === 1 ? "sm:col-span-2" : "",
@@ -36,11 +37,16 @@ export function Verticals() {
               <div className="relative grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3 sm:flex sm:justify-between">
                 <Icon className="h-6 w-6 shrink-0 text-brand" strokeWidth={1.5} />
                 <span className="flex justify-end sm:contents">
-                <Badge live={available} liveLabel={c.verticalsAvailable} soonLabel={c.verticalsUpcoming} />
+                <StatusPill status="on_request" label={c.verticalsAvailable} />
                 </span>
               </div>
               <h3 className="font-display relative mt-4 text-base font-bold break-words text-ink sm:mt-5">{v.name}</h3>
               <p className="relative mt-2 text-sm leading-relaxed break-words text-slateink">{v.text}</p>
+              {isIgaming ? (
+                <Link to="/igaming" className="relative mt-4 text-sm font-semibold text-brand-light underline-offset-4 hover:underline">
+                  {locale === "pt" ? "Ver requisitos por mercado →" : "See requirements by market →"}
+                </Link>
+              ) : null}
             </article>
           );
         })}
