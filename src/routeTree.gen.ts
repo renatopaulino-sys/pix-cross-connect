@@ -11,11 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AmlKycRouteImport } from './routes/aml-kyc'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as DocsRouteImport } from './routes/docs'
+import { Route as IgamingRouteImport } from './routes/igaming'
+import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as ProhibitedBusinessesRouteImport } from './routes/prohibited-businesses'
 import { Route as RefundChargebackRouteImport } from './routes/refund-chargeback'
@@ -23,6 +26,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermosRouteImport } from './routes/termos'
 import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/app'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as MethodsSlugRouteImport } from './routes/methods.$slug'
 import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app.index'
 import { Route as AuthenticatedAppAuditoriaRouteImport } from './routes/_authenticated/app.auditoria'
 import { Route as AuthenticatedAppClientesRouteImport } from './routes/_authenticated/app.clientes'
@@ -38,6 +42,11 @@ const IndexRoute = IndexRouteImport.update({
 } as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AmlKycRoute = AmlKycRouteImport.update({
@@ -63,6 +72,16 @@ const CookiesRoute = CookiesRouteImport.update({
 const DocsRoute = DocsRouteImport.update({
   id: '/docs',
   path: '/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IgamingRoute = IgamingRouteImport.update({
+  id: '/igaming',
+  path: '/igaming',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacidadeRoute = PrivacidadeRouteImport.update({
@@ -98,6 +117,11 @@ const AuthenticatedAppRoute = AuthenticatedAppRouteImport.update({
 const ApiContactRoute = ApiContactRouteImport.update({
   id: '/api/contact',
   path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodsSlugRoute = MethodsSlugRouteImport.update({
+  id: '/methods/$slug',
+  path: '/methods/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
@@ -143,11 +167,14 @@ const AuthenticatedAppSaquesRoute = AuthenticatedAppSaquesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/aml-kyc': typeof AmlKycRoute
   '/auth': typeof AuthRoute
   '/complaints': typeof ComplaintsRoute
   '/cookies': typeof CookiesRoute
   '/docs': typeof DocsRoute
+  '/igaming': typeof IgamingRoute
+  '/insights': typeof InsightsRoute
   '/privacidade': typeof PrivacidadeRoute
   '/prohibited-businesses': typeof ProhibitedBusinessesRoute
   '/refund-chargeback': typeof RefundChargebackRoute
@@ -155,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/termos': typeof TermosRoute
   '/app': typeof AuthenticatedAppRouteWithChildren
   '/api/contact': typeof ApiContactRoute
+  '/methods/$slug': typeof MethodsSlugRoute
   '/app/auditoria': typeof AuthenticatedAppAuditoriaRoute
   '/app/clientes': typeof AuthenticatedAppClientesRoute
   '/app/configuracoes': typeof AuthenticatedAppConfiguracoesRoute
@@ -165,17 +193,21 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/aml-kyc': typeof AmlKycRoute
   '/auth': typeof AuthRoute
   '/complaints': typeof ComplaintsRoute
   '/cookies': typeof CookiesRoute
   '/docs': typeof DocsRoute
+  '/igaming': typeof IgamingRoute
+  '/insights': typeof InsightsRoute
   '/privacidade': typeof PrivacidadeRoute
   '/prohibited-businesses': typeof ProhibitedBusinessesRoute
   '/refund-chargeback': typeof RefundChargebackRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
   '/api/contact': typeof ApiContactRoute
+  '/methods/$slug': typeof MethodsSlugRoute
   '/app/auditoria': typeof AuthenticatedAppAuditoriaRoute
   '/app/clientes': typeof AuthenticatedAppClientesRoute
   '/app/configuracoes': typeof AuthenticatedAppConfiguracoesRoute
@@ -188,11 +220,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/aml-kyc': typeof AmlKycRoute
   '/auth': typeof AuthRoute
   '/complaints': typeof ComplaintsRoute
   '/cookies': typeof CookiesRoute
   '/docs': typeof DocsRoute
+  '/igaming': typeof IgamingRoute
+  '/insights': typeof InsightsRoute
   '/privacidade': typeof PrivacidadeRoute
   '/prohibited-businesses': typeof ProhibitedBusinessesRoute
   '/refund-chargeback': typeof RefundChargebackRoute
@@ -200,6 +235,7 @@ export interface FileRoutesById {
   '/termos': typeof TermosRoute
   '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
   '/api/contact': typeof ApiContactRoute
+  '/methods/$slug': typeof MethodsSlugRoute
   '/_authenticated/app/auditoria': typeof AuthenticatedAppAuditoriaRoute
   '/_authenticated/app/clientes': typeof AuthenticatedAppClientesRoute
   '/_authenticated/app/configuracoes': typeof AuthenticatedAppConfiguracoesRoute
@@ -212,11 +248,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/aml-kyc'
     | '/auth'
     | '/complaints'
     | '/cookies'
     | '/docs'
+    | '/igaming'
+    | '/insights'
     | '/privacidade'
     | '/prohibited-businesses'
     | '/refund-chargeback'
@@ -224,6 +263,7 @@ export interface FileRouteTypes {
     | '/termos'
     | '/app'
     | '/api/contact'
+    | '/methods/$slug'
     | '/app/auditoria'
     | '/app/clientes'
     | '/app/configuracoes'
@@ -234,17 +274,21 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/aml-kyc'
     | '/auth'
     | '/complaints'
     | '/cookies'
     | '/docs'
+    | '/igaming'
+    | '/insights'
     | '/privacidade'
     | '/prohibited-businesses'
     | '/refund-chargeback'
     | '/sitemap.xml'
     | '/termos'
     | '/api/contact'
+    | '/methods/$slug'
     | '/app/auditoria'
     | '/app/clientes'
     | '/app/configuracoes'
@@ -256,11 +300,14 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/about'
     | '/aml-kyc'
     | '/auth'
     | '/complaints'
     | '/cookies'
     | '/docs'
+    | '/igaming'
+    | '/insights'
     | '/privacidade'
     | '/prohibited-businesses'
     | '/refund-chargeback'
@@ -268,6 +315,7 @@ export interface FileRouteTypes {
     | '/termos'
     | '/_authenticated/app'
     | '/api/contact'
+    | '/methods/$slug'
     | '/_authenticated/app/auditoria'
     | '/_authenticated/app/clientes'
     | '/_authenticated/app/configuracoes'
@@ -280,17 +328,21 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
   AmlKycRoute: typeof AmlKycRoute
   AuthRoute: typeof AuthRoute
   ComplaintsRoute: typeof ComplaintsRoute
   CookiesRoute: typeof CookiesRoute
   DocsRoute: typeof DocsRoute
+  IgamingRoute: typeof IgamingRoute
+  InsightsRoute: typeof InsightsRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   ProhibitedBusinessesRoute: typeof ProhibitedBusinessesRoute
   RefundChargebackRoute: typeof RefundChargebackRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermosRoute: typeof TermosRoute
   ApiContactRoute: typeof ApiContactRoute
+  MethodsSlugRoute: typeof MethodsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -307,6 +359,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/aml-kyc': {
@@ -342,6 +401,20 @@ declare module '@tanstack/react-router' {
       path: '/docs'
       fullPath: '/docs'
       preLoaderRoute: typeof DocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/igaming': {
+      id: '/igaming'
+      path: '/igaming'
+      fullPath: '/igaming'
+      preLoaderRoute: typeof IgamingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacidade': {
@@ -391,6 +464,13 @@ declare module '@tanstack/react-router' {
       path: '/api/contact'
       fullPath: '/api/contact'
       preLoaderRoute: typeof ApiContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methods/$slug': {
+      id: '/methods/$slug'
+      path: '/methods/$slug'
+      fullPath: '/methods/$slug'
+      preLoaderRoute: typeof MethodsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/app/': {
@@ -482,17 +562,21 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
   AmlKycRoute: AmlKycRoute,
   AuthRoute: AuthRoute,
   ComplaintsRoute: ComplaintsRoute,
   CookiesRoute: CookiesRoute,
   DocsRoute: DocsRoute,
+  IgamingRoute: IgamingRoute,
+  InsightsRoute: InsightsRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   ProhibitedBusinessesRoute: ProhibitedBusinessesRoute,
   RefundChargebackRoute: RefundChargebackRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermosRoute: TermosRoute,
   ApiContactRoute: ApiContactRoute,
+  MethodsSlugRoute: MethodsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

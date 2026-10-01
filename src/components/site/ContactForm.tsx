@@ -4,27 +4,25 @@ import { CheckCircle2 } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { CONTACT_PREFILL_EVENT, type ContactPrefill } from "@/lib/contact-prefill";
 import { supabase } from "@/integrations/supabase/client";
+import { pricingCountries } from "@/data/pricing";
 
 type Values = {
   name: string; company: string; email: string; phone: string;
   country: string; vertical: string; volume: string; message: string; consent: boolean;
+  website: string; markets: string[]; license: boolean;
 };
 
 const empty: Values = {
   name: "", company: "", email: "", phone: "",
   country: "", vertical: "", volume: "", message: "", consent: false,
+  website: "", markets: [], license: false,
 };
 
 const field =
   "w-full rounded-lg border border-border bg-paper px-3 py-2.5 text-sm text-ink placeholder:text-slateink/60 focus-visible:border-cobalt";
 
 const countryNames: { pt: string; en: string }[] = [
-  { pt: "Brasil", en: "Brazil" },
-  { pt: "México", en: "Mexico" },
-  { pt: "Colômbia", en: "Colombia" },
-  { pt: "Peru", en: "Peru" },
-  { pt: "Argentina", en: "Argentina" },
-  { pt: "Chile", en: "Chile" },
+  ...pricingCountries.map((c) => c.name),
   { pt: "Outro país", en: "Other country" },
 ];
 
@@ -47,6 +45,11 @@ export function ContactSection() {
       }));
     };
     window.addEventListener(CONTACT_PREFILL_EVENT, onPrefill);
+    const stored = sessionStorage.getItem("cruzia:prefill-vertical");
+    if (stored) {
+      sessionStorage.removeItem("cruzia:prefill-vertical");
+      setValues((v) => ({ ...v, vertical: stored }));
+    }
     return () => window.removeEventListener(CONTACT_PREFILL_EVENT, onPrefill);
   }, []);
 
@@ -65,6 +68,8 @@ export function ContactSection() {
     if (!values.vertical) e.vertical = t.contact.errors.vertical;
     if (!values.volume) e.volume = t.contact.errors.volume;
     if (!values.consent) e.consent = t.contact.errors.consent;
+    if (!/^(https?:\/\/)?[^\s.]+\.[^\s]{2,}$/i.test(values.website.trim())) e.website = t.contact.errors.website;
+    if (!values.license) e.license = t.contact.errors.license;
     return e;
   };
 
@@ -87,6 +92,9 @@ export function ContactSection() {
       volume: values.volume,
       message: values.message.trim() || null,
       consent: values.consent,
+      website: values.website.trim(),
+      markets: values.markets,
+      license_confirmed: values.license,
       locale,
     };
 
@@ -102,6 +110,9 @@ export function ContactSection() {
       message: payload.message,
       consent: payload.consent,
       locale: payload.locale,
+      website: payload.website,
+      markets: payload.markets,
+      license_confirmed: payload.license_confirmed,
     });
 
     // 2️⃣ Forward to Google Apps Script (Google Sheets + Email Notification)
@@ -164,7 +175,7 @@ export function ContactSection() {
                 <input id="email" type="email" className={field} value={values.email} onChange={(e) => set("email", e.target.value)} autoComplete="email" />
               </Field>
               <Field id="phone" label={t.contact.fields.phone} error={errors.phone}>
-                <input id="phone" className={field} placeholder="+55 11 90000-0000" value={values.phone} onChange={(e) => set("phone", e.target.value)} autoComplete="tel" />
+                <input id="phone" className={field} value={values.phone} onChange={(e) => set("phone", e.target.value)} autoComplete="tel" />
               </Field>
               <Field id="country" label={t.contact.fields.country} error={errors.country}>
                 <select id="country" className={field} value={values.country} onChange={(e) => set("country", e.target.value)}>
@@ -182,7 +193,10 @@ export function ContactSection() {
                   ))}
                 </select>
               </Field>
-              <div className="sm:col-span-2">
+              <Field id="website" label={t.contact.fields.website} error={errors.website}>
+                <input id="website" type="url" className={field} placeholder="https://" value={values.website} onChange={(e) => set("website", e.target.value)} autoComplete="url" />
+              </Field>
+              <div>
                 <Field id="volume" label={t.contact.fields.volume} error={errors.volume}>
                   <select id="volume" className={field} value={values.volume} onChange={(e) => set("volume", e.target.value)}>
                     <option value="">{t.contact.fields.select}</option>
@@ -192,6 +206,25 @@ export function ContactSection() {
                   </select>
                 </Field>
               </div>
+              <fieldset className="sm:col-span-2">
+                <legend className="mb-1.5 block text-sm font-medium text-ink">{t.contact.fields.markets}</legend>
+                <div className="flex flex-wrap gap-2">
+                  {pricingCountries.map((c) => {
+                    const on = values.markets.includes(c.code);
+                    return (
+                      <label key={c.code} className={"cursor-pointer rounded-lg border px-3 py-1.5 text-sm " + (on ? "border-brand bg-brand/10 text-ink" : "border-border text-slateink")}>
+                        <input
+                          type="checkbox"
+                          className="sr-only"
+                          checked={on}
+                          onChange={() => set("markets", on ? values.markets.filter((m) => m !== c.code) : [...values.markets, c.code])}
+                        />
+                        {c.flag} {c.name[locale]}
+                      </label>
+                    );
+                  })}
+                </div>
+              </fieldset>
               <div className="sm:col-span-2">
                 <Field id="message" label={t.contact.fields.message}>
                   <textarea id="message" rows={4} maxLength={1000} className={field} value={values.message} onChange={(e) => set("message", e.target.value)} />
@@ -220,6 +253,11 @@ export function ContactSection() {
               {errors.consent ? (
                 <p id="consent-error" className="mt-2 text-xs text-destructive">{errors.consent}</p>
               ) : null}
+              <label htmlFor="license" className="mt-4 flex items-start gap-3 text-sm leading-relaxed text-slateink">
+                <input id="license" type="checkbox" checked={values.license} onChange={(e) => set("license", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 accent-cobalt" />
+                <span>{t.contact.license}</span>
+              </label>
+              {errors.license ? <p className="mt-2 text-xs text-destructive">{errors.license}</p> : null}
             </div>
 
             {errors.submit ? <p className="mt-4 text-sm text-destructive">{errors.submit}</p> : null}
