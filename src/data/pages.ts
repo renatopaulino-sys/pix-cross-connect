@@ -125,6 +125,24 @@ export const legalDocs: Record<string, Record<Locale, LegalDoc>> = {
       closing: `Dúvidas sobre a elegibilidade da sua empresa: ${E.compliance}.`,
     },
   },
+  cookies: {
+    en: {
+      title: "Cookie policy", updated: "Last updated: October 2026",
+      sections: [
+        { heading: "Essential cookies", body: ["Required to run the site, remember your language and cookie choices, and keep the merchant portal secure."] },
+        { heading: "Measurement cookies", body: ["Optional cookies that help us understand audience and improve the site. They are only set if you accept them in the banner."] },
+        { heading: "Managing cookies", body: [`You can change your choice at any time by clearing cookies in your browser. Questions: ${E.privacy}.`] },
+      ],
+    },
+    pt: {
+      title: "Política de cookies", updated: "Última atualização: outubro de 2026",
+      sections: [
+        { heading: "Cookies essenciais", body: ["Necessários para operar o site, lembrar seu idioma e suas escolhas de cookies e manter o portal do merchant seguro."] },
+        { heading: "Cookies de medição", body: ["Cookies opcionais que nos ajudam a entender a audiência e melhorar o site. Só são definidos se você os aceitar no banner."] },
+        { heading: "Gerenciar cookies", body: [`Você pode alterar sua escolha a qualquer momento limpando os cookies do navegador. Dúvidas: ${E.privacy}.`] },
+      ],
+    },
+  },
   complaints: {
     en: {
       title: "Complaints", updated: "Last updated: October 2026",
