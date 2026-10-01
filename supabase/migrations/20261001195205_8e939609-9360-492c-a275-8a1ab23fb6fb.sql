@@ -1,0 +1,1 @@
+ALTER TABLE public.leads ADD COLUMN IF NOT EXISTS website text, ADD COLUMN IF NOT EXISTS markets text[] NOT NULL DEFAULT '{}', ADD COLUMN IF NOT EXISTS license_confirmed boolean NOT NULL DEFAULT false;
