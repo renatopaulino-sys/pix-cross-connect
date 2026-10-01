@@ -17,7 +17,7 @@ import { useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useProfile } from "@/lib/profile";
 import { cn } from "@/lib/utils";
-import mark from "@/assets/cruziapay-mark.png.asset.json";
+import mark from "@/assets/cruziapay-mark-transparent.png";
 
 const merchantNav = [
   { to: "/app", label: "Início / Volumetria", icon: LayoutDashboard, exact: true },
@@ -58,7 +58,7 @@ export function PanelLayout({ children }: { children: ReactNode }) {
         )}
       >
         <Link to="/" className="flex items-center gap-2 border-b border-border px-5 py-4">
-          <img src={mark.url} alt="CruziaPay" className="h-8 w-auto" />
+          <img src={mark} alt="CruziaPay" className="h-9 w-10 object-contain" />
           <span className="font-display text-lg font-bold text-foreground">CruziaPay</span>
         </Link>
 

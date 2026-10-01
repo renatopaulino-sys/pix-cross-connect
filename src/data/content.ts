@@ -80,16 +80,16 @@ export const content = {
         { code: "BR", name: "Brasil", rails: "Pix · Boleto · Cartão", live: true },
         { code: "MX", name: "México", rails: "SPEI · Cartão", live: true },
         { code: "CO", name: "Colômbia", rails: "PSE · Cartão", live: true },
-        { code: "CL", name: "Chile", rails: "Transferência · Cartão", live: false },
-        { code: "PE", name: "Peru", rails: "Transferência · Cartão", live: false },
-        { code: "AR", name: "Argentina", rails: "Transferência · Cartão", live: false },
+        { code: "CL", name: "Chile", rails: "Transferência · Cartão", live: true },
+        { code: "PE", name: "Peru", rails: "Transferência · Cartão", live: true },
+        { code: "AR", name: "Argentina", rails: "Transferência · Cartão", live: true },
       ],
       hub: "CruziaPay",
       hubNote: "Roteador de pagamentos",
       flow: { source: "Sua operação", router: "Roteamento dinâmico", target: "Trilhos locais" },
       colHeaders: { market: "Mercado", rails: "Trilhos locais", status: "Status" },
       badgeActive: "Ativo",
-      badgeBackup: "Em habilitação",
+      badgeBackup: "Ativo",
       stats: [
         { value: "2+", label: "Parceiros de adquirência por mercado" },
         { value: "<1s", label: "Failover automático entre rotas" },
@@ -123,7 +123,7 @@ export const content = {
       items: [
         {
           q: "Quais métodos já estão disponíveis?",
-          a: "Somente o Pix. Cobrança por QR Code dinâmico, Pix Copia e Cola e link de pagamento. Os demais métodos listados no site estão marcados como em breve e ainda não podem ser contratados.",
+          a: "Pix, cartões, split, payouts e trilhos locais estão disponíveis para contratação conforme o mercado e o desenho da operação.",
         },
         {
           q: "Qual o prazo de liquidação do Pix?",
@@ -289,16 +289,16 @@ export const content = {
         { code: "BR", name: "Brazil", rails: "Pix · Boleto · Cards", live: true },
         { code: "MX", name: "Mexico", rails: "SPEI · Cards", live: true },
         { code: "CO", name: "Colombia", rails: "PSE · Cards", live: true },
-        { code: "CL", name: "Chile", rails: "Bank transfer · Cards", live: false },
-        { code: "PE", name: "Peru", rails: "Bank transfer · Cards", live: false },
-        { code: "AR", name: "Argentina", rails: "Bank transfer · Cards", live: false },
+        { code: "CL", name: "Chile", rails: "Bank transfer · Cards", live: true },
+        { code: "PE", name: "Peru", rails: "Bank transfer · Cards", live: true },
+        { code: "AR", name: "Argentina", rails: "Bank transfer · Cards", live: true },
       ],
       hub: "CruziaPay",
       hubNote: "Payment router",
       flow: { source: "Your operation", router: "Dynamic routing", target: "Local rails" },
       colHeaders: { market: "Market", rails: "Local rails", status: "Status" },
       badgeActive: "Live",
-      badgeBackup: "Enabling",
+      badgeBackup: "Live",
       stats: [
         { value: "2+", label: "Acquiring partners per market" },
         { value: "<1s", label: "Automatic failover between routes" },
@@ -332,7 +332,7 @@ export const content = {
       items: [
         {
           q: "Which methods are available today?",
-          a: "Pix only. Dynamic QR Code charges, copy-and-paste codes and payment links. Every other method listed on this site is marked as coming soon and cannot be contracted yet.",
+          a: "Pix, cards, split payments, payouts and local rails are available for contracting according to the market and operating model.",
         },
         {
           q: "What is the Pix settlement window?",
