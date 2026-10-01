@@ -23,8 +23,10 @@ export function Header() {
     { href: "/#solucoes", label: t.nav.solutions },
     { href: "/#cross-border", label: t.nav.crossBorder },
     { href: "/#metodos", label: t.nav.methods },
+    { href: "/#precos", label: t.nav.pricing },
     { href: "/#como-funciona", label: t.nav.how },
     { href: "/#desenvolvedores", label: t.nav.developers },
+    { href: "/about", label: t.nav.company },
     { href: "/#contato", label: t.nav.contact },
   ];
 
@@ -37,21 +39,21 @@ export function Header() {
           : "border-transparent")
       }
     >
-      <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 lg:flex lg:justify-between">
+      <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 xl:flex xl:justify-between">
         <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="CruziaPay">
           <img src={mark} alt="" aria-hidden="true" className="h-9 w-10 shrink-0 object-contain" width={40} height={36} />
           <span className="font-display truncate text-lg font-extrabold tracking-tight text-footer-ink">CruziaPay</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label={t.nav.solutions}>
+        <nav className="hidden items-center gap-5 xl:flex" aria-label={t.nav.solutions}>
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-footer-muted transition-colors hover:text-footer-ink">
+            <a key={l.href} href={l.href} className="text-sm whitespace-nowrap text-footer-muted transition-colors hover:text-footer-ink">
               {l.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <Button
             type="button"
             onClick={() => setOpenPixModal(true)}
@@ -83,14 +85,14 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Menu"
-          className="justify-self-end bg-transparent text-footer-ink lg:hidden"
+          className="justify-self-end bg-transparent text-footer-ink xl:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </div>
 
       {open ? (
-        <div className="border-t border-border/40 bg-footer-paper lg:hidden">
+        <div className="border-t border-border/40 bg-footer-paper xl:hidden">
           <div className="container-site flex flex-col gap-1 py-4">
             {links.map((l) => (
               <a
