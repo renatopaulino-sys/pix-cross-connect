@@ -11,10 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AmlKycRouteImport } from './routes/aml-kyc'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
+import { Route as ProhibitedBusinessesRouteImport } from './routes/prohibited-businesses'
+import { Route as RefundChargebackRouteImport } from './routes/refund-chargeback'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermosRouteImport } from './routes/termos'
 import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/app'
@@ -36,9 +40,19 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AmlKycRoute = AmlKycRouteImport.update({
+  id: '/aml-kyc',
+  path: '/aml-kyc',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplaintsRoute = ComplaintsRouteImport.update({
+  id: '/complaints',
+  path: '/complaints',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -54,6 +68,16 @@ const DocsRoute = DocsRouteImport.update({
 const PrivacidadeRoute = PrivacidadeRouteImport.update({
   id: '/privacidade',
   path: '/privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProhibitedBusinessesRoute = ProhibitedBusinessesRouteImport.update({
+  id: '/prohibited-businesses',
+  path: '/prohibited-businesses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundChargebackRoute = RefundChargebackRouteImport.update({
+  id: '/refund-chargeback',
+  path: '/refund-chargeback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -119,10 +143,14 @@ const AuthenticatedAppSaquesRoute = AuthenticatedAppSaquesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aml-kyc': typeof AmlKycRoute
   '/auth': typeof AuthRoute
+  '/complaints': typeof ComplaintsRoute
   '/cookies': typeof CookiesRoute
   '/docs': typeof DocsRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/prohibited-businesses': typeof ProhibitedBusinessesRoute
+  '/refund-chargeback': typeof RefundChargebackRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
   '/app': typeof AuthenticatedAppRouteWithChildren
@@ -137,10 +165,14 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aml-kyc': typeof AmlKycRoute
   '/auth': typeof AuthRoute
+  '/complaints': typeof ComplaintsRoute
   '/cookies': typeof CookiesRoute
   '/docs': typeof DocsRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/prohibited-businesses': typeof ProhibitedBusinessesRoute
+  '/refund-chargeback': typeof RefundChargebackRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
   '/api/contact': typeof ApiContactRoute
@@ -156,10 +188,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/aml-kyc': typeof AmlKycRoute
   '/auth': typeof AuthRoute
+  '/complaints': typeof ComplaintsRoute
   '/cookies': typeof CookiesRoute
   '/docs': typeof DocsRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/prohibited-businesses': typeof ProhibitedBusinessesRoute
+  '/refund-chargeback': typeof RefundChargebackRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
   '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
@@ -176,10 +212,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/aml-kyc'
     | '/auth'
+    | '/complaints'
     | '/cookies'
     | '/docs'
     | '/privacidade'
+    | '/prohibited-businesses'
+    | '/refund-chargeback'
     | '/sitemap.xml'
     | '/termos'
     | '/app'
@@ -194,10 +234,14 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/aml-kyc'
     | '/auth'
+    | '/complaints'
     | '/cookies'
     | '/docs'
     | '/privacidade'
+    | '/prohibited-businesses'
+    | '/refund-chargeback'
     | '/sitemap.xml'
     | '/termos'
     | '/api/contact'
@@ -212,10 +256,14 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/aml-kyc'
     | '/auth'
+    | '/complaints'
     | '/cookies'
     | '/docs'
     | '/privacidade'
+    | '/prohibited-businesses'
+    | '/refund-chargeback'
     | '/sitemap.xml'
     | '/termos'
     | '/_authenticated/app'
@@ -232,10 +280,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AmlKycRoute: typeof AmlKycRoute
   AuthRoute: typeof AuthRoute
+  ComplaintsRoute: typeof ComplaintsRoute
   CookiesRoute: typeof CookiesRoute
   DocsRoute: typeof DocsRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
+  ProhibitedBusinessesRoute: typeof ProhibitedBusinessesRoute
+  RefundChargebackRoute: typeof RefundChargebackRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermosRoute: typeof TermosRoute
   ApiContactRoute: typeof ApiContactRoute
@@ -257,11 +309,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aml-kyc': {
+      id: '/aml-kyc'
+      path: '/aml-kyc'
+      fullPath: '/aml-kyc'
+      preLoaderRoute: typeof AmlKycRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/complaints': {
+      id: '/complaints'
+      path: '/complaints'
+      fullPath: '/complaints'
+      preLoaderRoute: typeof ComplaintsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -283,6 +349,20 @@ declare module '@tanstack/react-router' {
       path: '/privacidade'
       fullPath: '/privacidade'
       preLoaderRoute: typeof PrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prohibited-businesses': {
+      id: '/prohibited-businesses'
+      path: '/prohibited-businesses'
+      fullPath: '/prohibited-businesses'
+      preLoaderRoute: typeof ProhibitedBusinessesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund-chargeback': {
+      id: '/refund-chargeback'
+      path: '/refund-chargeback'
+      fullPath: '/refund-chargeback'
+      preLoaderRoute: typeof RefundChargebackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -402,10 +482,14 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AmlKycRoute: AmlKycRoute,
   AuthRoute: AuthRoute,
+  ComplaintsRoute: ComplaintsRoute,
   CookiesRoute: CookiesRoute,
   DocsRoute: DocsRoute,
   PrivacidadeRoute: PrivacidadeRoute,
+  ProhibitedBusinessesRoute: ProhibitedBusinessesRoute,
+  RefundChargebackRoute: RefundChargebackRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermosRoute: TermosRoute,
   ApiContactRoute: ApiContactRoute,
