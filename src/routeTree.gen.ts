@@ -29,6 +29,7 @@ import { Route as ApiContactRouteImport } from './routes/api/contact'
 import { Route as MethodsSlugRouteImport } from './routes/methods.$slug'
 import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app.index'
 import { Route as AuthenticatedAppAuditoriaRouteImport } from './routes/_authenticated/app.auditoria'
+import { Route as AuthenticatedAppChecklistRouteImport } from './routes/_authenticated/app.checklist'
 import { Route as AuthenticatedAppClientesRouteImport } from './routes/_authenticated/app.clientes'
 import { Route as AuthenticatedAppConfiguracoesRouteImport } from './routes/_authenticated/app.configuracoes'
 import { Route as AuthenticatedAppOnboardingRouteImport } from './routes/_authenticated/app.onboarding'
@@ -135,6 +136,12 @@ const AuthenticatedAppAuditoriaRoute =
     path: '/auditoria',
     getParentRoute: () => AuthenticatedAppRoute,
   } as any)
+const AuthenticatedAppChecklistRoute =
+  AuthenticatedAppChecklistRouteImport.update({
+    id: '/checklist',
+    path: '/checklist',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
 const AuthenticatedAppClientesRoute =
   AuthenticatedAppClientesRouteImport.update({
     id: '/clientes',
@@ -184,6 +191,7 @@ export interface FileRoutesByFullPath {
   '/api/contact': typeof ApiContactRoute
   '/methods/$slug': typeof MethodsSlugRoute
   '/app/auditoria': typeof AuthenticatedAppAuditoriaRoute
+  '/app/checklist': typeof AuthenticatedAppChecklistRoute
   '/app/clientes': typeof AuthenticatedAppClientesRoute
   '/app/configuracoes': typeof AuthenticatedAppConfiguracoesRoute
   '/app/onboarding': typeof AuthenticatedAppOnboardingRoute
@@ -209,6 +217,7 @@ export interface FileRoutesByTo {
   '/api/contact': typeof ApiContactRoute
   '/methods/$slug': typeof MethodsSlugRoute
   '/app/auditoria': typeof AuthenticatedAppAuditoriaRoute
+  '/app/checklist': typeof AuthenticatedAppChecklistRoute
   '/app/clientes': typeof AuthenticatedAppClientesRoute
   '/app/configuracoes': typeof AuthenticatedAppConfiguracoesRoute
   '/app/onboarding': typeof AuthenticatedAppOnboardingRoute
@@ -237,6 +246,7 @@ export interface FileRoutesById {
   '/api/contact': typeof ApiContactRoute
   '/methods/$slug': typeof MethodsSlugRoute
   '/_authenticated/app/auditoria': typeof AuthenticatedAppAuditoriaRoute
+  '/_authenticated/app/checklist': typeof AuthenticatedAppChecklistRoute
   '/_authenticated/app/clientes': typeof AuthenticatedAppClientesRoute
   '/_authenticated/app/configuracoes': typeof AuthenticatedAppConfiguracoesRoute
   '/_authenticated/app/onboarding': typeof AuthenticatedAppOnboardingRoute
@@ -265,6 +275,7 @@ export interface FileRouteTypes {
     | '/api/contact'
     | '/methods/$slug'
     | '/app/auditoria'
+    | '/app/checklist'
     | '/app/clientes'
     | '/app/configuracoes'
     | '/app/onboarding'
@@ -290,6 +301,7 @@ export interface FileRouteTypes {
     | '/api/contact'
     | '/methods/$slug'
     | '/app/auditoria'
+    | '/app/checklist'
     | '/app/clientes'
     | '/app/configuracoes'
     | '/app/onboarding'
@@ -317,6 +329,7 @@ export interface FileRouteTypes {
     | '/api/contact'
     | '/methods/$slug'
     | '/_authenticated/app/auditoria'
+    | '/_authenticated/app/checklist'
     | '/_authenticated/app/clientes'
     | '/_authenticated/app/configuracoes'
     | '/_authenticated/app/onboarding'
@@ -487,6 +500,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppAuditoriaRouteImport
       parentRoute: typeof AuthenticatedAppRoute
     }
+    '/_authenticated/app/checklist': {
+      id: '/_authenticated/app/checklist'
+      path: '/checklist'
+      fullPath: '/app/checklist'
+      preLoaderRoute: typeof AuthenticatedAppChecklistRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
     '/_authenticated/app/clientes': {
       id: '/_authenticated/app/clientes'
       path: '/clientes'
@@ -527,6 +547,7 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedAppRouteChildren {
   AuthenticatedAppAuditoriaRoute: typeof AuthenticatedAppAuditoriaRoute
+  AuthenticatedAppChecklistRoute: typeof AuthenticatedAppChecklistRoute
   AuthenticatedAppClientesRoute: typeof AuthenticatedAppClientesRoute
   AuthenticatedAppConfiguracoesRoute: typeof AuthenticatedAppConfiguracoesRoute
   AuthenticatedAppOnboardingRoute: typeof AuthenticatedAppOnboardingRoute
@@ -537,6 +558,7 @@ interface AuthenticatedAppRouteChildren {
 
 const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
   AuthenticatedAppAuditoriaRoute: AuthenticatedAppAuditoriaRoute,
+  AuthenticatedAppChecklistRoute: AuthenticatedAppChecklistRoute,
   AuthenticatedAppClientesRoute: AuthenticatedAppClientesRoute,
   AuthenticatedAppConfiguracoesRoute: AuthenticatedAppConfiguracoesRoute,
   AuthenticatedAppOnboardingRoute: AuthenticatedAppOnboardingRoute,
