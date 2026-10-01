@@ -22,6 +22,7 @@
   --color-slateink: oklch(0.75 0.012 250);
   --color-footer-ink: oklch(0.16 0.012 260);
   --color-footer-muted: oklch(0.43 0.018 255);
+  --color-footer-paper: oklch(0.95 0.004 250);
 
   /* Surfaces (dark) */
   --color-paper: oklch(0.16 0.008 260);

@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header
       className={
-        "fixed inset-x-0 top-0 z-50 border-b bg-paper/80 backdrop-blur-md transition-shadow " +
+        "fixed inset-x-0 top-0 z-50 header-crest backdrop-blur-md transition-shadow " +
         (scrolled
           ? "border-border shadow-[0_1px_20px_-8px_oklch(0.244_0.049_250/0.35)]"
           : "border-transparent")
@@ -40,12 +40,12 @@ export function Header() {
       <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 lg:flex lg:justify-between">
         <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="CruziaPay">
           <img src={mark} alt="" aria-hidden="true" className="h-9 w-10 shrink-0 object-contain" width={40} height={36} />
-          <span className="font-display truncate text-lg font-extrabold tracking-tight text-ink">CruziaPay</span>
+          <span className="font-display truncate text-lg font-extrabold tracking-tight text-footer-ink">CruziaPay</span>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label={t.nav.solutions}>
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-slateink transition-colors hover:text-ink">
+            <a key={l.href} href={l.href} className="text-sm text-footer-muted transition-colors hover:text-footer-ink">
               {l.label}
             </a>
           ))}
@@ -83,21 +83,21 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Menu"
-          className="justify-self-end text-ink lg:hidden"
+          className="justify-self-end bg-transparent text-footer-ink lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </div>
 
       {open ? (
-        <div className="border-t border-border bg-paper lg:hidden">
+        <div className="border-t border-border/40 bg-footer-paper lg:hidden">
           <div className="container-site flex flex-col gap-1 py-4">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-1 py-2 text-sm text-slateink hover:text-ink"
+                className="rounded-lg px-1 py-2 text-sm text-footer-muted hover:text-footer-ink"
               >
                 {l.label}
               </a>
@@ -145,7 +145,7 @@ function LocaleToggle({
           size="sm"
           className={
             "label-mono h-7 rounded-lg px-2 transition-colors " +
-            (locale === l ? "bg-ink text-paper" : "text-slateink hover:text-ink")
+            (locale === l ? "bg-footer-ink text-footer-paper" : "text-footer-muted hover:text-footer-ink")
           }
         >
           {l}
