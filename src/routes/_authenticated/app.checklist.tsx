@@ -60,7 +60,7 @@ function ChecklistView({ text }: { text: string }) {
           return (
             <label key={i} className="flex cursor-pointer items-start gap-3 rounded-md px-2 py-1.5 hover:bg-accent">
               <input type="checkbox" className="mt-1 accent-primary" checked={checked} onChange={() => setDone((d) => ({ ...d, [i]: !checked }))} />
-              <span className={cn("text-sm text-foreground", checked && "text-muted-foreground line-through")}>{clean(box[2])}</span>
+              <span className={cn("text-sm text-foreground", checked && "text-muted-foreground line-through")}>{clean(box[2] ?? "")}</span>
             </label>
           );
         }
@@ -87,8 +87,8 @@ function ChecklistPage() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!markets.length) return toast.error("Selecione ao menos um mercado.");
-    if (businessModel.trim().length < 2 || vertical.trim().length < 2) return toast.error("Preencha modelo de negócio e vertical.");
+    if (!markets.length) { toast.error("Selecione ao menos um mercado."); return; }
+    if (businessModel.trim().length < 2 || vertical.trim().length < 2) { toast.error("Preencha modelo de negócio e vertical."); return; }
     setLoading(true);
     setError("");
     try {
