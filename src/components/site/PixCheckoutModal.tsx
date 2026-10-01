@@ -1,3 +1,4 @@
+import { useI18n } from "@/lib/i18n";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -84,6 +85,8 @@ export function PixCheckoutModal({ open, onOpenChange }: PixCheckoutModalProps) 
     setTimer(900);
   };
 
+  const sandboxNotice = useI18n().locale === "pt" ? "Ambiente sandbox, nenhum valor real é movimentado." : "Sandbox environment, no real funds are moved.";
+
   return (
     <Dialog open={open} onOpenChange={(val) => { onOpenChange(val); if (!val) resetFlow(); }}>
       <DialogContent className="max-w-md rounded-2xl border-border bg-card p-6 shadow-2xl sm:p-8">
@@ -98,8 +101,11 @@ export function PixCheckoutModal({ open, onOpenChange }: PixCheckoutModalProps) 
                 Checkout CruziaPay Gateway
               </DialogTitle>
               <DialogDescription className="text-muted-foreground text-sm">
-                Cobrança por Pix Instantâneo ou Cartão de Crédito Internacional via Hyperswitch.
+                Cobrança por Pix Instantâneo ou Cartão de Crédito Internacional.
               </DialogDescription>
+              <p role="note" className="mt-3 rounded-lg border border-warning/40 bg-warning/10 px-3 py-2 text-xs font-medium text-ink">
+                {sandboxNotice}
+              </p>
             </DialogHeader>
 
             {/* Alternador de Método: Pix vs Cartão */}
