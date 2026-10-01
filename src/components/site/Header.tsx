@@ -39,13 +39,13 @@ export function Header() {
           : "border-transparent")
       }
     >
-      <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 xl:flex xl:justify-between">
+      <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 2xl:flex 2xl:justify-between">
         <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="CruziaPay">
           <img src={mark} alt="" aria-hidden="true" className="h-9 w-10 shrink-0 object-contain" width={40} height={36} />
           <span className="font-display truncate text-lg font-extrabold tracking-tight text-footer-ink">CruziaPay</span>
         </Link>
 
-        <nav className="hidden items-center gap-5 xl:flex" aria-label={t.nav.solutions}>
+        <nav className="hidden items-center gap-5 2xl:flex" aria-label={t.nav.solutions}>
           {links.map((l) => (
             <a key={l.href} href={l.href} className="text-sm whitespace-nowrap text-footer-muted transition-colors hover:text-footer-ink">
               {l.label}
@@ -53,7 +53,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 xl:flex">
+        <div className="hidden items-center gap-3 2xl:flex">
           <Button
             type="button"
             onClick={() => setOpenPixModal(true)}
@@ -64,13 +64,13 @@ export function Header() {
           <LocaleToggle locale={locale} setLocale={setLocale} />
           <Link
             to="/auth"
-            className="rounded-lg border border-cobalt px-4 py-2 text-sm font-medium text-cobalt transition-colors hover:bg-cobalt hover:text-primary-foreground"
+            className="whitespace-nowrap rounded-lg border border-cobalt px-4 py-2 text-sm font-medium text-cobalt transition-colors hover:bg-cobalt hover:text-primary-foreground"
           >
             {t.nav.login}
           </Link>
           <a
             href="/#contato"
-            className="rounded-lg bg-cobalt px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            className="whitespace-nowrap rounded-lg bg-cobalt px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             {t.nav.cta}
           </a>
@@ -85,14 +85,14 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Menu"
-          className="justify-self-end bg-transparent text-footer-ink xl:hidden"
+          className="justify-self-end bg-transparent text-footer-ink 2xl:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </div>
 
       {open ? (
-        <div className="border-t border-border/40 bg-footer-paper xl:hidden">
+        <div className="border-t border-border/40 bg-footer-paper 2xl:hidden">
           <div className="container-site flex flex-col gap-1 py-4">
             {links.map((l) => (
               <a

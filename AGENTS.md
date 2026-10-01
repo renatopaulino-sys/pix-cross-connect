@@ -12,3 +12,5 @@
 - Keep all public homepage copy centralized in the bilingual content models so locale switches never produce partial sections.
 - Company, pricing, method status and iGaming data live only in src/data/{company,pricing,methods,igaming}.ts; legal/page copy in src/data/pages.ts — so business changes are one-line edits.
 - Every route head() uses seo() from src/lib/seo.ts — keeps canonical, OG and hreflang consistent.
+
+- AI features call Lovable AI Gateway from *.server.ts helpers via auth-protected server functions (Responses API, streamed and consumed server-side) — keeps the key and prompts off the client.
