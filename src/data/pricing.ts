@@ -157,7 +157,7 @@ export const pricingCountries: PricingCountry[] = [
     ),
   },
   {
-    code: "UY", flag: "🇺🇾", name: s("Uruguai"), currency: "UYU", from: "7%",
+    code: "UY", flag: "🇺🇾", name: b("Uruguai", "Uruguay"), currency: "UYU", from: "7%",
     payin: [
       { method: bank, providers: b("BROU, Itaú, Santander, BBVA, HSBC e outros", "BROU, Itaú, Santander, BBVA, HSBC and more"), rate: s("7%") },
       { method: b("Dinheiro nos pontos Redpagos", "Cash at Redpagos physical points"), providers: s("Redpagos"), rate: s("7%") },
@@ -170,7 +170,7 @@ export const pricingCountries: PricingCountry[] = [
     ),
   },
   {
-    code: "BO", flag: "🇧🇴", name: s("Bolívia"), currency: "BOB", from: "7.5%",
+    code: "BO", flag: "🇧🇴", name: b("Bolívia", "Bolivia"), currency: "BOB", from: "7.5%",
     payin: [
       { method: cards, providers: none, rate: s("8.5%") },
       { method: b("Pagamento instantâneo por QR", "QR instant payment"), providers: none, rate: s("7.5%") },
@@ -183,9 +183,6 @@ export const pricingCountries: PricingCountry[] = [
     ),
   },
 ];
-// English names for two that share spelling in PT only
-pricingCountries.find((c) => c.code === "UY")!.name = b("Uruguai", "Uruguay");
-pricingCountries.find((c) => c.code === "BO")!.name = b("Bolívia", "Bolivia");
 
 export const accountFees: { label: L; value: L }[] = [
   { label: b("Taxa de setup", "Setup fee"), value: b("Isenta", "Waived") },
