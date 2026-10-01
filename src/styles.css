@@ -271,9 +271,9 @@
   background-image: linear-gradient(
     to bottom,
     var(--color-background) 0%,
-    oklch(0.22 0.01 260) 16%,
-    oklch(0.56 0.012 255) 48%,
-    oklch(0.94 0.006 250) 78%,
+    oklch(0.22 0.01 260) 3rem,
+    oklch(0.56 0.012 255) 6rem,
+    oklch(0.94 0.006 250) 10rem,
     oklch(0.97 0.004 250) 100%
   );
 }

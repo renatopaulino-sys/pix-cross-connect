@@ -9,7 +9,7 @@ export const latamCoverage: Record<
   BR: {
     flag: "🇧🇷",
     live: true,
-    methods: ["Pix QR Code", "Pix Copia e Cola", "Pix payment link", "Boleto (soon)", "Cards (soon)"],
+    methods: ["Pix QR Code", "Pix Copia e Cola", "Pix payment link", "Boleto", "Cards"],
     settlement: { pt: "D+0 a D+1 útil", en: "D+0 to D+1 business day" },
     kyc: {
       pt: ["Contrato social ou estatuto", "Cartão CNPJ", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários de liquidação"],
@@ -19,7 +19,7 @@ export const latamCoverage: Record<
   MX: {
     flag: "🇲🇽",
     live: true,
-    methods: ["SPEI transfer", "Cards (soon)", "Cash vouchers (soon)"],
+    methods: ["SPEI transfer", "Cards", "Cash vouchers"],
     settlement: { pt: "D+1 a D+2 úteis", en: "D+1 to D+2 business days" },
     kyc: {
       pt: ["Acta constitutiva", "RFC da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CLABE)"],
@@ -29,7 +29,7 @@ export const latamCoverage: Record<
   CO: {
     flag: "🇨🇴",
     live: true,
-    methods: ["PSE", "Bank transfer", "Cards (soon)"],
+    methods: ["PSE", "Bank transfer", "Cards"],
     settlement: { pt: "D+2 úteis", en: "D+2 business days" },
     kyc: {
       pt: ["Certificado de existencia", "NIT / RUT", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários"],
@@ -39,7 +39,7 @@ export const latamCoverage: Record<
   PE: {
     flag: "🇵🇪",
     live: true,
-    methods: ["Bank transfer", "Yape / PagoEfectivo (soon)", "Cards (soon)"],
+    methods: ["Bank transfer", "Yape / PagoEfectivo", "Cards"],
     settlement: { pt: "D+2 a D+3 úteis", en: "D+2 to D+3 business days" },
     kyc: {
       pt: ["Ficha RUC", "Estatuto social", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CCI)"],
@@ -49,7 +49,7 @@ export const latamCoverage: Record<
   AR: {
     flag: "🇦🇷",
     live: true,
-    methods: ["Transferencia 3.0", "Cards (soon)"],
+    methods: ["Transferencia 3.0", "Cards"],
     settlement: { pt: "D+2 a D+3 úteis", en: "D+2 to D+3 business days" },
     kyc: {
       pt: ["Estatuto social", "CUIT da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CBU)"],
@@ -59,7 +59,7 @@ export const latamCoverage: Record<
   CL: {
     flag: "🇨🇱",
     live: true,
-    methods: ["Bank transfer", "Webpay (soon)", "Cards (soon)"],
+    methods: ["Bank transfer", "Webpay", "Cards"],
     settlement: { pt: "D+2 úteis", en: "D+2 business days" },
     kyc: {
       pt: ["Escritura de constitución", "RUT da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários"],
@@ -113,7 +113,7 @@ export const home: Record<Locale, HomeCopy> = {
       sub: "Uma integração para oferecer Pix aos seus clientes, acompanhar cada pagamento e organizar a liquidação internacional da sua operação.",
       primary: "Falar com o time",
       secondary: "Ver documentação",
-      status: "Pix ativo no Brasil. Demais métodos em habilitação.",
+      status: "Portfólio de pagamentos disponível para contratação.",
       testPix: "Testar Checkout Pix",
     },
     heroAside: {
@@ -134,7 +134,7 @@ export const home: Record<Locale, HomeCopy> = {
     highlights: {
       label: "Produtos",
       title: "Um contrato de integração, todo o portfólio",
-      intro: "O Pix já está em produção no Brasil. Os demais produtos entram no mesmo endpoint conforme forem habilitados.",
+      intro: "Pix, cartões, split e payouts disponíveis em uma única integração.",
       contactLink: "Entre em contato para mais informações",
       items: [
         { key: "pix", name: "Pix — pagamentos instantâneos (Brasil)", text: "QR Code dinâmico, Copia e Cola e link de pagamento, com confirmação por webhook em segundos.", live: true },
@@ -147,7 +147,7 @@ export const home: Record<Locale, HomeCopy> = {
       title: "Cobrança local. Operação global.",
       intro: "Entre no Brasil com uma experiência de pagamento familiar para o cliente e uma camada única para integrar, acompanhar e conciliar sua operação.",
       cta: "Desenhar minha operação",
-      availability: "Pix disponível no Brasil · Demais mercados em habilitação",
+      availability: "Pay-ins e payouts disponíveis nos mercados atendidos",
       steps: [
         { title: "Seu cliente paga localmente", text: "Ofereça Pix no checkout, com QR Code, Copia e Cola ou link de pagamento.", meta: "Brasil · BRL · Pix" },
         { title: "A CruziaPay processa", text: "A transação é confirmada por webhook e organizada para conciliação na sua integração.", meta: "API · Webhooks · Smart routing" },
@@ -183,7 +183,7 @@ export const home: Record<Locale, HomeCopy> = {
       liveBadge: "Disponível",
       soonBadge: "Em breve",
     },
-    devhub: { sandbox: "Acessar o sandbox", sandboxSoon: "Em breve" },
+    devhub: { sandbox: "Acessar o sandbox", sandboxSoon: "Disponível" },
     finalCta: {
       title: "Comece a receber Pix hoje",
       text: "Fale com o time e receba o desenho de integração para a sua operação.",
@@ -202,7 +202,7 @@ export const home: Record<Locale, HomeCopy> = {
       sub: "One integration to offer Pix to your customers, track every payment and organize international settlement for your operation.",
       primary: "Talk to the team",
       secondary: "See documentation",
-      status: "Pix live in Brazil. Other methods being enabled.",
+      status: "Payment portfolio available for contracting.",
       testPix: "Test Pix Checkout",
     },
     heroAside: {
@@ -223,7 +223,7 @@ export const home: Record<Locale, HomeCopy> = {
     highlights: {
       label: "Products",
       title: "One integration, the whole portfolio",
-      intro: "Pix is live in Brazil today. Every other product lands on the same endpoint as it is enabled.",
+      intro: "Pix, cards, split payments and payouts available through one integration.",
       contactLink: "Contact us for more information",
       items: [
         { key: "pix", name: "Pix — instant payments (Brazil)", text: "Dynamic QR Code, copy-and-paste codes and payment links, confirmed by webhook in seconds.", live: true },
@@ -236,7 +236,7 @@ export const home: Record<Locale, HomeCopy> = {
       title: "Local collection. Global operations.",
       intro: "Enter Brazil with a familiar payment experience for customers and one layer to integrate, monitor and reconcile your operation.",
       cta: "Design my payment flow",
-      availability: "Pix available in Brazil · Other markets being enabled",
+      availability: "Pay-ins and payouts available across supported markets",
       steps: [
         { title: "Your customer pays locally", text: "Offer Pix at checkout through QR Code, copy-and-paste or a payment link.", meta: "Brazil · BRL · Pix" },
         { title: "CruziaPay processes", text: "The payment is confirmed by webhook and organized for reconciliation in your integration.", meta: "API · Webhooks · Smart routing" },
@@ -272,7 +272,7 @@ export const home: Record<Locale, HomeCopy> = {
       liveBadge: "Available",
       soonBadge: "Upcoming",
     },
-    devhub: { sandbox: "Open the sandbox", sandboxSoon: "Coming soon" },
+    devhub: { sandbox: "Open the sandbox", sandboxSoon: "Available" },
     finalCta: {
       title: "Start accepting Pix today",
       text: "Talk to the team and get an integration design for your operation.",
