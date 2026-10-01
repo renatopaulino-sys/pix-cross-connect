@@ -12,6 +12,7 @@ import {
   ScrollText,
   Wallet,
   Code2,
+  Sparkles,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -23,6 +24,7 @@ const merchantNav = [
   { to: "/app", label: "Início / Volumetria", icon: LayoutDashboard, exact: true },
   { to: "/app/saques", label: "Saques & Repasses Pix", icon: Wallet },
   { to: "/app/onboarding", label: "Onboarding (KYC)", icon: FileCheck2 },
+  { to: "/app/checklist", label: "Checklist de lançamento (IA)", icon: Sparkles },
   { to: "/app/configuracoes", label: "API & Webhooks", icon: Settings },
   { to: "/docs", label: "Documentação API", icon: Code2 },
 ] as const;
