@@ -51,3 +51,20 @@ export function Badge({ live, liveLabel, soonLabel }: { live: boolean; liveLabel
     </span>
   );
 }
+
+export type StatusKind = "available" | "on_request" | "soon";
+
+export function StatusPill({ status, label }: { status: StatusKind; label: string }) {
+  if (status === "available") return <Badge live liveLabel={label} soonLabel={label} />;
+  return (
+    <span
+      className={
+        "label-mono inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-semibold " +
+        (status === "on_request" ? "border-brand/40 bg-brand/10 text-ink" : "border-border bg-sand text-slateink")
+      }
+    >
+      <span className={"h-1.5 w-1.5 rounded-full " + (status === "on_request" ? "bg-brand" : "bg-slateink/60")} />
+      {label}
+    </span>
+  );
+}

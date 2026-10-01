@@ -17,6 +17,9 @@ const schema = z.object({
   message: z.string().trim().max(1000).optional().default(""),
   consent: z.literal(true),
   locale: z.enum(["pt", "en"]).default("pt"),
+  website: z.string().trim().min(4).max(200),
+  markets: z.array(z.string().max(4)).max(12).default([]),
+  license_confirmed: z.literal(true),
 });
 
 type Lead = z.infer<typeof schema>;
@@ -95,6 +98,9 @@ export const Route = createFileRoute("/api/contact")({
           message: lead.message || null,
           consent: true,
           locale: lead.locale,
+          website: lead.website,
+          markets: lead.markets,
+          license_confirmed: true,
         });
 
         if (error) {
@@ -117,6 +123,9 @@ export const Route = createFileRoute("/api/contact")({
               País: lead.country,
               Vertical: lead.vertical,
               "Volume mensal": lead.volume,
+              Website: lead.website,
+              Mercados: lead.markets.join(", "),
+              "Licenças confirmadas": "Sim",
               Mensagem: lead.message,
               Recebido: new Date().toISOString(),
             }),

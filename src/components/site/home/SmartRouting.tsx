@@ -1,162 +1,30 @@
-import { useState } from "react";
+import { Globe2 } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
-import { home, acquirers } from "@/data/home";
+import { home } from "@/data/home";
 import { SectionShell, SectionHead } from "./SectionShell";
 
 export function SmartRouting() {
   const { locale } = useI18n();
   const c = home[locale];
-  const [hovered, setHovered] = useState<string | null>(null);
-
-  const nodes = acquirers.map((a, i) => ({
-    ...a,
-    x: 700,
-    y: 35 + i * 52,
-  }));
-
-  const tooltip =
-    hovered === "hub"
-      ? { title: c.routing.hub, note: c.routing.hubNote }
-      : hovered === "source"
-        ? { title: c.routing.source, note: c.routing.sourceNote }
-        : (() => {
-            const node = acquirers.find((a) => a.id === hovered);
-            return node ? { title: `${node.name} · ${node.market}`, note: node.note[locale] } : null;
-          })();
+  const network = locale === "pt" ? "Rede de parceiros regionais" : "Regional partner network";
 
   return (
     <SectionShell id="roteamento" tone="sand">
       <SectionHead label={c.routing.label} title={c.routing.title} intro={c.routing.intro} />
-
-      <div className="mt-12 rounded-2xl border border-border bg-paper p-4 sm:p-8">
-        {/* Mobile: stacked, readable layout */}
-        <div className="sm:hidden">
-          <div className="rounded-xl bg-ink px-4 py-3 text-center text-sm font-semibold text-paper">
-            {c.routing.source}
-          </div>
-          <div className="mx-auto h-6 w-px bg-border" aria-hidden="true" />
-          <div className="gradient-brand rounded-xl px-4 py-3 text-center text-sm font-bold text-white">
-            {c.routing.hub}
-          </div>
-          <div className="mx-auto h-6 w-px bg-border" aria-hidden="true" />
-          <ul className="grid grid-cols-2 gap-2">
-            {acquirers.map((a) => (
-              <li
-                key={a.id}
-                className="rounded-xl border border-border bg-paper px-3 py-2 text-center text-xs font-semibold text-ink"
-              >
-                {a.name} · {a.market}
-              </li>
-            ))}
-          </ul>
+      <div className="cp-reveal mt-12 grid items-center gap-3 rounded-2xl border border-border bg-paper p-5 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:p-8">
+        <div className="rounded-xl border border-border bg-sand px-4 py-4 text-center">
+          <p className="font-display text-sm font-bold text-ink">{c.routing.source}</p>
+          <p className="mt-1 text-xs text-slateink">{c.routing.sourceNote}</p>
         </div>
-
-        <svg
-          viewBox="0 0 800 350"
-          className="hidden h-auto w-full sm:block"
-          role="img"
-          aria-label={c.routing.title}
-        >
-          <defs>
-            <linearGradient id="cp-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="0">
-              <stop offset="0%" stopColor="oklch(0.626 0.152 244)" />
-              <stop offset="100%" stopColor="oklch(0.804 0.146 219.5)" />
-            </linearGradient>
-          </defs>
-
-          <path
-            d="M 130 175 H 360"
-            fill="none"
-            stroke="url(#cp-grad)"
-            strokeWidth="2"
-            className="cp-route-line"
-          />
-
-          {nodes.map((n, i) => (
-            <path
-              key={n.id}
-              d={`M 440 175 C 540 175, 560 ${n.y}, ${n.x - 40} ${n.y}`}
-              fill="none"
-              stroke="url(#cp-grad)"
-              strokeWidth={hovered === n.id ? 2.5 : 1.5}
-              opacity={hovered && hovered !== n.id ? 0.25 : 0.8}
-              className="cp-route-line"
-              style={{ animationDelay: `${0.2 + i * 0.12}s` }}
-            />
-          ))}
-
-          {/* source */}
-          <g
-            onMouseEnter={() => setHovered("source")}
-            onMouseLeave={() => setHovered(null)}
-            onClick={() => setHovered("source")}
-            className="cursor-pointer"
-          >
-            <rect x="20" y="150" width="110" height="50" rx="12" fill="oklch(0.248 0 90)" />
-            <text x="75" y="180" textAnchor="middle" fill="white" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="600">
-              {c.routing.source}
-            </text>
-          </g>
-
-          {/* hub */}
-          <g
-            onMouseEnter={() => setHovered("hub")}
-            onMouseLeave={() => setHovered(null)}
-            onClick={() => setHovered("hub")}
-            className="cursor-pointer"
-          >
-            <rect x="360" y="140" width="80" height="70" rx="16" fill="url(#cp-grad)" />
-            <text x="400" y="172" textAnchor="middle" fill="white" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="700">
-              Cruzia
-            </text>
-            <text x="400" y="188" textAnchor="middle" fill="white" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="700">
-              Pay
-            </text>
-          </g>
-
-          {/* acquirer nodes */}
-          {nodes.map((n) => (
-            <g
-              key={n.id}
-              onMouseEnter={() => setHovered(n.id)}
-              onMouseLeave={() => setHovered(null)}
-              onClick={() => setHovered(n.id)}
-              className="cursor-pointer"
-            >
-              <rect
-                x={n.x - 40}
-                y={n.y - 18}
-                width="120"
-                height="36"
-                rx="10"
-                fill="var(--color-paper)"
-                stroke={hovered === n.id ? "oklch(0.626 0.152 244)" : "var(--color-border)"}
-                strokeWidth={hovered === n.id ? 2 : 1}
-              />
-              <text
-                x={n.x + 20}
-                y={n.y + 4}
-                textAnchor="middle"
-                fill="var(--color-ink)"
-                fontSize="12"
-                fontFamily="Inter, sans-serif"
-                fontWeight="600"
-              >
-                {n.name} · {n.market}
-              </text>
-            </g>
-          ))}
-        </svg>
-
-        <div className="mt-4 hidden min-h-14 rounded-xl border border-border bg-sand px-4 py-3 sm:block">
-          {tooltip ? (
-            <>
-              <p className="font-display text-sm font-bold text-ink">{tooltip.title}</p>
-              <p className="text-sm text-slateink">{tooltip.note}</p>
-            </>
-          ) : (
-            <p className="text-sm text-slateink">{c.routing.tooltipHint}</p>
-          )}
+        <span aria-hidden="true" className="mx-auto h-6 w-px bg-brand/50 sm:h-px sm:w-10" />
+        <div className="gradient-brand rounded-xl px-4 py-4 text-center text-primary-foreground">
+          <p className="font-display text-sm font-bold">{c.routing.hub}</p>
+          <p className="mt-1 text-xs opacity-80">{c.routing.hubNote}</p>
+        </div>
+        <span aria-hidden="true" className="mx-auto h-6 w-px bg-brand/50 sm:h-px sm:w-10" />
+        <div className="flex items-center justify-center gap-2 rounded-xl border border-brand/40 bg-brand/10 px-4 py-4 text-center">
+          <Globe2 className="h-4 w-4 shrink-0 text-brand-light" strokeWidth={1.7} />
+          <p className="font-display text-sm font-bold text-ink">{network}</p>
         </div>
       </div>
     </SectionShell>

@@ -68,6 +68,8 @@ export function Hero() {
             </Button>
           </div>
 
+          <p className="mt-3 text-xs text-slateink">⚠ {c.hero.sandbox}</p>
+
           <PixCheckoutModal open={openPixModal} onOpenChange={setOpenPixModal} />
 
           <p className="mt-6 flex items-start gap-2 text-sm text-slateink">

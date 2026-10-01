@@ -58,8 +58,10 @@ export type Database = {
           created_at: string
           email: string
           id: string
+          license_confirmed: boolean
           licenses_confirmed: boolean
           locale: string
+          markets: string[]
           markets_interest: string[]
           message: string | null
           monthly_volume: string
@@ -75,8 +77,10 @@ export type Database = {
           created_at?: string
           email: string
           id?: string
+          license_confirmed?: boolean
           licenses_confirmed?: boolean
           locale?: string
+          markets?: string[]
           markets_interest?: string[]
           message?: string | null
           monthly_volume: string
@@ -92,8 +96,10 @@ export type Database = {
           created_at?: string
           email?: string
           id?: string
+          license_confirmed?: boolean
           licenses_confirmed?: boolean
           locale?: string
+          markets?: string[]
           markets_interest?: string[]
           message?: string | null
           monthly_volume?: string

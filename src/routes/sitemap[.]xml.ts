@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://cruziapay.com.br";
+const BASE_URL = "https://www.cruziapay.com";
 
 interface SitemapEntry {
   path: string;
@@ -18,6 +18,18 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/termos", changefreq: "yearly", priority: "0.3" },
           { path: "/privacidade", changefreq: "yearly", priority: "0.3" },
           { path: "/cookies", changefreq: "yearly", priority: "0.3" },
+          { path: "/about", changefreq: "monthly", priority: "0.6" },
+          { path: "/igaming", changefreq: "monthly", priority: "0.6" },
+          { path: "/insights", changefreq: "weekly", priority: "0.5" },
+          { path: "/methods/pix", changefreq: "monthly", priority: "0.6" },
+          { path: "/methods/spei", changefreq: "monthly", priority: "0.6" },
+          { path: "/methods/pse", changefreq: "monthly", priority: "0.6" },
+          { path: "/methods/oxxo", changefreq: "monthly", priority: "0.6" },
+          { path: "/docs", changefreq: "monthly", priority: "0.5" },
+          { path: "/refund-chargeback", changefreq: "yearly", priority: "0.3" },
+          { path: "/aml-kyc", changefreq: "yearly", priority: "0.3" },
+          { path: "/prohibited-businesses", changefreq: "yearly", priority: "0.3" },
+          { path: "/complaints", changefreq: "yearly", priority: "0.3" },
         ];
 
         const urls = entries.map((e) =>

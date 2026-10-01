@@ -2,7 +2,7 @@ import { QrCode, CreditCard, Send, ArrowRight } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { home } from "@/data/home";
 import { requestContact } from "@/lib/contact-prefill";
-import { SectionShell, SectionHead, Badge } from "./SectionShell";
+import { SectionShell, SectionHead, StatusPill } from "./SectionShell";
 import { Button } from "@/components/ui/button";
 
 const icons = { pix: QrCode, cards: CreditCard, payouts: Send } as const;
@@ -30,10 +30,10 @@ export function ProductHighlights() {
                 <h3 className="font-display text-lg leading-snug font-bold text-ink">{item.name}</h3>
               </div>
               <div className="mt-3">
-                <Badge live={item.live} liveLabel="Live" soonLabel={t.badge.soon} />
+                <StatusPill status={item.status} label={t.badge[item.status]} />
               </div>
               <p className="mt-4 flex-1 text-sm leading-relaxed text-slateink">{item.text}</p>
-              {!item.live ? (
+              {item.status !== "available" ? (
                 <Button
                   type="button"
                   variant="link"

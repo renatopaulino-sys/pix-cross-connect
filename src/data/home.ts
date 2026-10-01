@@ -1,91 +1,29 @@
 import type { Locale } from "./content";
 
-export type CountryCode = "BR" | "MX" | "CO" | "PE" | "AR" | "CL";
+export type CountryCode = string;
 
-export const latamCoverage: Record<
-  CountryCode,
-  { flag: string; live: boolean; methods: string[]; settlement: { pt: string; en: string }; kyc: { pt: string[]; en: string[] } }
-> = {
-  BR: {
-    flag: "🇧🇷",
-    live: true,
-    methods: ["Pix QR Code", "Pix Copia e Cola", "Pix payment link", "Boleto", "Cards"],
-    settlement: { pt: "D+0 a D+1 útil", en: "D+0 to D+1 business day" },
-    kyc: {
-      pt: ["Contrato social ou estatuto", "Cartão CNPJ", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários de liquidação"],
-      en: ["Articles of incorporation", "Tax registration (CNPJ)", "Shareholder / UBO IDs", "Proof of address", "Settlement bank details"],
-    },
-  },
-  MX: {
-    flag: "🇲🇽",
-    live: true,
-    methods: ["SPEI transfer", "Cards", "Cash vouchers"],
-    settlement: { pt: "D+1 a D+2 úteis", en: "D+1 to D+2 business days" },
-    kyc: {
-      pt: ["Acta constitutiva", "RFC da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CLABE)"],
-      en: ["Acta constitutiva", "Company RFC", "Shareholder / UBO IDs", "Proof of address", "Bank details (CLABE)"],
-    },
-  },
-  CO: {
-    flag: "🇨🇴",
-    live: true,
-    methods: ["PSE", "Bank transfer", "Cards"],
-    settlement: { pt: "D+2 úteis", en: "D+2 business days" },
-    kyc: {
-      pt: ["Certificado de existencia", "NIT / RUT", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários"],
-      en: ["Certificate of incorporation", "NIT / RUT", "Shareholder / UBO IDs", "Proof of address", "Bank details"],
-    },
-  },
-  PE: {
-    flag: "🇵🇪",
-    live: true,
-    methods: ["Bank transfer", "Yape / PagoEfectivo", "Cards"],
-    settlement: { pt: "D+2 a D+3 úteis", en: "D+2 to D+3 business days" },
-    kyc: {
-      pt: ["Ficha RUC", "Estatuto social", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CCI)"],
-      en: ["RUC record", "Company bylaws", "Shareholder / UBO IDs", "Proof of address", "Bank details (CCI)"],
-    },
-  },
-  AR: {
-    flag: "🇦🇷",
-    live: true,
-    methods: ["Transferencia 3.0", "Cards"],
-    settlement: { pt: "D+2 a D+3 úteis", en: "D+2 to D+3 business days" },
-    kyc: {
-      pt: ["Estatuto social", "CUIT da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CBU)"],
-      en: ["Company bylaws", "Company CUIT", "Shareholder / UBO IDs", "Proof of address", "Bank details (CBU)"],
-    },
-  },
-  CL: {
-    flag: "🇨🇱",
-    live: true,
-    methods: ["Bank transfer", "Webpay", "Cards"],
-    settlement: { pt: "D+2 úteis", en: "D+2 business days" },
-    kyc: {
-      pt: ["Escritura de constitución", "RUT da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários"],
-      en: ["Deed of incorporation", "Company RUT", "Shareholder / UBO IDs", "Proof of address", "Bank details"],
-    },
-  },
+const genericKyc = {
+  pt: ["Documento de constituição da empresa", "Registro fiscal da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários de liquidação"],
+  en: ["Company incorporation document", "Company tax registration", "Shareholder / UBO IDs", "Proof of address", "Settlement bank details"],
 };
 
-export const countryOrder: CountryCode[] = ["BR", "MX", "CO", "PE", "AR", "CL"];
-
-export const acquirers = [
-  { id: "p1", name: "Provider 1", market: "BR", note: { pt: "Adquirência local — Brasil", en: "Local acquirer — Brazil" } },
-  { id: "p2", name: "Provider 2", market: "MX", note: { pt: "Adquirência local — México", en: "Local acquirer — Mexico" } },
-  { id: "p3", name: "Provider 3", market: "CO", note: { pt: "Adquirência local — Colômbia", en: "Local acquirer — Colombia" } },
-  { id: "p4", name: "Provider 4", market: "PE", note: { pt: "Adquirência local — Peru", en: "Local acquirer — Peru" } },
-  { id: "p5", name: "Provider 5", market: "AR", note: { pt: "Adquirência local — Argentina", en: "Local acquirer — Argentina" } },
-  { id: "p6", name: "Provider 6", market: "CL", note: { pt: "Adquirência local — Chile", en: "Local acquirer — Chile" } },
-];
+export const kycDocs: Record<string, { pt: string[]; en: string[] }> = {
+  BR: { pt: ["Contrato social ou estatuto", "Cartão CNPJ", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários de liquidação"], en: ["Articles of incorporation", "Tax registration (CNPJ)", "Shareholder / UBO IDs", "Proof of address", "Settlement bank details"] },
+  MX: { pt: ["Acta constitutiva", "RFC da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CLABE)"], en: ["Acta constitutiva", "Company RFC", "Shareholder / UBO IDs", "Proof of address", "Bank details (CLABE)"] },
+  CO: { pt: ["Certificado de existencia", "NIT / RUT", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários"], en: ["Certificate of incorporation", "NIT / RUT", "Shareholder / UBO IDs", "Proof of address", "Bank details"] },
+  PE: { pt: ["Ficha RUC", "Estatuto social", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CCI)"], en: ["RUC record", "Company bylaws", "Shareholder / UBO IDs", "Proof of address", "Bank details (CCI)"] },
+  AR: { pt: ["Estatuto social", "CUIT da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários (CBU)"], en: ["Company bylaws", "Company CUIT", "Shareholder / UBO IDs", "Proof of address", "Bank details (CBU)"] },
+  CL: { pt: ["Escritura de constitución", "RUT da empresa", "Documento dos sócios (UBO)", "Comprovante de endereço", "Dados bancários"], en: ["Deed of incorporation", "Company RUT", "Shareholder / UBO IDs", "Proof of address", "Bank details"] },
+};
+export const kycFor = (code: string) => kycDocs[code] ?? genericKyc;
 
 type HomeCopy = {
-  hero: { eyebrow: string; headline1: string; headline2: string; sub: string; primary: string; secondary: string; status: string; testPix: string };
+  hero: { eyebrow: string; headline1: string; headline2: string; sub: string; primary: string; secondary: string; status: string; testPix: string; sandbox: string };
   heroAside: { title: string; note: string; steps: { code: string; title: string; text: string }[] };
   bullets: { title: string; text: string }[];
   highlights: {
     label: string; title: string; intro: string; contactLink: string;
-    items: { key: string; name: string; text: string; live: boolean }[];
+    items: { key: string; name: string; text: string; status: "available" | "on_request" | "soon" }[];
   };
   crossBorder: {
     label: string; title: string; intro: string; cta: string; availability: string;
@@ -95,7 +33,12 @@ type HomeCopy = {
   routing: { label: string; title: string; intro: string; hub: string; hubNote: string; source: string; sourceNote: string; tooltipHint: string };
   simulator: {
     label: string; title: string; intro: string; country: string; loading: string;
-    methods: string; settlement: string; docs: string; cta: string; liveBadge: string; soonBadge: string;
+    methods: string; settlement: string; settlementValue: string; docs: string; cta: string;
+  };
+  pricing: {
+    label: string; title: string; intro: string; badge: string; payin: string; payout: string; payinFrom: string;
+    cols: { method: string; providers: string; rate: string }; notAvailable: string; minFee: string; notes: string;
+    feesTitle: string; legal: string; cta: string; requestSheet: string; country: string;
   };
   devhub: { sandbox: string; sandboxSoon: string };
   finalCta: { title: string; text: string; button: string; secondary: string };
@@ -108,13 +51,14 @@ export const home: Record<Locale, HomeCopy> = {
   pt: {
     hero: {
       eyebrow: "Infraestrutura cross-border · América Latina",
-      headline1: "Venda no Brasil.",
-      headline2: "Receba onde sua empresa opera.",
-      sub: "Uma integração para oferecer Pix aos seus clientes, acompanhar cada pagamento e organizar a liquidação internacional da sua operação.",
+      headline1: "Receba localmente em toda a América Latina.",
+      headline2: "Liquide onde sua empresa opera.",
+      sub: "Uma integração para métodos de pagamento locais em 12 mercados da América Latina, começando pelo Pix instantâneo no Brasil.",
       primary: "Falar com o time",
       secondary: "Ver documentação",
-      status: "Portfólio de pagamentos disponível para contratação.",
+      status: "Pix disponível no Brasil. Demais métodos disponíveis sob consulta.",
       testPix: "Testar Checkout Pix",
+      sandbox: "Ambiente sandbox, nenhum valor real é movimentado.",
     },
     heroAside: {
       title: "Uma operação, ponta a ponta",
@@ -134,23 +78,23 @@ export const home: Record<Locale, HomeCopy> = {
     highlights: {
       label: "Produtos",
       title: "Um contrato de integração, todo o portfólio",
-      intro: "Pix, cartões, split e payouts disponíveis em uma única integração.",
+      intro: "Pix disponível no Brasil. Cartões, split e payouts disponíveis sob consulta, sujeitos a onboarding.",
       contactLink: "Entre em contato para mais informações",
       items: [
-        { key: "pix", name: "Pix — pagamentos instantâneos (Brasil)", text: "QR Code dinâmico, Copia e Cola e link de pagamento, com confirmação por webhook em segundos.", live: true },
-        { key: "cards", name: "Cartões & Split", text: "Cartões domésticos e internacionais com split automático entre sellers e parceiros.", live: true },
-        { key: "payouts", name: "Payouts & Global Rails", text: "Repasses para beneficiários locais e liquidação internacional em múltiplas moedas.", live: true },
+        { key: "pix", name: "Pix — pagamentos instantâneos (Brasil)", text: "QR Code dinâmico, Copia e Cola e link de pagamento, com confirmação por webhook em segundos.", status: "available" },
+        { key: "cards", name: "Cartões & Split", text: "Cartões domésticos e internacionais com split automático entre sellers e parceiros.", status: "on_request" },
+        { key: "payouts", name: "Payouts & liquidação", text: "Pix out e repasses locais, com liquidação internacional conforme contrato.", status: "on_request" },
       ],
     },
     crossBorder: {
       label: "Cross-border",
       title: "Cobrança local. Operação global.",
-      intro: "Entre no Brasil com uma experiência de pagamento familiar para o cliente e uma camada única para integrar, acompanhar e conciliar sua operação.",
+      intro: "Entre na América Latina com experiências de pagamento locais e familiares e uma camada única para integrar, acompanhar e conciliar sua operação.",
       cta: "Desenhar minha operação",
-      availability: "Pay-ins e payouts disponíveis nos mercados atendidos",
+      availability: "Pix disponível no Brasil · demais mercados sob consulta",
       steps: [
         { title: "Seu cliente paga localmente", text: "Ofereça Pix no checkout, com QR Code, Copia e Cola ou link de pagamento.", meta: "Brasil · BRL · Pix" },
-        { title: "A CruziaPay processa", text: "A transação é confirmada por webhook e organizada para conciliação na sua integração.", meta: "API · Webhooks · Smart routing" },
+        { title: "A CruziaPay processa", text: "A transação é confirmada por webhook e organizada para conciliação na sua integração.", meta: "API · Webhooks · Roteamento regional" },
         { title: "Sua empresa liquida", text: "O recebimento internacional segue moeda, prazo e condições definidos comercialmente.", meta: "Conforme contratação" },
       ],
       benefits: [
@@ -162,8 +106,8 @@ export const home: Record<Locale, HomeCopy> = {
     },
     routing: {
       label: "Infraestrutura",
-      title: "Smart Routing & Multi-Acquirer",
-      intro: "A CruziaPay conecta sua operação a múltiplos parceiros de adquirência regionais. O roteador escolhe a melhor rota em tempo real, com failover automático.",
+      title: "Roteamento regional",
+      intro: "Roteamento entre parceiros regionais, desenhado para resiliência.",
       hub: "CruziaPay",
       hubNote: "Roteador de pagamentos",
       source: "Sua operação",
@@ -173,15 +117,23 @@ export const home: Record<Locale, HomeCopy> = {
     simulator: {
       label: "Cobertura",
       title: "Simulador de métodos e cobertura LATAM",
-      intro: "Selecione o país de operação para ver métodos suportados, prazo de liquidação e documentos de KYC exigidos.",
+      intro: "Selecione um dos 12 mercados para ver métodos, status, prazo de liquidação e documentos de KYC exigidos.",
       country: "País",
       loading: "Consultando cobertura...",
       methods: "Métodos locais",
       settlement: "Prazo de liquidação",
+      settlementValue: "Definido no contrato comercial",
       docs: "Documentos de KYC",
       cta: "Solicitar demo",
-      liveBadge: "Disponível",
-      soonBadge: "Disponível",
+    },
+    pricing: {
+      label: "Preços", title: "Preços transparentes em toda a América Latina",
+      intro: "Uma integração, taxas locais por mercado. Preços por volume disponíveis sob consulta.",
+      badge: "Disponível sob consulta · sujeito a onboarding", payin: "Pay-in (recebimento)", payout: "Payout (pagamento)", payinFrom: "Pay-in a partir de",
+      cols: { method: "Método", providers: "Redes", rate: "Taxa" }, notAvailable: "Indisponível", minFee: "Tarifa mínima por transação", notes: "Notas",
+      feesTitle: "Taxas de conta e liquidação",
+      legal: "As taxas incidem sobre o valor da transação. Impostos locais incidem sobre a taxa de processamento conforme indicado em cada mercado. A disponibilidade por mercado e vertical está sujeita à aprovação de KYC, KYB e compliance. Os preços são indicativos e os termos finais são definidos no contrato comercial.",
+      cta: "Falar com o time", requestSheet: "Solicitar tabela completa de preços", country: "País",
     },
     devhub: { sandbox: "Acessar o sandbox", sandboxSoon: "Disponível" },
     finalCta: {
@@ -190,20 +142,21 @@ export const home: Record<Locale, HomeCopy> = {
       button: "Falar com o time",
       secondary: "Falar com o time",
     },
-    verticalsAvailable: "Disponível",
-    verticalsUpcoming: "Disponível",
+    verticalsAvailable: "Disponível sob consulta",
+    verticalsUpcoming: "Disponível sob consulta",
     footerSocial: "Redes",
   },
   en: {
     hero: {
       eyebrow: "Cross-border infrastructure · Latin America",
-      headline1: "Sell in Brazil.",
+      headline1: "Collect locally across Latin America.",
       headline2: "Settle where your business operates.",
-      sub: "One integration to offer Pix to your customers, track every payment and organize international settlement for your operation.",
+      sub: "One integration for local payment methods in 12 Latin American markets, starting with instant Pix in Brazil.",
       primary: "Talk to the team",
       secondary: "See documentation",
-      status: "Payment portfolio available for contracting.",
+      status: "Pix available in Brazil. Other methods available on request.",
       testPix: "Test Pix Checkout",
+      sandbox: "Sandbox environment, no real funds are moved.",
     },
     heroAside: {
       title: "One end-to-end operation",
@@ -223,23 +176,23 @@ export const home: Record<Locale, HomeCopy> = {
     highlights: {
       label: "Products",
       title: "One integration, the whole portfolio",
-      intro: "Pix, cards, split payments and payouts available through one integration.",
+      intro: "Pix available in Brazil. Cards, split and payouts available on request, subject to onboarding.",
       contactLink: "Contact us for more information",
       items: [
-        { key: "pix", name: "Pix — instant payments (Brazil)", text: "Dynamic QR Code, copy-and-paste codes and payment links, confirmed by webhook in seconds.", live: true },
-        { key: "cards", name: "Cards & Split", text: "Domestic and international cards with automatic split between sellers and partners.", live: true },
-        { key: "payouts", name: "Payouts & Global Rails", text: "Payouts to local beneficiaries and international settlement in multiple currencies.", live: true },
+        { key: "pix", name: "Pix — instant payments (Brazil)", text: "Dynamic QR Code, copy-and-paste codes and payment links, confirmed by webhook in seconds.", status: "available" },
+        { key: "cards", name: "Cards & Split", text: "Domestic and international cards with automatic split between sellers and partners.", status: "on_request" },
+        { key: "payouts", name: "Payouts & settlement", text: "Pix out and local payouts, with international settlement under contract.", status: "on_request" },
       ],
     },
     crossBorder: {
       label: "Cross-border",
       title: "Local collection. Global operations.",
-      intro: "Enter Brazil with a familiar payment experience for customers and one layer to integrate, monitor and reconcile your operation.",
+      intro: "Enter Latin America with familiar local payment experiences and one layer to integrate, monitor and reconcile your operation.",
       cta: "Design my payment flow",
-      availability: "Pay-ins and payouts available across supported markets",
+      availability: "Pix available in Brazil · other markets on request",
       steps: [
         { title: "Your customer pays locally", text: "Offer Pix at checkout through QR Code, copy-and-paste or a payment link.", meta: "Brazil · BRL · Pix" },
-        { title: "CruziaPay processes", text: "The payment is confirmed by webhook and organized for reconciliation in your integration.", meta: "API · Webhooks · Smart routing" },
+        { title: "CruziaPay processes", text: "The payment is confirmed by webhook and organized for reconciliation in your integration.", meta: "API · Webhooks · Regional routing" },
         { title: "Your business settles", text: "International settlement follows the currency, timing and terms agreed commercially.", meta: "Subject to contract" },
       ],
       benefits: [
@@ -251,8 +204,8 @@ export const home: Record<Locale, HomeCopy> = {
     },
     routing: {
       label: "Infrastructure",
-      title: "Smart Routing & Multi-Acquirer",
-      intro: "CruziaPay connects your operation to multiple regional acquiring partners. The router picks the best route in real time, with automatic failover.",
+      title: "Regional routing",
+      intro: "Routing across regional partners, designed for resilience.",
       hub: "CruziaPay",
       hubNote: "Payment router",
       source: "Your operation",
@@ -262,15 +215,23 @@ export const home: Record<Locale, HomeCopy> = {
     simulator: {
       label: "Coverage",
       title: "LATAM methods and coverage simulator",
-      intro: "Pick your country of operation to see supported methods, settlement window and required KYC documents.",
+      intro: "Pick one of 12 markets to see methods, status, settlement window and required KYC documents.",
       country: "Country",
       loading: "Checking coverage...",
       methods: "Local methods",
       settlement: "Settlement window",
+      settlementValue: "Defined in the commercial agreement",
       docs: "KYC documents",
       cta: "Request a demo",
-      liveBadge: "Available",
-      soonBadge: "Available",
+    },
+    pricing: {
+      label: "Pricing", title: "Transparent pricing across Latin America",
+      intro: "One integration, local rates per market. Volume based pricing available on request.",
+      badge: "Available on request · subject to onboarding", payin: "Pay-in (collection)", payout: "Payout (disbursement)", payinFrom: "Pay-in from",
+      cols: { method: "Method", providers: "Providers", rate: "Rate" }, notAvailable: "Not available", minFee: "Minimum fee per transaction", notes: "Notes",
+      feesTitle: "Account & settlement fees",
+      legal: "Rates apply to the transaction amount. Local taxes apply to the processing fee as indicated per market. Availability by market and vertical is subject to KYC, KYB and compliance approval. Prices are indicative and final terms are defined in the commercial agreement.",
+      cta: "Talk to the team", requestSheet: "Request full pricing sheet", country: "Country",
     },
     devhub: { sandbox: "Open the sandbox", sandboxSoon: "Available" },
     finalCta: {
@@ -279,12 +240,8 @@ export const home: Record<Locale, HomeCopy> = {
       button: "Talk to the team",
       secondary: "Talk to the team",
     },
-    verticalsAvailable: "Available",
-    verticalsUpcoming: "Available",
+    verticalsAvailable: "Available on request",
+    verticalsUpcoming: "Available on request",
     footerSocial: "Social",
   },
-};
-
-export const verticalStatus: Record<number, boolean> = {
-  0: true, 1: true, 2: true, 3: true, 4: true, 5: true, 6: true,
 };

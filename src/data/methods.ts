@@ -1,4 +1,4 @@
-export type Status = "live" | "soon";
+export type Status = "available" | "on_request" | "soon";
 
 export type Method = {
   id: string;
@@ -11,17 +11,17 @@ export type Method = {
 export const methods: Method[] = [
   {
     id: "pix",
-    status: "live",
+    status: "available",
     icon: "zap",
     name: { pt: "Pix", en: "Pix" },
     description: {
-      pt: "Cobrança via QR Code dinâmico, Pix Copia e Cola e link de pagamento. Confirmação em segundos, 24 por 7.",
-      en: "Dynamic QR Code charges, copy-and-paste codes and payment links. Confirmation in seconds, 24/7.",
+      pt: "Cobrança via QR Code dinâmico, Pix Copia e Cola e link de pagamento. Confirmação em segundos.",
+      en: "Dynamic QR Code charges, copy-and-paste codes and payment links. Confirmation in seconds.",
     },
   },
   {
     id: "credit",
-    status: "live",
+    status: "on_request",
     icon: "credit-card",
     name: { pt: "Cartão de crédito", en: "Credit card" },
     description: {
@@ -31,7 +31,7 @@ export const methods: Method[] = [
   },
   {
     id: "debit",
-    status: "live",
+    status: "on_request",
     icon: "credit-card",
     name: { pt: "Cartão de débito", en: "Debit card" },
     description: {
@@ -41,7 +41,7 @@ export const methods: Method[] = [
   },
   {
     id: "boleto",
-    status: "live",
+    status: "soon",
     icon: "barcode",
     name: { pt: "Boleto bancário", en: "Boleto" },
     description: {
@@ -51,7 +51,7 @@ export const methods: Method[] = [
   },
   {
     id: "pix-installments",
-    status: "live",
+    status: "soon",
     icon: "layers",
     name: { pt: "Pix parcelado", en: "Pix in installments" },
     description: {
@@ -61,7 +61,7 @@ export const methods: Method[] = [
   },
   {
     id: "pix-out",
-    status: "live",
+    status: "on_request",
     icon: "send",
     name: { pt: "Pix out", en: "Pix out" },
     description: {
@@ -71,7 +71,7 @@ export const methods: Method[] = [
   },
   {
     id: "wallets",
-    status: "live",
+    status: "soon",
     icon: "wallet",
     name: { pt: "Carteiras digitais", en: "Digital wallets" },
     description: {
@@ -81,7 +81,7 @@ export const methods: Method[] = [
   },
   {
     id: "spei",
-    status: "live",
+    status: "on_request",
     icon: "building",
     name: { pt: "SPEI (México)", en: "SPEI (Mexico)" },
     description: {
@@ -91,7 +91,7 @@ export const methods: Method[] = [
   },
   {
     id: "pse",
-    status: "live",
+    status: "on_request",
     icon: "building",
     name: { pt: "PSE (Colômbia)", en: "PSE (Colombia)" },
     description: {
@@ -101,7 +101,7 @@ export const methods: Method[] = [
   },
   {
     id: "oxxo",
-    status: "live",
+    status: "on_request",
     icon: "store",
     name: { pt: "OXXO (México)", en: "OXXO (Mexico)" },
     description: {
@@ -111,7 +111,7 @@ export const methods: Method[] = [
   },
   {
     id: "latam-transfers",
-    status: "live",
+    status: "on_request",
     icon: "globe",
     name: {
       pt: "Transferências locais LATAM",
@@ -129,7 +129,7 @@ export type Solution = Method;
 export const solutions: Solution[] = [
   {
     id: "pix-charges",
-    status: "live",
+    status: "available",
     icon: "zap",
     name: { pt: "Cobrança Pix", en: "Pix charges" },
     description: {
@@ -139,7 +139,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "checkout",
-    status: "live",
+    status: "on_request",
     icon: "layout",
     name: { pt: "Checkout transparente", en: "Transparent checkout" },
     description: {
@@ -149,7 +149,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "payment-links",
-    status: "live",
+    status: "on_request",
     icon: "link",
     name: { pt: "Links de pagamento", en: "Payment links" },
     description: {
@@ -159,7 +159,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "split",
-    status: "live",
+    status: "on_request",
     icon: "split",
     name: { pt: "Split de pagamentos", en: "Payment split" },
     description: {
@@ -169,7 +169,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "payouts",
-    status: "live",
+    status: "on_request",
     icon: "send",
     name: {
       pt: "Payouts e liquidação internacional",
@@ -182,12 +182,72 @@ export const solutions: Solution[] = [
   },
   {
     id: "dashboard",
-    status: "live",
+    status: "on_request",
     icon: "chart",
     name: { pt: "Painel e conciliação", en: "Dashboard and reconciliation" },
     description: {
       pt: "Extrato, relatórios e conciliação automática.",
       en: "Statements, reports and automatic reconciliation.",
     },
+  },
+];
+
+type L = { pt: string; en: string };
+export type MethodPage = {
+  slug: "pix" | "spei" | "pse" | "oxxo";
+  methodId: string;
+  name: string;
+  country: L;
+  currency: string;
+  what: L;
+  steps: L[];
+  confirmation: L;
+  useCases: L;
+};
+
+export const methodPages: MethodPage[] = [
+  {
+    slug: "pix", methodId: "pix", name: "Pix", country: { pt: "Brasil", en: "Brazil" }, currency: "BRL",
+    what: { pt: "Pix é o sistema de pagamentos instantâneos do Banco Central do Brasil. O comprador paga a partir do aplicativo do banco usando QR Code ou código Copia e Cola.", en: "Pix is the instant payment system of Brazil's Central Bank. The buyer pays from their banking app using a QR Code or a copy-and-paste code." },
+    steps: [
+      { pt: "O comprador escolhe Pix no checkout e recebe um QR Code dinâmico ou código Copia e Cola.", en: "The buyer selects Pix at checkout and receives a dynamic QR Code or copy-and-paste code." },
+      { pt: "Abre o aplicativo do banco, lê o QR Code ou cola o código e confirma.", en: "They open their banking app, scan the QR Code or paste the code and confirm." },
+      { pt: "A confirmação chega por webhook e o pedido é liberado.", en: "Confirmation arrives by webhook and the order is released." },
+    ],
+    confirmation: { pt: "Segundos, a qualquer hora", en: "Seconds, at any time" },
+    useCases: { pt: "E-commerce, serviços digitais, assinaturas e pagamentos avulsos por link.", en: "E-commerce, digital services, subscriptions and one-off payments by link." },
+  },
+  {
+    slug: "spei", methodId: "spei", name: "SPEI", country: { pt: "México", en: "Mexico" }, currency: "MXN",
+    what: { pt: "SPEI é o sistema de transferências interbancárias em tempo real operado pelo Banco de México.", en: "SPEI is the real-time interbank transfer system operated by Banco de México." },
+    steps: [
+      { pt: "O comprador escolhe transferência bancária e recebe uma CLABE de referência.", en: "The buyer selects bank transfer and receives a reference CLABE." },
+      { pt: "Faz a transferência pelo internet banking ou aplicativo do banco.", en: "They send the transfer from online banking or their bank app." },
+      { pt: "A transferência é identificada e a confirmação chega por webhook.", en: "The transfer is matched and confirmation arrives by webhook." },
+    ],
+    confirmation: { pt: "Minutos, em geral", en: "Usually minutes" },
+    useCases: { pt: "Tickets médios e altos, B2B, educação e serviços digitais.", en: "Mid to high tickets, B2B, education and digital services." },
+  },
+  {
+    slug: "pse", methodId: "pse", name: "PSE", country: { pt: "Colômbia", en: "Colombia" }, currency: "COP",
+    what: { pt: "PSE é o botão de débito online que permite pagar diretamente a partir de contas bancárias colombianas.", en: "PSE is the online debit button that lets buyers pay directly from Colombian bank accounts." },
+    steps: [
+      { pt: "O comprador escolhe PSE e seleciona o seu banco.", en: "The buyer selects PSE and chooses their bank." },
+      { pt: "É redirecionado ao ambiente do banco para autenticar e aprovar o débito.", en: "They are redirected to their bank to authenticate and approve the debit." },
+      { pt: "Retorna ao checkout e a confirmação chega por webhook.", en: "They return to checkout and confirmation arrives by webhook." },
+    ],
+    confirmation: { pt: "Minutos, em geral", en: "Usually minutes" },
+    useCases: { pt: "E-commerce, viagens, educação e serviços digitais.", en: "E-commerce, travel, education and digital services." },
+  },
+  {
+    slug: "oxxo", methodId: "oxxo", name: "OXXO", country: { pt: "México", en: "Mexico" }, currency: "MXN",
+    what: { pt: "OXXO Pay permite pagar em dinheiro na rede de lojas OXXO a partir de uma referência gerada no checkout.", en: "OXXO Pay lets buyers pay in cash at OXXO stores using a reference generated at checkout." },
+    steps: [
+      { pt: "O comprador escolhe OXXO e recebe uma referência de pagamento com validade.", en: "The buyer selects OXXO and receives a payment reference with an expiry date." },
+      { pt: "Vai a uma loja OXXO e paga em dinheiro informando a referência.", en: "They visit an OXXO store and pay in cash with the reference." },
+      { pt: "O pagamento é confirmado por webhook após o processamento da loja.", en: "Payment is confirmed by webhook once the store processes it." },
+    ],
+    confirmation: { pt: "Até o dia útil seguinte, em geral", en: "Usually by the next business day" },
+    useCases: { pt: "Compradores sem conta bancária ou cartão, e-commerce e serviços digitais.", en: "Unbanked or card-less buyers, e-commerce and digital services." },
   },
 ];

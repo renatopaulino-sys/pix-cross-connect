@@ -12,23 +12,22 @@ import { FinalCta } from "@/components/site/home/FinalCta";
 import { MethodsSection, SecuritySection } from "@/components/site/Sections";
 import { ContactSection } from "@/components/site/ContactForm";
 import { content } from "@/data/content";
+import { Pricing } from "@/components/site/home/Pricing";
+import { seo } from "@/lib/seo";
+import { useEffect } from "react";
+import { useI18n } from "@/lib/i18n";
 
-const title = "CruziaPay | Pagamentos cross-border e Pix no Brasil";
+const titles = {
+  pt: "CruziaPay | Pagamentos cross-border na América Latina",
+  en: "CruziaPay | Cross-border payments in Latin America",
+};
+const title = titles.pt;
 const description =
-  "Infraestrutura cross-border para empresas globais venderem no Brasil com Pix, API, webhooks, conciliação e liquidação internacional.";
+  "Métodos de pagamento locais em 12 mercados da América Latina com uma única integração. Pix, SPEI, PSE, OXXO, cartões e payouts, com liquidação internacional.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.cruziapay.com/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "https://www.cruziapay.com/" }],
+    ...seo("/", title, description),
     scripts: [
       {
         type: "application/ld+json",
@@ -48,12 +47,17 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { locale } = useI18n();
+  useEffect(() => {
+    document.title = titles[locale];
+  }, [locale]);
   return (
     <main>
       <Hero />
       <ProductHighlights />
       <CrossBorder />
       <MethodsSection />
+      <Pricing />
       <HowItWorks />
       <Verticals />
       <SmartRouting />
