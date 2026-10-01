@@ -42,9 +42,10 @@ export function Footer() {
           </div>
         </div>
       </div>
+      </div>
 
       <div className="container-site mt-12 border-t border-border pt-6">
-        <p className="text-xs text-footer-muted">© {year} CruziaPay. {t.footer.rights}</p>
+        <p className="text-xs text-slateink">© {year} CruziaPay. {t.footer.rights}</p>
       </div>
     </footer>
   );
