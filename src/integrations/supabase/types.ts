@@ -58,12 +58,15 @@ export type Database = {
           created_at: string
           email: string
           id: string
+          licenses_confirmed: boolean
           locale: string
+          markets_interest: string[]
           message: string | null
           monthly_volume: string
           name: string
           phone: string
           vertical: string
+          website: string | null
         }
         Insert: {
           company: string
@@ -72,12 +75,15 @@ export type Database = {
           created_at?: string
           email: string
           id?: string
+          licenses_confirmed?: boolean
           locale?: string
+          markets_interest?: string[]
           message?: string | null
           monthly_volume: string
           name: string
           phone: string
           vertical: string
+          website?: string | null
         }
         Update: {
           company?: string
@@ -86,12 +92,15 @@ export type Database = {
           created_at?: string
           email?: string
           id?: string
+          licenses_confirmed?: boolean
           locale?: string
+          markets_interest?: string[]
           message?: string | null
           monthly_volume?: string
           name?: string
           phone?: string
           vertical?: string
+          website?: string | null
         }
         Relationships: []
       }
