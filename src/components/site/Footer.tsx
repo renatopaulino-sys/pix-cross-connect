@@ -42,8 +42,7 @@ export function Footer() {
               <p className="label-mono text-footer-muted">{f.company}</p>
               <ul className="mt-4 space-y-2">
                 <li><Link to="/about" className={link}>{f.about}</Link></li>
-                <li><Link to="/igaming" className={link}>{f.igaming}</Link></li>
-                <li><Link to="/insights" className={link}>{f.insights}</Link></li>
+                <li><a href="/#seguranca" className={link}>{f.security}</a></li>
                 <li><a href="/#contato" className={link}>{t.nav.contact}</a></li>
               </ul>
             </div>
@@ -57,6 +56,11 @@ export function Footer() {
                 <li><Link to="/aml-kyc" className={link}>{f.aml}</Link></li>
                 <li><Link to="/prohibited-businesses" className={link}>{f.prohibited}</Link></li>
                 <li><Link to="/complaints" className={link}>{f.complaints}</Link></li>
+                <li>
+                  <button type="button" onClick={() => window.dispatchEvent(new Event("cruzia:cookie-preferences"))} className={link + " cursor-pointer text-left"}>
+                    {f.cookiePrefs}
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
@@ -64,9 +68,12 @@ export function Footer() {
       </div>
 
       <div className="container-site mt-12 space-y-2 border-t border-border pt-6 text-xs text-slateink">
+        <p className="font-semibold text-ink/80">{company.legalName} · CNPJ {company.cnpj}</p>
+        <p>{locale === "pt" ? company.addressPt : company.address}</p>
         <p>
-          {f.brandLine} {company.legalName}, CNPJ {company.cnpj}, {locale === "pt" ? company.addressPt : company.address}.
+          {f.commercial}: {company.emails.commercial} · {f.compliance}: {company.emails.compliance} · {f.privacyContact}: {company.emails.privacy}
         </p>
+        <p className="max-w-3xl">{f.partnerLine}</p>
         <p>© {year} CruziaPay. {f.rights}</p>
       </div>
     </footer>

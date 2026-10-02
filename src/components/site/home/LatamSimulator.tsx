@@ -20,11 +20,17 @@ export function LatamSimulator() {
   }, [code]);
 
   const country = pricingCountries.find((x) => x.code === code) ?? pricingCountries[0]!;
-  const methods = [
-    ...(code === "BR" ? [{ name: "Pix", status: "available" as const }] : []),
-    ...country.payin.map((r) => ({ name: r.method[locale], status: "on_request" as const })),
-    ...(country.payout ?? []).map((r) => ({ name: `Payout · ${r.method[locale]}`, status: "on_request" as const })),
-  ];
+  const isBR = code === "BR";
+  const methods = isBR
+    ? [
+        { name: "Pix QR Code", status: "available" as const },
+        { name: locale === "pt" ? "Pix Copia e Cola" : "Pix Copia e Cola (copy and paste)", status: "available" as const },
+        { name: locale === "pt" ? "Link de pagamento Pix" : "Pix payment link", status: "available" as const },
+        { name: "Boleto", status: "soon" as const },
+        { name: locale === "pt" ? "Cartões" : "Cards", status: "soon" as const },
+        { name: "Pix out", status: "soon" as const },
+      ]
+    : country.payin.map((r) => ({ name: r.method[locale], status: "soon" as const }));
 
   return (
     <SectionShell id="cobertura" tone="paper">
@@ -73,7 +79,14 @@ export function LatamSimulator() {
               </div>
               <div>
                 <p className="label-mono text-slateink">{c.simulator.settlement}</p>
-                <p className="font-display mt-4 text-xl font-bold text-ink">{c.simulator.settlementValue}</p>
+                {isBR ? (
+                  <>
+                    <p className="font-display mt-4 text-xl font-bold text-ink">{c.simulator.settlementValue}</p>
+                    <p className="mt-2 text-sm text-slateink">{c.simulator.settlementNote}</p>
+                  </>
+                ) : (
+                  <p className="mt-4 rounded-lg border border-border bg-paper p-3 text-sm leading-relaxed text-ink">{c.simulator.soonNotice}</p>
+                )}
               </div>
               <div>
                 <p className="label-mono text-slateink">{c.simulator.docs}</p>
@@ -89,10 +102,10 @@ export function LatamSimulator() {
           <Button
             type="button"
             size="lg"
-            onClick={() => requestContact({ country: country.name[locale], message: `${c.simulator.cta} — ${country.name[locale]}` })}
+            onClick={() => requestContact({ country: country.name[locale], message: `${isBR ? c.simulator.cta : c.simulator.waitlist} — ${country.name[locale]}` })}
             className="btn-lift gradient-brand mt-8 h-12 px-5 font-semibold text-primary-foreground"
           >
-            {c.simulator.cta}
+            {isBR ? c.simulator.cta : c.simulator.waitlist}
           </Button>
         </div>
       </div>

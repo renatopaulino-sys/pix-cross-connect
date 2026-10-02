@@ -63,8 +63,8 @@ export function Hero() {
             >
               {c.hero.primary}
             </Button>
-            <Button asChild variant="outline" size="lg" className="btn-lift h-12 w-full bg-paper/70 font-semibold sm:w-auto">
-              <a href="#desenvolvedores">{c.hero.secondary}</a>
+            <Button type="button" variant="outline" size="lg" onClick={() => requestContact({ message: c.hero.secondary })} className="btn-lift h-12 w-full bg-paper/70 font-semibold sm:w-auto">
+              {c.hero.secondary}
             </Button>
           </div>
 

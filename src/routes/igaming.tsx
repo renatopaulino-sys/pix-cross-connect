@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useI18n } from "@/lib/i18n";
 import { pagesCopy } from "@/data/pages";
+import { home } from "@/data/home";
 import { igamingMarkets } from "@/data/igaming";
 import { StatusPill } from "@/components/site/home/SectionShell";
 import { Button } from "@/components/ui/button";
