@@ -21,7 +21,7 @@ export const methods: Method[] = [
   },
   {
     id: "credit",
-    status: "on_request",
+    status: "soon",
     icon: "credit-card",
     name: { pt: "Cartão de crédito", en: "Credit card" },
     description: {
@@ -31,7 +31,7 @@ export const methods: Method[] = [
   },
   {
     id: "debit",
-    status: "on_request",
+    status: "soon",
     icon: "credit-card",
     name: { pt: "Cartão de débito", en: "Debit card" },
     description: {
@@ -61,7 +61,7 @@ export const methods: Method[] = [
   },
   {
     id: "pix-out",
-    status: "on_request",
+    status: "soon",
     icon: "send",
     name: { pt: "Pix out", en: "Pix out" },
     description: {
@@ -81,7 +81,7 @@ export const methods: Method[] = [
   },
   {
     id: "spei",
-    status: "on_request",
+    status: "soon",
     icon: "building",
     name: { pt: "SPEI (México)", en: "SPEI (Mexico)" },
     description: {
@@ -91,7 +91,7 @@ export const methods: Method[] = [
   },
   {
     id: "pse",
-    status: "on_request",
+    status: "soon",
     icon: "building",
     name: { pt: "PSE (Colômbia)", en: "PSE (Colombia)" },
     description: {
@@ -101,7 +101,7 @@ export const methods: Method[] = [
   },
   {
     id: "oxxo",
-    status: "on_request",
+    status: "soon",
     icon: "store",
     name: { pt: "OXXO (México)", en: "OXXO (Mexico)" },
     description: {
@@ -111,7 +111,7 @@ export const methods: Method[] = [
   },
   {
     id: "latam-transfers",
-    status: "on_request",
+    status: "soon",
     icon: "globe",
     name: {
       pt: "Transferências locais LATAM",
@@ -139,7 +139,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "checkout",
-    status: "on_request",
+    status: "soon",
     icon: "layout",
     name: { pt: "Checkout transparente", en: "Transparent checkout" },
     description: {
@@ -149,7 +149,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "payment-links",
-    status: "on_request",
+    status: "available",
     icon: "link",
     name: { pt: "Links de pagamento", en: "Payment links" },
     description: {
@@ -159,7 +159,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "split",
-    status: "on_request",
+    status: "soon",
     icon: "split",
     name: { pt: "Split de pagamentos", en: "Payment split" },
     description: {
@@ -169,7 +169,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "payouts",
-    status: "on_request",
+    status: "soon",
     icon: "send",
     name: {
       pt: "Payouts e liquidação internacional",
@@ -182,7 +182,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "dashboard",
-    status: "on_request",
+    status: "soon",
     icon: "chart",
     name: { pt: "Painel e conciliação", en: "Dashboard and reconciliation" },
     description: {

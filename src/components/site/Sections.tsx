@@ -89,7 +89,7 @@ export function VerticalsSection() {
 export function SecuritySection() {
   const { t } = useI18n();
   return (
-    <section className="border-t border-border bg-sand py-24 lg:py-32">
+    <section id="seguranca" className="scroll-mt-24 border-t border-border bg-sand py-24 lg:py-32">
       <div className="container-site grid gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-16">
         <SectionHead label={t.security.label} title={t.security.title} />
         <div className="max-w-2xl space-y-5">

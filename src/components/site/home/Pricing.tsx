@@ -7,7 +7,7 @@ import { SectionShell, SectionHead, StatusPill } from "./SectionShell";
 import { Button } from "@/components/ui/button";
 
 export function Pricing() {
-  const { locale } = useI18n();
+  const { locale, t } = useI18n();
   const c = home[locale].pricing;
   const [code, setCode] = useState("BR");
   const panelRef = useRef<HTMLDivElement>(null);
@@ -84,7 +84,11 @@ export function Pricing() {
                 <span aria-hidden="true" className="mr-2">{country.flag}</span>
                 {country.name[locale]} <span className="label-mono text-slateink">({country.currency})</span>
               </h3>
-              <StatusPill status="on_request" label={c.badge} />
+              {code === "BR" ? (
+                <StatusPill status="available" label={`Pix · ${t.badge.available}`} />
+              ) : (
+                <StatusPill status="soon" label={c.badge} />
+              )}
             </div>
 
             <div className="mt-8 grid gap-8 lg:grid-cols-2">

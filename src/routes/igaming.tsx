@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useI18n } from "@/lib/i18n";
 import { pagesCopy } from "@/data/pages";
+import { home } from "@/data/home";
 import { igamingMarkets } from "@/data/igaming";
 import { StatusPill } from "@/components/site/home/SectionShell";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ function IgamingPage() {
       <div className="container-site max-w-4xl">
         <p className="label-mono text-gradient-brand font-semibold">{c.label}</p>
         <h1 className="font-display mt-4 text-4xl font-extrabold text-ink sm:text-5xl">{c.title}</h1>
+        <p role="note" className="mt-8 rounded-lg border border-warning/40 bg-warning/10 p-4 text-sm leading-relaxed text-ink">{home[locale].igamingNotice}</p>
 
         <h2 className="font-display mt-12 text-2xl font-bold text-ink">{c.whoTitle}</h2>
         <p className="mt-4 leading-relaxed text-slateink">{c.who}</p>

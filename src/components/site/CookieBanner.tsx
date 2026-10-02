@@ -10,6 +10,9 @@ export function CookieBanner() {
 
   useEffect(() => {
     if (!window.localStorage.getItem(KEY)) setVisible(true);
+    const reopen = () => setVisible(true);
+    window.addEventListener("cruzia:cookie-preferences", reopen);
+    return () => window.removeEventListener("cruzia:cookie-preferences", reopen);
   }, []);
 
   const decide = (value: "all" | "essential") => {

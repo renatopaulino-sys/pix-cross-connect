@@ -4,6 +4,7 @@ import { codeSamples } from "@/data/content";
 import { useI18n } from "@/lib/i18n";
 import { home } from "@/data/home";
 import { Button } from "@/components/ui/button";
+import { requestContact } from "@/lib/contact-prefill";
 
 const tabs = [
   { id: "curl", label: "cURL" },
@@ -55,12 +56,14 @@ export function DeveloperHub() {
               <p key={p.slice(0, 24)} className="text-base leading-relaxed text-ink/70">{p}</p>
             ))}
           </div>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-xl border border-ink/20 px-4 py-3">
-            <Terminal className="h-4 w-4 text-ink/70" strokeWidth={1.6} />
-            <span className="text-sm font-medium text-ink/80">{c.devhub.sandbox}</span>
-            <span className="label-mono rounded-lg bg-success/15 px-2 py-1 font-semibold text-success">
-              {c.devhub.sandboxSoon}
-            </span>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button type="button" size="lg" onClick={() => requestContact({ message: t.developers.docs })} className="btn-lift gradient-brand h-12 px-5 font-semibold text-primary-foreground">
+              {t.developers.docs}
+            </Button>
+            <Button type="button" size="lg" variant="outline" onClick={() => requestContact({ message: c.devhub.sandbox })} className="btn-lift h-12 border-ink/20 bg-transparent px-5 font-semibold text-ink">
+              <Terminal className="h-4 w-4" strokeWidth={1.6} />
+              {c.devhub.sandbox}
+            </Button>
           </div>
         </div>
 

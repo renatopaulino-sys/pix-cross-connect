@@ -18,12 +18,12 @@ import { useEffect } from "react";
 import { useI18n } from "@/lib/i18n";
 
 const titles = {
-  pt: "CruziaPay | Pagamentos cross-border na América Latina",
-  en: "CruziaPay | Cross-border payments in Latin America",
+  pt: "CruziaPay · Pagamentos cross-border e Pix no Brasil",
+  en: "CruziaPay · Cross-border payments and Pix for Brazil",
 };
-const title = titles.pt;
+const title = titles.en;
 const description =
-  "Métodos de pagamento locais em 12 mercados da América Latina com uma única integração. Pix, SPEI, PSE, OXXO, cartões e payouts, com liquidação internacional.";
+  "Cross-border infrastructure for global businesses selling in Brazil with Pix, REST API, webhooks, reconciliation and international settlement.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: content.pt.faq.items.map((item) => ({
+          mainEntity: content.en.faq.items.map((item) => ({
             "@type": "Question",
             name: item.q,
             acceptedAnswer: { "@type": "Answer", text: item.a },

@@ -33,7 +33,7 @@ type HomeCopy = {
   routing: { label: string; title: string; intro: string; hub: string; hubNote: string; source: string; sourceNote: string; tooltipHint: string };
   simulator: {
     label: string; title: string; intro: string; country: string; loading: string;
-    methods: string; settlement: string; settlementValue: string; docs: string; cta: string;
+    methods: string; settlement: string; settlementValue: string; settlementNote: string; soonNotice: string; waitlist: string; docs: string; cta: string;
   };
   pricing: {
     label: string; title: string; intro: string; badge: string; payin: string; payout: string; payinFrom: string;
@@ -44,6 +44,8 @@ type HomeCopy = {
   finalCta: { title: string; text: string; button: string; secondary: string };
   verticalsAvailable: string;
   verticalsUpcoming: string;
+  verticalsSuspended: string;
+  igamingNotice: string;
   footerSocial: string;
 };
 
@@ -55,8 +57,8 @@ export const home: Record<Locale, HomeCopy> = {
       headline2: "Liquide onde sua empresa opera.",
       sub: "Uma integração para métodos de pagamento locais em 12 mercados da América Latina, começando pelo Pix instantâneo no Brasil.",
       primary: "Falar com o time",
-      secondary: "Ver documentação",
-      status: "Pix disponível no Brasil. Demais métodos disponíveis sob consulta.",
+      secondary: "Solicitar acesso à API",
+      status: "Pix ativo hoje. Cartões, payouts e trilhos LATAM no roadmap.",
       testPix: "Testar Checkout Pix",
       sandbox: "Ambiente sandbox, nenhum valor real é movimentado.",
     },
@@ -77,13 +79,13 @@ export const home: Record<Locale, HomeCopy> = {
     ],
     highlights: {
       label: "Produtos",
-      title: "Um contrato de integração, todo o portfólio",
-      intro: "Pix disponível no Brasil. Cartões, split e payouts disponíveis sob consulta, sujeitos a onboarding.",
+      title: "Uma integração, um portfólio em expansão",
+      intro: "Comece com Pix hoje e adicione novos métodos no mesmo endpoint conforme entram no ar.",
       contactLink: "Entre em contato para mais informações",
       items: [
         { key: "pix", name: "Pix — pagamentos instantâneos (Brasil)", text: "QR Code dinâmico, Copia e Cola e link de pagamento, com confirmação por webhook em segundos.", status: "available" },
-        { key: "cards", name: "Cartões & Split", text: "Cartões domésticos e internacionais com split automático entre sellers e parceiros.", status: "on_request" },
-        { key: "payouts", name: "Payouts & liquidação", text: "Pix out e repasses locais, com liquidação internacional conforme contrato.", status: "on_request" },
+        { key: "cards", name: "Cartões & Split", text: "Cartões domésticos e internacionais com split automático entre sellers e parceiros.", status: "soon" },
+        { key: "payouts", name: "Payouts & trilhos globais", text: "Payouts para beneficiários locais e liquidação internacional em múltiplas moedas.", status: "soon" },
       ],
     },
     crossBorder: {
@@ -91,7 +93,7 @@ export const home: Record<Locale, HomeCopy> = {
       title: "Cobrança local. Operação global.",
       intro: "Entre na América Latina com experiências de pagamento locais e familiares e uma camada única para integrar, acompanhar e conciliar sua operação.",
       cta: "Desenhar minha operação",
-      availability: "Pix disponível no Brasil · demais mercados sob consulta",
+      availability: "Pay-ins Pix ativos no Brasil. Payouts e novos mercados em breve.",
       steps: [
         { title: "Seu cliente paga localmente", text: "Ofereça Pix no checkout, com QR Code, Copia e Cola ou link de pagamento.", meta: "Brasil · BRL · Pix" },
         { title: "A CruziaPay processa", text: "A transação é confirmada por webhook e organizada para conciliação na sua integração.", meta: "API · Webhooks · Roteamento regional" },
@@ -106,8 +108,8 @@ export const home: Record<Locale, HomeCopy> = {
     },
     routing: {
       label: "Infraestrutura",
-      title: "Roteamento regional",
-      intro: "Roteamento entre parceiros regionais, desenhado para resiliência.",
+      title: "Smart Routing (roadmap)",
+      intro: "A CruziaPay está sendo construída multiadquirente desde o primeiro dia. Conforme novos parceiros e países entrarem no ar, o roteador escolherá a melhor rota em tempo real, com failover automático.",
       hub: "CruziaPay",
       hubNote: "Roteador de pagamentos",
       source: "Sua operação",
@@ -122,28 +124,33 @@ export const home: Record<Locale, HomeCopy> = {
       loading: "Consultando cobertura...",
       methods: "Métodos locais",
       settlement: "Prazo de liquidação",
-      settlementValue: "Definido no contrato comercial",
+      settlementValue: "D+0 a D+1",
+      settlementNote: "Termos de liquidação internacional definidos por contrato.",
+      soonNotice: "Em breve. Fale com o time para entrar na lista de espera deste mercado.",
+      waitlist: "Entrar na lista de espera",
       docs: "Documentos de KYC",
       cta: "Solicitar demo",
     },
     pricing: {
       label: "Preços", title: "Preços transparentes em toda a América Latina",
       intro: "Uma integração, taxas locais por mercado. Preços por volume disponíveis sob consulta.",
-      badge: "Disponível sob consulta · sujeito a onboarding", payin: "Pay-in (recebimento)", payout: "Payout (pagamento)", payinFrom: "Pay-in a partir de",
+      badge: "Em breve · entre na lista de espera", payin: "Pay-in (recebimento)", payout: "Payout (pagamento)", payinFrom: "Pay-in a partir de",
       cols: { method: "Método", providers: "Redes", rate: "Taxa" }, notAvailable: "Indisponível", minFee: "Tarifa mínima por transação", notes: "Notas",
       feesTitle: "Taxas de conta e liquidação",
       legal: "As taxas incidem sobre o valor da transação. Impostos locais incidem sobre a taxa de processamento conforme indicado em cada mercado. A disponibilidade por mercado e vertical está sujeita à aprovação de KYC, KYB e compliance. Os preços são indicativos e os termos finais são definidos no contrato comercial.",
       cta: "Falar com o time", requestSheet: "Solicitar tabela completa de preços", country: "País",
     },
-    devhub: { sandbox: "Acessar o sandbox", sandboxSoon: "Disponível" },
+    devhub: { sandbox: "Solicitar acesso ao sandbox", sandboxSoon: "" },
     finalCta: {
       title: "Comece a receber Pix hoje",
       text: "Fale com o time e receba o desenho de integração para a sua operação.",
       button: "Falar com o time",
       secondary: "Falar com o time",
     },
-    verticalsAvailable: "Disponível sob consulta",
-    verticalsUpcoming: "Disponível sob consulta",
+    verticalsAvailable: "Disponível",
+    verticalsUpcoming: "Em breve",
+    verticalsSuspended: "Suspenso",
+    igamingNotice: "Aviso: após a Medida Provisória (MP) assinada em 25 de setembro de 2026, as operações de apostas de quota fixa no Brasil estão suspensas, incluindo novos depósitos via Pix. A CruziaPay retomará esta vertical somente quando o marco legal permitir.",
     footerSocial: "Redes",
   },
   en: {
@@ -153,8 +160,8 @@ export const home: Record<Locale, HomeCopy> = {
       headline2: "Settle where your business operates.",
       sub: "One integration for local payment methods in 12 Latin American markets, starting with instant Pix in Brazil.",
       primary: "Talk to the team",
-      secondary: "See documentation",
-      status: "Pix available in Brazil. Other methods available on request.",
+      secondary: "Request API access",
+      status: "Pix live today. Cards, payouts and LATAM rails on the roadmap.",
       testPix: "Test Pix Checkout",
       sandbox: "Sandbox environment, no real funds are moved.",
     },
@@ -175,13 +182,13 @@ export const home: Record<Locale, HomeCopy> = {
     ],
     highlights: {
       label: "Products",
-      title: "One integration, the whole portfolio",
-      intro: "Pix available in Brazil. Cards, split and payouts available on request, subject to onboarding.",
+      title: "One integration, a growing portfolio",
+      intro: "Start with Pix today and add new methods on the same endpoint as they go live.",
       contactLink: "Contact us for more information",
       items: [
         { key: "pix", name: "Pix — instant payments (Brazil)", text: "Dynamic QR Code, copy-and-paste codes and payment links, confirmed by webhook in seconds.", status: "available" },
-        { key: "cards", name: "Cards & Split", text: "Domestic and international cards with automatic split between sellers and partners.", status: "on_request" },
-        { key: "payouts", name: "Payouts & settlement", text: "Pix out and local payouts, with international settlement under contract.", status: "on_request" },
+        { key: "cards", name: "Cards & Split", text: "Domestic and international cards with automatic split between sellers and partners.", status: "soon" },
+        { key: "payouts", name: "Payouts & Global Rails", text: "Payouts to local beneficiaries and international settlement in multiple currencies.", status: "soon" },
       ],
     },
     crossBorder: {
@@ -189,7 +196,7 @@ export const home: Record<Locale, HomeCopy> = {
       title: "Local collection. Global operations.",
       intro: "Enter Latin America with familiar local payment experiences and one layer to integrate, monitor and reconcile your operation.",
       cta: "Design my payment flow",
-      availability: "Pix available in Brazil · other markets on request",
+      availability: "Pix pay-ins live in Brazil. Payouts and new markets coming soon.",
       steps: [
         { title: "Your customer pays locally", text: "Offer Pix at checkout through QR Code, copy-and-paste or a payment link.", meta: "Brazil · BRL · Pix" },
         { title: "CruziaPay processes", text: "The payment is confirmed by webhook and organized for reconciliation in your integration.", meta: "API · Webhooks · Regional routing" },
@@ -204,8 +211,8 @@ export const home: Record<Locale, HomeCopy> = {
     },
     routing: {
       label: "Infrastructure",
-      title: "Regional routing",
-      intro: "Routing across regional partners, designed for resilience.",
+      title: "Smart Routing (roadmap)",
+      intro: "CruziaPay is being built multi-acquirer from day one. As new partners and countries go live, the router will select the best route in real time with automatic failover.",
       hub: "CruziaPay",
       hubNote: "Payment router",
       source: "Your operation",
@@ -220,28 +227,33 @@ export const home: Record<Locale, HomeCopy> = {
       loading: "Checking coverage...",
       methods: "Local methods",
       settlement: "Settlement window",
-      settlementValue: "Defined in the commercial agreement",
+      settlementValue: "D+0 to D+1",
+      settlementNote: "International settlement terms defined per contract.",
+      soonNotice: "Coming soon. Talk to the team to join the waitlist for this market.",
+      waitlist: "Join the waitlist",
       docs: "KYC documents",
       cta: "Request a demo",
     },
     pricing: {
       label: "Pricing", title: "Transparent pricing across Latin America",
       intro: "One integration, local rates per market. Volume based pricing available on request.",
-      badge: "Available on request · subject to onboarding", payin: "Pay-in (collection)", payout: "Payout (disbursement)", payinFrom: "Pay-in from",
+      badge: "Coming soon · join the waitlist", payin: "Pay-in (collection)", payout: "Payout (disbursement)", payinFrom: "Pay-in from",
       cols: { method: "Method", providers: "Providers", rate: "Rate" }, notAvailable: "Not available", minFee: "Minimum fee per transaction", notes: "Notes",
       feesTitle: "Account & settlement fees",
       legal: "Rates apply to the transaction amount. Local taxes apply to the processing fee as indicated per market. Availability by market and vertical is subject to KYC, KYB and compliance approval. Prices are indicative and final terms are defined in the commercial agreement.",
       cta: "Talk to the team", requestSheet: "Request full pricing sheet", country: "Country",
     },
-    devhub: { sandbox: "Open the sandbox", sandboxSoon: "Available" },
+    devhub: { sandbox: "Request sandbox access", sandboxSoon: "" },
     finalCta: {
       title: "Start accepting Pix today",
       text: "Talk to the team and get an integration design for your operation.",
       button: "Talk to the team",
       secondary: "Talk to the team",
     },
-    verticalsAvailable: "Available on request",
-    verticalsUpcoming: "Available on request",
+    verticalsAvailable: "Available",
+    verticalsUpcoming: "Coming soon",
+    verticalsSuspended: "Suspended",
+    igamingNotice: "Notice: following the Provisional Measure (MP) signed on 25 September 2026, fixed odds betting operations in Brazil are suspended, including new Pix deposits. CruziaPay will resume this vertical only when the legal framework allows.",
     footerSocial: "Social",
   },
 };

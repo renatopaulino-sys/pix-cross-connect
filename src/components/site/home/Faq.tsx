@@ -14,7 +14,7 @@ export function Faq() {
               <AccordionTrigger className="text-left text-base font-medium text-ink hover:no-underline">
                 {item.q}
               </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-slateink">{item.a}</AccordionContent>
+              <AccordionContent forceMount className="text-sm leading-relaxed text-slateink data-[state=closed]:hidden">{item.a}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
