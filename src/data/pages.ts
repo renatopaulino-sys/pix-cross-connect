@@ -5,8 +5,6 @@ export type LegalSection = { heading: string; body: string[] };
 export type LegalDoc = { title: string; updated: string; intro?: string; sections: LegalSection[]; closing?: string };
 
 const E = company.emails;
-const entityEn = `${company.legalName}, CNPJ ${company.cnpj}, ${company.address}`;
-const entityPt = `${company.legalName}, CNPJ ${company.cnpj}, ${company.addressPt}`;
 
 const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDoc>> = {
  "privacy": {
@@ -15,7 +13,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
    "updated": "Version 1.0 · Public document · Code: POL-001 · LGPD-001",
    "sections": [
     {
-     "heading": "1. Purpose",
+     "heading": "Purpose",
      "body": [
       "CRUZIAPAY LTDA (\"CruziaPay\") is a payment facilitator that enables companies, in Brazil and abroad, to receive payments from Brazilian customers via Pix and other local methods, organizing the national and international reconciliation and settlement of operations.",
       "Payment operations are carried out in partnership with institutions authorized to operate within the Pix arrangement. CruziaPay is not a financial institution nor an authorized payment institution, does not offer credit, does not open or manage payment or deposit accounts, and does not perform credit analysis.",
@@ -23,7 +21,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
      ]
     },
     {
-     "heading": "2. Definitions",
+     "heading": "Definitions",
      "body": [
       "Data Subject is the natural person to whom the personal data refers. User is the data subject who browses CruziaPay websites and platforms. Client is the company that contracts CruziaPay's services to receive payments. Payer is the person who makes a payment to a Client through the platform.",
       "Personal data is information related to an identified or identifiable natural person. Sensitive personal data is data concerning racial or ethnic origin, religious conviction, political opinion, health, sexual life, genetic or biometric data. Processing is any operation performed with personal data, pursuant to Art. 5 of the LGPD.",
@@ -31,26 +29,26 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
      ]
     },
     {
-     "heading": "3. Legal and Regulatory Basis",
+     "heading": "Legal and Regulatory Basis",
      "body": [
       "This Policy observes Law No. 13,709/2018 (LGPD), Law No. 12,965/2014 (Brazilian Civil Rights Framework for the Internet), Law No. 12,865/2013 and Central Bank of Brazil regulations on payment arrangements and the Pix arrangement, Law No. 9,613/1998 on Anti-Money Laundering, and Law No. 14,790/2023 when the Client operates in the fixed-odds betting sector."
      ]
     },
     {
-     "heading": "4. Scope and Applicability",
+     "heading": "Scope and Applicability",
      "body": [
       "This Policy applies to all users accessing the cruziapay.com website and CruziaPay platforms, to representatives, partners, and ultimate beneficial owners of Clients during registration, to Payers whose data passes through the platform, and to all employees, third parties, and partners who process personal data on behalf of CruziaPay.",
       "Regarding Payers' data, the Client acts as the controller, and CruziaPay processes such data to enable collection, settlement, and compliance with legal obligations for fraud and money laundering prevention."
      ]
     },
     {
-     "heading": "5. Principles of Processing",
+     "heading": "Principles of Processing",
      "body": [
       "CruziaPay and its processors observe the principles of Art. 6 of the LGPD: purpose, adequacy, necessity, free access, data quality, transparency, security, prevention, non-discrimination, and accountability."
      ]
     },
     {
-     "heading": "6. Collected Data and Purposes",
+     "heading": "Collected Data and Purposes",
      "body": [
       "Registration data of Clients and their representatives: corporate name, CNPJ or equivalent foreign registry, full name, CPF or identification document, date of birth, address, email, telephone number, and corporate structure, including ultimate beneficial owners.",
       "Financial data: bank details for settlement, estimated volume, and transaction history.",
@@ -62,13 +60,13 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
      ]
     },
     {
-     "heading": "7. Processing Operations and Legal Grounds",
+     "heading": "Processing Operations and Legal Grounds",
      "body": [
       "All processing is linked to a legal basis under Art. 7 of the LGPD: compliance with a legal or regulatory obligation (item II), performance of a contract or preliminary procedures at the request of the data subject (item V), regular exercise of rights in judicial, administrative, or arbitration proceedings (item VI), legitimate interest, such as in fraud prevention and transaction security, provided that the data subject's rights do not prevail (item IX), and consent, for commercial communications and non-essential cookies (item I)."
      ]
     },
     {
-     "heading": "8. Sharing and Processors",
+     "heading": "Sharing and Processors",
      "body": [
       "CruziaPay shares data only for legitimate purposes and never sells or rents it. Sharing occurs with processors under processing and confidentiality agreements and, when required by law, with authorities such as the Central Bank of Brazil, COAF, ANPD, Federal Revenue, and the Judiciary.",
       "The primary processors are: partner institutions authorized to operate in the Pix arrangement, for transaction processing and settlement; foreign exchange providers, for international settlement; hosting and database providers; KYC and document validation providers; and corporate email providers.",
@@ -76,27 +74,27 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
      ]
     },
     {
-     "heading": "9. Storage, Security, and Retention",
+     "heading": "Storage, Security, and Retention",
      "body": [
       "Data is encrypted in transit (TLS 1.2 or higher) and at rest. Internal access is restricted by profile, with multi-factor authentication and audit logging of sensitive operations. Anti-fraud monitoring assesses collection and settlement patterns.",
       "Application access logs are kept for at least 6 months, as per Art. 15 of Law No. 12,965/2014. Registration and transaction records are kept for at least 5 years after the termination of the relationship, as per Art. 10 of Law No. 9,613/1998. Commercial contact data without contracting are kept for up to 24 months or until consent is revoked. Once the periods expire, the data is deleted or anonymized."
      ]
     },
     {
-     "heading": "10. Data Subject Rights",
+     "heading": "Data Subject Rights",
      "body": [
       "Pursuant to Art. 18 of the LGPD, the data subject may request confirmation of the existence of processing, access to data, correction of incomplete, inaccurate, or outdated data, anonymization, blocking or deletion of unnecessary or excessive data, portability, deletion of data processed with consent, information on sharing, and revocation of consent.",
       "Requests must be sent to the DPO at privacidade@cruziapay.com.br and will be responded to within 15 days. Data whose retention is required by law will remain stored for the legal term, even after a deletion request."
      ]
     },
     {
-     "heading": "11. Sensitive Data and Data of Minors",
+     "heading": "Sensitive Data and Data of Minors",
      "body": [
       "CruziaPay does not intentionally process sensitive personal data, except for biometric data eventually used in onboarding identity validation, subject to specific consent or under the hypotheses of Art. 11 of the LGPD. CruziaPay websites and platforms are not intended for individuals under 18 years of age."
      ]
     },
     {
-     "heading": "12. Contact Channels and General Provisions",
+     "heading": "Contact Channels and General Provisions",
      "body": [
       "Privacy matters and exercise of rights: privacidade@cruziapay.com.br. Compliance and anti-money laundering matters: compliance@cruziapay.com.br.",
       "This Policy may be updated at any time, with prior notice in case of relevant changes. CruziaPay reports suspicious operations to the competent authorities, pursuant to Law No. 9,613/1998. The courts of the District of Londrina/PR are hereby elected. This document is reviewed annually."
@@ -110,7 +108,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
    "updated": "Versão 1.0 · Documento público · Código: POL-001 · LGPD-001",
    "sections": [
     {
-     "heading": "1. Objetivo",
+     "heading": "Objetivo",
      "body": [
       "A CRUZIAPAY LTDA (\"CruziaPay\") é uma facilitadora de pagamentos (Payment Facilitator) que habilita empresas, no Brasil e no exterior, a receber pagamentos de clientes brasileiros por meio do Pix e de outros métodos locais, organizando a conciliação e a liquidação nacional e internacional das operações.",
       "As operações de pagamento são realizadas em parceria com instituição autorizada a operar no arranjo Pix. O CruziaPay não é instituição financeira nem instituição de pagamento autorizada, não oferta crédito, não abre nem administra conta de pagamento ou de depósito e não realiza análise de crédito.",
@@ -118,7 +116,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
      ]
     },
     {
-     "heading": "2. Definições",
+     "heading": "Definições",
      "body": [
       "Titular é a pessoa natural a quem se referem os dados pessoais. Usuário é o titular que navega pelos sites e plataformas do CruziaPay. Cliente é a empresa que contrata os serviços do CruziaPay para receber pagamentos. Pagador é a pessoa que realiza um pagamento a um Cliente por meio da plataforma.",
       "Dado pessoal é a informação relacionada a pessoa natural identificada ou identificável. Dado pessoal sensível é o dado sobre origem racial ou étnica, convicção religiosa, opinião política, saúde, vida sexual, dado genético ou biométrico. Tratamento é toda operação realizada com dados pessoais, nos termos do art. 5º da LGPD.",
@@ -126,26 +124,26 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
      ]
     },
     {
-     "heading": "3. Base legal e regulatória",
+     "heading": "Base legal e regulatória",
      "body": [
       "Esta Política observa a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais), a Lei nº 12.965/2014 (Marco Civil da Internet), a Lei nº 12.865/2013 e a regulamentação do Banco Central do Brasil sobre arranjos de pagamento e o arranjo Pix, a Lei nº 9.613/1998 sobre prevenção à lavagem de dinheiro e a Lei nº 14.790/2023 quando o Cliente atuar no setor de apostas de quota fixa."
      ]
     },
     {
-     "heading": "4. Escopo e aplicabilidade",
+     "heading": "Escopo e aplicabilidade",
      "body": [
       "Esta Política se aplica a todos os usuários que acessam o site cruziapay.com e as plataformas do CruziaPay, aos representantes, sócios e beneficiários finais dos Clientes durante o cadastro, aos Pagadores cujos dados transitam pela plataforma e a todos os colaboradores, terceiros e parceiros que tratam dados pessoais em nome do CruziaPay.",
       "Em relação aos dados dos Pagadores, o Cliente atua como controlador e o CruziaPay trata esses dados para viabilizar a cobrança, a liquidação e o cumprimento das obrigações legais de prevenção à fraude e à lavagem de dinheiro."
      ]
     },
     {
-     "heading": "5. Princípios do tratamento",
+     "heading": "Princípios do tratamento",
      "body": [
       "O CruziaPay e seus operadores observam os princípios do art. 6º da LGPD: finalidade, adequação, necessidade, livre acesso, qualidade dos dados, transparência, segurança, prevenção, não discriminação e responsabilização e prestação de contas."
      ]
     },
     {
-     "heading": "6. Dados coletados e finalidades",
+     "heading": "Dados coletados e finalidades",
      "body": [
       "Dados cadastrais dos Clientes e de seus representantes: razão social, CNPJ ou registro estrangeiro equivalente, nome completo, CPF ou documento de identidade, data de nascimento, endereço, e-mail, telefone e composição societária, incluindo beneficiários finais.",
       "Dados financeiros: dados bancários para liquidação, volume estimado e histórico de transações.",
@@ -157,13 +155,13 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
      ]
     },
     {
-     "heading": "7. Operações de tratamento e bases legais",
+     "heading": "Operações de tratamento e bases legais",
      "body": [
       "Todo tratamento está vinculado a uma base legal do art. 7º da LGPD: cumprimento de obrigação legal ou regulatória (inciso II), execução de contrato ou de procedimentos preliminares a pedido do titular (inciso V), exercício regular de direitos em processo judicial, administrativo ou arbitral (inciso VI), legítimo interesse, como na prevenção à fraude e na segurança das transações, sempre que não prevalecerem os direitos do titular (inciso IX), e consentimento, para comunicações comerciais e cookies não essenciais (inciso I)."
      ]
     },
     {
-     "heading": "8. Compartilhamento e operadores",
+     "heading": "Compartilhamento e operadores",
      "body": [
       "O CruziaPay compartilha dados apenas para finalidades legítimas e nunca os vende ou aluga. O compartilhamento ocorre com operadores sob contrato de tratamento e confidencialidade e, quando exigido por lei, com autoridades como Banco Central do Brasil, COAF, ANPD, Receita Federal e Poder Judiciário.",
       "Os principais operadores são: instituição parceira autorizada a operar no arranjo Pix, para processamento e liquidação das transações; provedor de câmbio, para liquidação internacional; provedores de hospedagem e banco de dados; provedor de KYC e validação documental; e provedor de e-mail corporativo.",
@@ -171,27 +169,27 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
      ]
     },
     {
-     "heading": "9. Armazenamento, segurança e retenção",
+     "heading": "Armazenamento, segurança e retenção",
      "body": [
       "Os dados são criptografados em trânsito (TLS 1.2 ou superior) e em repouso. O acesso interno é restrito por perfil, com autenticação multifator e registro de auditoria das operações sensíveis. O monitoramento antifraude avalia padrões de cobrança e liquidação.",
       "Os registros de acesso a aplicações são mantidos por no mínimo 6 meses, conforme o art. 15 do Marco Civil da Internet. Os cadastros e registros de transações são mantidos por no mínimo 5 anos após o encerramento da relação, conforme o art. 10 da Lei nº 9.613/1998. Os dados de contato comercial sem contratação são mantidos por até 24 meses ou até a revogação do consentimento. Encerrados os prazos, os dados são eliminados ou anonimizados."
      ]
     },
     {
-     "heading": "10. Direitos dos titulares",
+     "heading": "Direitos dos titulares",
      "body": [
       "Nos termos do art. 18 da LGPD, o titular pode solicitar a confirmação da existência de tratamento, o acesso aos dados, a correção de dados incompletos, inexatos ou desatualizados, a anonimização, o bloqueio ou a eliminação de dados desnecessários ou excessivos, a portabilidade, a eliminação dos dados tratados com consentimento, a informação sobre compartilhamento e a revogação do consentimento.",
       "As solicitações devem ser enviadas ao Encarregado em privacidade@cruziapay.com.br e serão respondidas em até 15 dias. Dados cuja conservação seja exigida por lei permanecerão armazenados pelo prazo legal, mesmo após pedido de eliminação."
      ]
     },
     {
-     "heading": "11. Dados sensíveis e de menores",
+     "heading": "Dados sensíveis e de menores",
      "body": [
       "O CruziaPay não trata intencionalmente dados pessoais sensíveis, exceto dados biométricos eventualmente usados na validação de identidade do onboarding, mediante consentimento específico ou nas hipóteses do art. 11 da LGPD. Os sites e plataformas do CruziaPay não se destinam a menores de 18 anos."
      ]
     },
     {
-     "heading": "12. Canais de contato e disposições gerais",
+     "heading": "Canais de contato e disposições gerais",
      "body": [
       "Questões de privacidade e exercício de direitos: privacidade@cruziapay.com.br. Questões de compliance e prevenção à lavagem de dinheiro: compliance@cruziapay.com.br.",
       "Esta Política pode ser atualizada a qualquer tempo, com comunicação prévia em caso de mudança relevante. O CruziaPay comunica operações suspeitas às autoridades competentes, conforme a Lei nº 9.613/1998. Fica eleito o foro da Comarca de Londrina/PR. Este documento é revisado anualmente."
@@ -207,74 +205,74 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
    "updated": "Version 1.0 · Public document · Code: POL-002",
    "sections": [
     {
-     "heading": "1. Who We Are",
+     "heading": "Who We Are",
      "body": [
       "CRUZIAPAY LTDA, headquartered at R. João Huss, 1331, Gleba Fazenda Palhano, Londrina, PR, CEP 86050-490, is a payment facilitator that connects companies to local payment methods in Brazil and Latin America. Payment operations are executed by institutions authorized to operate in the Pix arrangement. CruziaPay is not a financial institution nor a payment institution authorized by the Central Bank of Brazil."
      ]
     },
     {
-     "heading": "2. Acceptance",
+     "heading": "Acceptance",
      "body": [
       "By accessing the website or platform, the user declares to have read and accepted these Terms and the Privacy Policy. Those who do not agree must discontinue use. The contracting of payment services depends on a specific commercial agreement, which shall prevail over these Terms."
      ]
     },
     {
-     "heading": "3. Services",
+     "heading": "Services",
      "body": [
       "CruziaPay offers collection via Pix through dynamic QR Code, copy-and-paste code, and payment link, REST API, webhooks, reconciliation, and organization of national and international settlement. Methods indicated as \"coming soon\" are not available for contracting and may have their scope, term, and conditions altered."
      ]
     },
     {
-     "heading": "4. Registration and Eligibility",
+     "heading": "Registration and Eligibility",
      "body": [
       "The services are intended exclusively for regularly constituted legal entities, in Brazil or abroad. Registration depends on KYC, KYB, and AML/CFT analysis, and CruziaPay may refuse, suspend, or terminate the relationship when the analysis is not satisfactory. The Client is responsible for the veracity and updating of the information provided."
      ]
     },
     {
-     "heading": "5. Prohibited Activities",
+     "heading": "Prohibited Activities",
      "body": [
       "It is forbidden to use CruziaPay for illegal activities, the sale of products or services prohibited by law, pyramid schemes, fraud, money laundering, terrorism financing, intellectual property infringement, or any operation that does not correspond to the activity declared at registration.",
       "Clients in the fixed-odds betting sector are only accepted upon proof of current authorization from the Secretariat of Prizes and Betting of the Ministry of Finance, pursuant to Law No. 14,790/2023. The full list of restricted activities is contained in the commercial agreement."
      ]
     },
     {
-     "heading": "6. Client Obligations",
+     "heading": "Client Obligations",
      "body": [
       "The Client must keep their API credentials confidential, implement the integration according to the documentation, correctly inform payers about their products, prices, and refund policies, cooperate with compliance information requests, and be liable to their own customers for the products and services sold."
      ]
     },
     {
-     "heading": "7. Settlement, Fees, and Withholdings",
+     "heading": "Settlement, Fees, and Withholdings",
      "body": [
       "Settlement terms, currencies, fees, and foreign exchange conditions are defined in the commercial agreement. CruziaPay may withhold or block funds in case of suspected fraud, legal or judicial determination, payment dispute, or breach of these Terms, notifying the Client whenever permitted by law."
      ]
     },
     {
-     "heading": "8. Availability",
+     "heading": "Availability",
      "body": [
       "CruziaPay employs reasonable efforts to keep the platform available 24 hours a day, but does not guarantee uninterrupted operation, as there may be downtime due to maintenance, partner failures, the Pix arrangement, or third parties. The code examples and endpoints displayed on the site are illustrative until the publication of official documentation."
      ]
     },
     {
-     "heading": "9. Intellectual Property",
+     "heading": "Intellectual Property",
      "body": [
       "The CruziaPay brand, the website, the platform, the API, and its contents belong to CRUZIAPAY LTDA or its licensors. Reproduction, reverse engineering, or use of the brand without prior written authorization is prohibited."
      ]
     },
     {
-     "heading": "10. Limitation of Liability",
+     "heading": "Limitation of Liability",
      "body": [
       "CruziaPay is not liable for indirect damages, lost profits, failures caused by third parties, incorrect information provided by the Client, or use of the platform in disagreement with these Terms. CruziaPay's total liability is limited to the provisions of the commercial agreement."
      ]
     },
     {
-     "heading": "11. Compliance Commitment",
+     "heading": "Compliance Commitment",
      "body": [
       "CruziaPay maintains a risk-based anti-money laundering and terrorism financing prevention program, with identification of clients and ultimate beneficial owners, continuous monitoring of transactions, verification against restrictive lists, and reporting of suspicious operations to the competent authorities, pursuant to Law No. 9,613/1998. CruziaPay adopts zero tolerance for corruption, pursuant to Law No. 12,846/2013."
      ]
     },
     {
-     "heading": "12. Amendments, Communications, and Jurisdiction",
+     "heading": "Amendments, Communications, and Jurisdiction",
      "body": [
       "These Terms may be amended at any time, with the publication of the new version on the website. Communications must be sent to comercial@cruziapay.com.br. Brazilian legislation applies, and the courts of the District of Londrina/PR are hereby elected."
      ]
@@ -287,74 +285,74 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
    "updated": "Versão 1.0 · Documento público · Código: POL-002",
    "sections": [
     {
-     "heading": "1. Quem somos",
+     "heading": "Quem somos",
      "body": [
       "A CRUZIAPAY LTDA, com sede na R. João Huss, 1331, Gleba Fazenda Palhano, Londrina, PR, CEP 86050-490, é uma facilitadora de pagamentos que conecta empresas a métodos de pagamento locais no Brasil e na América Latina. As operações de pagamento são executadas por instituição autorizada a operar no arranjo Pix. O CruziaPay não é instituição financeira nem instituição de pagamento autorizada pelo Banco Central do Brasil."
      ]
     },
     {
-     "heading": "2. Aceitação",
+     "heading": "Aceitação",
      "body": [
       "Ao acessar o site ou a plataforma, o usuário declara ter lido e aceito estes Termos e a Política de Privacidade. Quem não concordar deve interromper o uso. A contratação dos serviços de pagamento depende de contrato comercial específico, que prevalece sobre estes Termos."
      ]
     },
     {
-     "heading": "3. Serviços",
+     "heading": "Serviços",
      "body": [
       "O CruziaPay oferece cobrança via Pix por QR Code dinâmico, código copia e cola e link de pagamento, API REST, webhooks, conciliação e organização da liquidação nacional e internacional. Métodos indicados como \"em breve\" não estão disponíveis para contratação e podem ter escopo, prazo e condições alterados."
      ]
     },
     {
-     "heading": "4. Cadastro e elegibilidade",
+     "heading": "Cadastro e elegibilidade",
      "body": [
       "Os serviços são destinados exclusivamente a pessoas jurídicas regularmente constituídas, no Brasil ou no exterior. O cadastro depende de análise de KYC, KYB e PLD/FT, e o CruziaPay pode recusar, suspender ou encerrar o relacionamento quando a análise não for satisfatória. O Cliente responde pela veracidade e atualização das informações fornecidas."
      ]
     },
     {
-     "heading": "5. Atividades não permitidas",
+     "heading": "Atividades não permitidas",
      "body": [
       "É vedado usar o CruziaPay para atividades ilícitas, venda de produtos ou serviços proibidos por lei, esquemas de pirâmide, fraude, lavagem de dinheiro, financiamento do terrorismo, violação de propriedade intelectual ou qualquer operação que não corresponda à atividade declarada no cadastro.",
       "Clientes do setor de apostas de quota fixa somente são aceitos mediante comprovação de autorização vigente da Secretaria de Prêmios e Apostas do Ministério da Fazenda, nos termos da Lei nº 14.790/2023. A lista completa de atividades restritas consta do contrato comercial."
      ]
     },
     {
-     "heading": "6. Obrigações do Cliente",
+     "heading": "Obrigações do Cliente",
      "body": [
       "O Cliente deve manter suas credenciais de API em sigilo, implementar a integração conforme a documentação, informar corretamente os pagadores sobre seus produtos, preços e políticas de reembolso, cooperar com pedidos de informação de compliance e responder perante seus próprios clientes pelos produtos e serviços vendidos."
      ]
     },
     {
-     "heading": "7. Liquidação, tarifas e retenções",
+     "heading": "Liquidação, tarifas e retenções",
      "body": [
       "Prazos de liquidação, moedas, tarifas e condições de câmbio são definidos no contrato comercial. O CruziaPay pode reter ou bloquear valores em caso de suspeita de fraude, determinação legal ou judicial, contestação de pagamento ou descumprimento destes Termos, comunicando o Cliente sempre que permitido por lei."
      ]
     },
     {
-     "heading": "8. Disponibilidade",
+     "heading": "Disponibilidade",
      "body": [
       "O CruziaPay emprega esforços razoáveis para manter a plataforma disponível 24 horas por dia, mas não garante funcionamento ininterrupto, podendo haver indisponibilidades por manutenção, falhas de parceiros, do arranjo Pix ou de terceiros. Os exemplos de código e endpoints exibidos no site são ilustrativos até a publicação da documentação oficial."
      ]
     },
     {
-     "heading": "9. Propriedade intelectual",
+     "heading": "Propriedade intelectual",
      "body": [
       "A marca CruziaPay, o site, a plataforma, a API e seus conteúdos pertencem à CRUZIAPAY LTDA ou a seus licenciantes. É vedada a reprodução, engenharia reversa ou uso da marca sem autorização prévia por escrito."
      ]
     },
     {
-     "heading": "10. Limitação de responsabilidade",
+     "heading": "Limitação de responsabilidade",
      "body": [
       "O CruziaPay não responde por danos indiretos, lucros cessantes, falhas causadas por terceiros, informações incorretas fornecidas pelo Cliente ou uso da plataforma em desacordo com estes Termos. A responsabilidade total do CruziaPay fica limitada ao previsto no contrato comercial."
      ]
     },
     {
-     "heading": "11. Compromisso de compliance",
+     "heading": "Compromisso de compliance",
      "body": [
       "O CruziaPay mantém programa de prevenção à lavagem de dinheiro e ao financiamento do terrorismo baseado em risco, com identificação de clientes e beneficiários finais, monitoramento contínuo de transações, verificação em listas restritivas e comunicação de operações suspeitas às autoridades competentes, conforme a Lei nº 9.613/1998. O CruziaPay adota tolerância zero a corrupção, nos termos da Lei nº 12.846/2013."
      ]
     },
     {
-     "heading": "12. Alterações, comunicações e foro",
+     "heading": "Alterações, comunicações e foro",
      "body": [
       "Estes Termos podem ser alterados a qualquer tempo, com publicação da nova versão no site. Comunicações devem ser enviadas a comercial@cruziapay.com.br. Aplica-se a legislação brasileira e fica eleito o foro da Comarca de Londrina/PR."
      ]
