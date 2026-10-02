@@ -20,9 +20,9 @@ function AboutPage() {
         <p className="label-mono text-gradient-brand font-semibold">{c.label}</p>
         <h1 className="font-display mt-4 text-4xl font-extrabold text-ink sm:text-5xl">{c.title}</h1>
         <p className="mt-6 text-lg leading-relaxed text-slateink">{c.text}</p>
-
-        <h2 className="font-display mt-14 text-2xl font-bold text-ink">{c.teamTitle}</h2>
-        <p className="mt-4 leading-relaxed text-slateink">{c.team}</p>
+        {c.paragraphs.map((p) => (
+          <p key={p.slice(0, 24)} className="mt-5 leading-relaxed text-slateink">{p}</p>
+        ))}
 
         <h2 className="font-display mt-14 text-2xl font-bold text-ink">{c.companyTitle}</h2>
         <dl className="mt-4 grid gap-4 rounded-xl border border-border bg-sand p-6 text-sm sm:grid-cols-2">
