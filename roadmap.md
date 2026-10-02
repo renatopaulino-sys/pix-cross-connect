@@ -6,3 +6,5 @@
 - [x] Atualizar rodapé, contato e persistência
 - [x] Revisar o arquivo enviado e incorporar conteúdo relevante
 - [x] Validar PT/EN em celular e desktop
+- [x] Ajustes out/2026: Pix único Live, demais Coming soon; FAQ, SEO, rodapé, About, Privacidade, Termos e Cookies novos
+- [ ] Pendências do cliente: LinkedIn, nomes de parceiros/provedores, data de vigência, revisão jurídica
