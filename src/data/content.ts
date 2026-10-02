@@ -15,7 +15,7 @@ export const content = {
       login: "Portal do merchant",
       testPix: "Testar Pix",
     },
-    badge: { available: "Disponível", on_request: "Disponível sob consulta", soon: "Em breve" },
+    badge: { available: "Ativo", on_request: "Disponível sob consulta", soon: "Em breve" },
     hero: {
       headline: "Receba com Pix. Liquide onde você precisa.",
       sub: "Infraestrutura de pagamentos cross-border para empresas que vendem no Brasil e precisam de liquidação previsível fora dele.",
@@ -30,7 +30,7 @@ export const content = {
       label: "Métodos",
       title: "Métodos de pagamento",
       intro:
-        "Pix disponível no Brasil. Demais métodos disponíveis sob consulta, sujeitos a onboarding, ou em breve.",
+        "Pix ativo no Brasil hoje. Os demais métodos estão em breve e entram na mesma integração.",
     },
     solutions: {
       label: "Soluções",
@@ -65,12 +65,12 @@ export const content = {
       title: "Verticais atendidas",
       items: [
         { name: "E-commerce", text: "Cobrança Pix no checkout com confirmação imediata do pedido." },
-        { name: "SaaS e assinaturas", text: "Cobranças recorrentes com referência própria por ciclo." },
-        { name: "Marketplaces", text: "Recebimento centralizado e repasse a sellers na sequência." },
+        { name: "SaaS e assinaturas", text: "Cobranças Pix avulsas por ciclo de faturamento, com referência própria. Cobrança recorrente automática em breve." },
+        { name: "Marketplaces", text: "Cobrança Pix centralizada com conciliação por pedido. Split automático para sellers em breve." },
         { name: "Travel", text: "Reservas com janela de expiração definida por cobrança." },
         { name: "Educação", text: "Mensalidades e matrículas com conciliação por aluno." },
         { name: "Serviços digitais", text: "Pagamentos avulsos por link, sem desenvolvimento." },
-        { name: "iGaming e Entretenimento Digital", text: "Disponível apenas para operadores com licença válida em cada mercado onde atuam, sujeito a due diligence reforçada." },
+        { name: "iGaming e Entretenimento Digital", text: "Pay-ins Pix instantâneos 24/7 para operadores autorizados pela Secretaria de Prêmios e Apostas (SPA/MF). Payouts Pix em breve." },
       ],
     },
     security: {
@@ -79,7 +79,7 @@ export const content = {
       paragraphs: [
         "Os dados trafegam criptografados em trânsito e são armazenados criptografados em repouso. O acesso interno é controlado por perfis, com registro de auditoria das operações sensíveis. O monitoramento antifraude avalia padrões de cobrança e liquidação. O onboarding segue políticas de KYC e AML, incluindo verificação documental da empresa e de seus sócios. O tratamento de dados pessoais segue a LGPD.",
         "A CruziaPay atua como facilitadora de pagamentos. O processamento é realizado em parceria com instituições autorizadas em cada mercado onde os serviços são oferecidos. A CruziaPay não é uma instituição financeira ou de pagamento licenciada e não se apresenta como tal.",
-        "Os dados de cartão são processados por parceiros certificados PCI DSS. A CruziaPay não armazena dados completos de cartão.",
+        "Hoje a CruziaPay processa apenas Pix e não processa nem armazena dados de cartão. Quando cartões forem lançados, o processamento será feito por parceiros certificados PCI DSS.",
         "Não fazemos onboarding de empresas da nossa lista de atividades proibidas. Operadores de gaming devem possuir licença válida em cada mercado e cumprir requisitos de jogo responsável e verificação de idade (18+).",
       ],
     },
@@ -90,37 +90,19 @@ export const content = {
         "A API é REST com autenticação por chave secreta enviada no header. Cada cobrança recebe uma referência sua, o que mantém a conciliação simples do lado do seu sistema.",
         "As mudanças de estado são notificadas por webhook assinado, com reentrega em caso de falha. O ambiente de sandbox reproduz o ciclo completo de cobrança e confirmação sem movimentação real de recursos.",
       ],
-      docs: "Documentação completa",
+      docs: "Solicitar acesso à API",
       note: "Exemplo ilustrativo. Endpoints e campos podem mudar até a publicação da documentação.",
     },
     faq: {
       label: "FAQ",
       title: "Perguntas frequentes",
       items: [
-        {
-          q: "Quais métodos já estão disponíveis?",
-          a: "Pix está disponível no Brasil. Cartões, split, Pix out e métodos LATAM estão disponíveis sob consulta, sujeitos a onboarding. Boleto, Pix parcelado e carteiras digitais estão em breve.",
-        },
-        {
-          q: "Qual o prazo de liquidação do Pix?",
-          a: "A confirmação do pagamento chega em segundos. O prazo de liquidação em conta é definido em contrato conforme o perfil de risco do merchant e o país de destino dos recursos.",
-        },
-        {
-          q: "Como funciona a integração?",
-          a: "Por API REST com autenticação por chave, ou por link de pagamento gerado sem desenvolvimento. As mudanças de status são enviadas por webhook e há sandbox para testes antes da produção.",
-        },
-        {
-          q: "Quais documentos são exigidos no cadastro?",
-          a: "Contrato social ou estatuto, cartão CNPJ ou equivalente no país de origem, documentos dos sócios e representantes, comprovante de endereço e dados bancários da conta de liquidação. Dependendo da vertical, pedimos documentação adicional.",
-        },
-        {
-          q: "Vocês atendem empresas estrangeiras?",
-          a: "Sim. É o caso de uso central do produto: empresas fora do Brasil que vendem para clientes brasileiros e precisam receber em Pix com liquidação fora do país. O processo de KYC é adaptado à jurisdição da empresa.",
-        },
-        {
-          q: "Em quantos mercados vocês atuam?",
-          a: "Métodos locais em 12 mercados da América Latina, sob consulta e sujeitos a onboarding. Veja a seção de preços para detalhes por país.",
-        },
+        { q: "Quais métodos estão disponíveis hoje?", a: "O Pix está ativo no Brasil por QR Code, código Copia e Cola e link de pagamento. Cartões, boleto, Pix out e trilhos LATAM estão no roadmap e entrarão na mesma integração." },
+        { q: "Qual o prazo de liquidação do Pix?", a: "O Pix é confirmado em segundos, 24/7. A liquidação local ocorre de D+0 a D+1 dia útil. A liquidação internacional segue a moeda e o prazo acordados em contrato." },
+        { q: "Como funciona a integração?", a: "API REST com autenticação por chave secreta, webhooks assinados com reentrega e referência própria em cada cobrança. Links de pagamento estão disponíveis para times sem desenvolvimento." },
+        { q: "Quais documentos são exigidos no cadastro?", a: "Contrato social, registro fiscal, identificação dos sócios e beneficiários finais (UBO), comprovante de endereço e dados bancários de liquidação. Empresas estrangeiras enviam os documentos equivalentes da sua jurisdição." },
+        { q: "Vocês atendem empresas estrangeiras?", a: "Sim. A CruziaPay foi construída para empresas globais que vendem para clientes brasileiros, com liquidação internacional estruturada por parceiros autorizados nos termos acordados comercialmente." },
+        { q: "Quando os demais métodos entram no ar?", a: "Novos métodos são lançados progressivamente. Fale com o time para receber o roadmap atual do seu mercado e vertical." },
       ],
     },
     contact: {
@@ -200,7 +182,10 @@ export const content = {
       brandLine: "CruziaPay é uma marca operada por",
       commercial: "Comercial",
       compliance: "Compliance",
-      privacyContact: "Privacidade",
+      privacyContact: "Privacidade (DPO)",
+      security: "Segurança e compliance",
+      cookiePrefs: "Preferências de cookies",
+      partnerLine: "As operações de pagamento são realizadas em parceria com instituição autorizada a operar no arranjo Pix. A CruziaPay é uma facilitadora de pagamentos e não é instituição financeira ou de pagamento licenciada.",
       hours: "Horário de atendimento",
       rights: "Todos os direitos reservados.",
     },
@@ -229,7 +214,7 @@ export const content = {
       login: "Merchant portal",
       testPix: "Test Pix",
     },
-    badge: { available: "Available", on_request: "Available on request", soon: "Coming soon" },
+    badge: { available: "Live", on_request: "Available on request", soon: "Coming soon" },
     hero: {
       headline: "Get paid with Pix. Settle where you need it.",
       sub: "Cross-border payment infrastructure for companies selling in Brazil that need predictable settlement outside of it.",
@@ -244,7 +229,7 @@ export const content = {
       label: "Methods",
       title: "Payment methods",
       intro:
-        "Pix available in Brazil. Other methods available on request, subject to onboarding, or coming soon.",
+        "Pix is live in Brazil today. Other methods are coming soon and will join the same integration.",
     },
     solutions: {
       label: "Solutions",
@@ -267,12 +252,12 @@ export const content = {
       title: "Verticals we serve",
       items: [
         { name: "E-commerce", text: "Pix at checkout with immediate order confirmation." },
-        { name: "SaaS and subscriptions", text: "Recurring charges with your own reference per cycle." },
-        { name: "Marketplaces", text: "Centralised collection and downstream transfers to sellers." },
+        { name: "SaaS and subscriptions", text: "One-off Pix charges per billing cycle with your own reference. Automatic recurring billing coming soon." },
+        { name: "Marketplaces", text: "Centralised Pix collection with per-order reconciliation. Automatic seller split coming soon." },
         { name: "Travel", text: "Bookings with an expiry window defined per charge." },
         { name: "Education", text: "Tuition and enrolment with per-student reconciliation." },
         { name: "Digital services", text: "One-off payments by link, with no development." },
-        { name: "iGaming and Digital Entertainment", text: "Available only to operators holding a valid license in each market where they operate, subject to enhanced due diligence." },
+        { name: "iGaming and Digital Entertainment", text: "Instant Pix pay-ins 24/7 for operators authorised by Brazil's Secretariat of Prizes and Bets (SPA/MF). Pix payouts coming soon." },
       ],
     },
     security: {
@@ -281,7 +266,7 @@ export const content = {
       paragraphs: [
         "Data travels encrypted in transit and is stored encrypted at rest. Internal access is role controlled, with audit logging of sensitive operations. Anti fraud monitoring evaluates charge and settlement patterns. Onboarding follows KYC and AML policies, including document verification of the company and its shareholders. Personal data processing follows Brazil's LGPD.",
         "CruziaPay operates as a payment facilitator. Payment processing is carried out in partnership with institutions authorised in each market where services are offered. CruziaPay is not a licensed financial or payment institution and does not present itself as one.",
-        "Card data is processed by PCI DSS certified partners. CruziaPay does not store full card data.",
+        "Today CruziaPay processes Pix only and does not process or store card data. When cards launch, processing will be handled by PCI DSS certified partners.",
         "We do not onboard businesses on our prohibited list. Gaming operators must hold a valid license in each market and comply with responsible gaming and age verification (18+) requirements.",
       ],
     },
@@ -292,37 +277,19 @@ export const content = {
         "The API is REST with secret-key authentication sent in the header. Every charge carries your own reference, which keeps reconciliation simple on your side.",
         "State changes are notified through signed webhooks, with retry on failure. The sandbox reproduces the full charge and confirmation cycle with no real movement of funds.",
       ],
-      docs: "Full documentation",
+      docs: "Request API access",
       note: "Illustrative example. Endpoints and fields may change before documentation is published.",
     },
     faq: {
       label: "FAQ",
       title: "Frequently asked questions",
       items: [
-        {
-          q: "Which methods are available today?",
-          a: "Pix is available in Brazil. Cards, split, Pix out and LATAM methods are available on request, subject to onboarding. Boleto, Pix in installments and digital wallets are coming soon.",
-        },
-        {
-          q: "What is the Pix settlement window?",
-          a: "Payment confirmation arrives in seconds. Settlement to your account is defined contractually according to merchant risk profile and the destination country of the funds.",
-        },
-        {
-          q: "How does integration work?",
-          a: "Through a REST API with key authentication, or through payment links generated without development. Status changes are pushed by webhook and a sandbox is available before production.",
-        },
-        {
-          q: "Which documents are required at onboarding?",
-          a: "Articles of incorporation, tax registration in the country of origin, documents of shareholders and legal representatives, proof of address and the settlement bank account details. Depending on the vertical we request additional documentation.",
-        },
-        {
-          q: "Do you serve foreign companies?",
-          a: "Yes. That is the core use case: companies outside Brazil selling to Brazilian customers that need to collect via Pix and settle abroad. KYC is adapted to the company's jurisdiction.",
-        },
-        {
-          q: "How many markets do you cover?",
-          a: "Local methods in 12 Latin American markets, on request and subject to onboarding. See the pricing section for details per country.",
-        },
+        { q: "Which methods are available today?", a: "Pix is live in Brazil through QR Code, copy and paste codes and payment links. Cards, boleto, Pix out and LATAM rails are on the roadmap and will be added to the same integration." },
+        { q: "What is the Pix settlement window?", a: "Pix is confirmed in seconds, 24/7. Local settlement runs from D+0 to D+1 business day. International settlement follows the currency and timing agreed in your contract." },
+        { q: "How does integration work?", a: "A REST API with secret key authentication, signed webhooks with retry, and your own reference on every charge. Payment links are available for teams that need no development." },
+        { q: "Which documents are required at onboarding?", a: "Articles of incorporation, tax registration, shareholder and UBO identification, proof of address and settlement bank details. Foreign companies submit the equivalent documents from their home jurisdiction." },
+        { q: "Do you serve foreign companies?", a: "Yes. CruziaPay is built for global businesses selling to Brazilian customers, with international settlement structured through authorised partners under the terms agreed commercially." },
+        { q: "When do the other methods go live?", a: "New methods are released progressively. Talk to the team to get the current roadmap for your market and vertical." },
       ],
     },
     contact: {
@@ -402,7 +369,10 @@ export const content = {
       brandLine: "CruziaPay is a brand operated by",
       commercial: "Commercial",
       compliance: "Compliance",
-      privacyContact: "Privacy",
+      privacyContact: "Privacy (DPO)",
+      security: "Security and compliance",
+      cookiePrefs: "Cookie preferences",
+      partnerLine: "Payment operations are carried out in partnership with an institution authorised to operate in the Pix scheme. CruziaPay is a payment facilitator and is not itself a licensed financial or payment institution.",
       hours: "Business hours",
       rights: "All rights reserved.",
     },

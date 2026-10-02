@@ -480,7 +480,8 @@ export const pagesCopy = {
     about: {
       label: "Company",
       title: "Built by payments operators, for cross-border businesses",
-      text: "CruziaPay is a cross-border payment facilitator focused on Latin America. We connect global and regional businesses to local payment methods through one integration, with compliance and settlement designed around each operation.",
+      text: "CruziaPay is a payment facilitator built for global businesses that sell to customers in Brazil and Latin America. We connect merchants to local payment methods through one integration, starting with Pix, and organise reconciliation and international settlement around the way each operation runs.",
+      paragraphs: ["Our model is simple. CruziaPay handles merchant onboarding, technology, routing and support. Regulated activities in the payment flow are performed by authorised partner institutions, selected for coverage, reliability and compliance standards.", "We started in Brazil because Pix changed how Brazilians pay. We are expanding to other Latin American rails, such as SPEI in Mexico and PSE in Colombia, as new partners go live.", "Compliance comes first. Every merchant goes through KYC and AML review before processing, and we monitor transactions continuously for fraud and risk.", "CRUZIAPAY LTDA is headquartered in Londrina, Paraná, Brazil."],
       teamTitle: "Our team",
       team: "CruziaPay is led by professionals with over a decade in cross-border payments across Latin America, working with local payment rails such as Pix, SPEI, PSE and OXXO, card acquiring, PSP and PayFac models, FX and settlement structuring, and KYC and AML frameworks. Experience across iGaming, e-commerce, travel and fintech.",
       companyTitle: "Company", legalName: "Legal name", cnpj: "CNPJ", address: "Address", hours: "Business hours", contacts: "Contacts",
@@ -509,7 +510,8 @@ export const pagesCopy = {
     about: {
       label: "Empresa",
       title: "Construída por operadores de pagamentos, para negócios cross-border",
-      text: "A CruziaPay é uma facilitadora de pagamentos cross-border focada na América Latina. Conectamos empresas globais e regionais a métodos de pagamento locais por meio de uma única integração, com compliance e liquidação desenhados para cada operação.",
+      text: "A CruziaPay é uma facilitadora de pagamentos construída para empresas globais que vendem para clientes no Brasil e na América Latina. Conectamos merchants a métodos de pagamento locais por meio de uma única integração, começando pelo Pix, e organizamos a conciliação e a liquidação internacional conforme o funcionamento de cada operação.",
+      paragraphs: ["Nosso modelo é simples. A CruziaPay cuida do onboarding de merchants, da tecnologia, do roteamento e do suporte. As atividades reguladas do fluxo de pagamento são realizadas por instituições parceiras autorizadas, selecionadas por cobertura, confiabilidade e padrões de compliance.", "Começamos pelo Brasil porque o Pix mudou a forma como os brasileiros pagam. Estamos expandindo para outros trilhos da América Latina, como SPEI no México e PSE na Colômbia, conforme novos parceiros entram no ar.", "Compliance vem primeiro. Todo merchant passa por análise de KYC e AML antes de processar, e monitoramos as transações continuamente quanto a fraude e risco.", "A CRUZIAPAY LTDA tem sede em Londrina, Paraná, Brasil."],
       teamTitle: "Nosso time",
       team: "A CruziaPay é liderada por profissionais com mais de uma década em pagamentos cross-border na América Latina, atuando com trilhos locais como Pix, SPEI, PSE e OXXO, adquirência de cartões, modelos PSP e PayFac, estruturação de FX e liquidação, e frameworks de KYC e AML. Experiência em iGaming, e-commerce, viagens e fintech.",
       companyTitle: "Empresa", legalName: "Razão social", cnpj: "CNPJ", address: "Endereço", hours: "Horário de atendimento", contacts: "Contatos",
