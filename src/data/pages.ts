@@ -299,7 +299,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
     {
      "heading": "Serviços",
      "body": [
-       "O CruziaPay oferece cobrança via Pix, cartões de crédito e débito, boleto, Pix parcelado, carteiras digitais e métodos locais na América Latina, além de payouts, split de pagamentos, cobrança recorrente, API REST, webhooks, conciliação e organização da liquidação nacional e internacional."
+       "O CruziaPay oferece cobrança via Pix, cartões de crédito e débito, boleto, Pix parcelado, carteiras digitais e métodos locais na América Latina, além de payouts, split de pagamentos, API REST, webhooks, conciliação e organização da liquidação nacional e internacional."
      ]
     },
     {
