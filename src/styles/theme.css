@@ -16,6 +16,8 @@
   --color-signal: oklch(0.83 0.146 219.5);
   --color-success: oklch(0.74 0.2 148.3);
   --color-warning: oklch(0.83 0.165 73.8);
+  --color-whatsapp: oklch(0.803 0.184 152.5);
+  --color-whatsapp-hover: oklch(0.72 0.17 152);
 
   /* Text */
   --color-ink: oklch(0.98 0 0);
