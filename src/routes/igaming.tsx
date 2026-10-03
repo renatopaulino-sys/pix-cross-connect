@@ -3,7 +3,6 @@ import { useI18n } from "@/lib/i18n";
 import { pagesCopy } from "@/data/pages";
 import { home } from "@/data/home";
 import { igamingMarkets } from "@/data/igaming";
-import { StatusPill } from "@/components/site/home/SectionShell";
 import { Button } from "@/components/ui/button";
 import { seo } from "@/lib/seo";
 
@@ -38,7 +37,12 @@ function IgamingPage() {
               {igamingMarkets.map((m) => (
                 <tr key={m.market.en} className="border-t border-border">
                   <td className="p-3 text-ink">{m.market[locale]}</td>
-                  <td className="p-3"><StatusPill status={m.status === "unavailable" ? "soon" : "on_request"} label={c.status[m.status]} /></td>
+                  <td className="p-3">
+                    <span className="label-mono inline-flex items-center gap-1.5 rounded-full border border-warning/40 bg-warning/15 px-2.5 py-1 font-semibold text-warning">
+                      <span className="h-1.5 w-1.5 rounded-full bg-warning" />
+                      {c.status[m.status]}
+                    </span>
+                  </td>
                   <td className="p-3 text-slateink">{m.requirement[locale]}</td>
                 </tr>
               ))}

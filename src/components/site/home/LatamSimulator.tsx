@@ -26,11 +26,11 @@ export function LatamSimulator() {
         { name: "Pix QR Code", status: "available" as const },
         { name: locale === "pt" ? "Pix Copia e Cola" : "Pix Copia e Cola (copy and paste)", status: "available" as const },
         { name: locale === "pt" ? "Link de pagamento Pix" : "Pix payment link", status: "available" as const },
-        { name: "Boleto", status: "soon" as const },
-        { name: locale === "pt" ? "Cartões" : "Cards", status: "soon" as const },
-        { name: "Pix out", status: "soon" as const },
+        { name: "Boleto", status: "available" as const },
+        { name: locale === "pt" ? "Cartões" : "Cards", status: "available" as const },
+        { name: "Pix out", status: "available" as const },
       ]
-    : country.payin.map((r) => ({ name: r.method[locale], status: "soon" as const }));
+    : country.payin.map((r) => ({ name: r.method[locale], status: "available" as const }));
 
   return (
     <SectionShell id="cobertura" tone="paper">
@@ -85,7 +85,7 @@ export function LatamSimulator() {
                     <p className="mt-2 text-sm text-slateink">{c.simulator.settlementNote}</p>
                   </>
                 ) : (
-                  <p className="mt-4 rounded-lg border border-border bg-paper p-3 text-sm leading-relaxed text-ink">{c.simulator.soonNotice}</p>
+                  <p className="mt-4 rounded-lg border border-border bg-paper p-3 text-sm leading-relaxed text-ink">{c.simulator.availabilityNotice}</p>
                 )}
               </div>
               <div>
@@ -102,10 +102,10 @@ export function LatamSimulator() {
           <Button
             type="button"
             size="lg"
-            onClick={() => requestContact({ country: country.name[locale], message: `${isBR ? c.simulator.cta : c.simulator.waitlist} — ${country.name[locale]}` })}
+            onClick={() => requestContact({ country: country.name[locale], message: `${isBR ? c.simulator.cta : c.simulator.marketCta} — ${country.name[locale]}` })}
             className="btn-lift gradient-brand mt-8 h-12 px-5 font-semibold text-primary-foreground"
           >
-            {isBR ? c.simulator.cta : c.simulator.waitlist}
+            {isBR ? c.simulator.cta : c.simulator.marketCta}
           </Button>
         </div>
       </div>

@@ -24,17 +24,16 @@ export function SmartRouting() {
         <span aria-hidden="true" className="mx-auto h-6 w-px bg-brand/50 sm:h-px sm:w-10" />
         <ul className="grid grid-cols-2 gap-2">
           {partners.map((code) => {
-            const live = code === "BR";
             return (
               <li
                 key={code}
                 className={
                   "flex flex-col items-start gap-2 rounded-xl border px-3 py-3 " +
-                  (live ? "border-brand/40 bg-brand/10" : "border-border bg-sand opacity-60")
+                  "border-brand/40 bg-brand/10"
                 }
               >
-                <p className={"font-display text-sm font-bold " + (live ? "text-ink" : "text-slateink")}>Partner · {code}</p>
-                <StatusPill status={live ? "available" : "soon"} label={t.badge[live ? "available" : "soon"]} />
+                <p className="font-display text-sm font-bold text-ink">Partner · {code}</p>
+                <StatusPill status="available" label={t.badge.available} />
               </li>
             );
           })}

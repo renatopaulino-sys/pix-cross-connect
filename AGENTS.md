@@ -14,3 +14,4 @@
 - Every route head() uses seo() from src/lib/seo.ts — keeps canonical, OG and hreflang consistent.
 
 - AI features call Lovable AI Gateway from *.server.ts helpers via auth-protected server functions (Responses API, streamed and consumed server-side) — keeps the key and prompts off the client.
+- Public payment availability is driven by centralized bilingual data; iGaming is the sole suspended vertical — prevents contradictory status copy across routes.
