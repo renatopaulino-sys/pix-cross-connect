@@ -33,7 +33,7 @@ type HomeCopy = {
   routing: { label: string; title: string; intro: string; hub: string; hubNote: string; source: string; sourceNote: string; tooltipHint: string };
   simulator: {
     label: string; title: string; intro: string; country: string; loading: string;
-    methods: string; settlement: string; settlementValue: string; settlementNote: string; soonNotice: string; waitlist: string; docs: string; cta: string;
+    methods: string; settlement: string; settlementValue: string; settlementNote: string; availabilityNotice: string; marketCta: string; docs: string; cta: string;
   };
   pricing: {
     label: string; title: string; intro: string; badge: string; payin: string; payout: string; payinFrom: string;
@@ -126,8 +126,8 @@ export const home: Record<Locale, HomeCopy> = {
       settlement: "Prazo de liquidação",
       settlementValue: "D+0 a D+1",
       settlementNote: "Termos de liquidação internacional definidos por contrato.",
-      soonNotice: "Disponível. Os termos de liquidação são definidos no contrato comercial.",
-      waitlist: "Solicitar demo",
+      availabilityNotice: "Disponível. Os termos de liquidação são definidos no contrato comercial.",
+      marketCta: "Solicitar demo",
       docs: "Documentos de KYC",
       cta: "Solicitar demo",
     },
@@ -229,8 +229,8 @@ export const home: Record<Locale, HomeCopy> = {
       settlement: "Settlement window",
       settlementValue: "D+0 to D+1",
       settlementNote: "International settlement terms defined per contract.",
-      soonNotice: "Available. Settlement terms are defined in the commercial agreement.",
-      waitlist: "Request a demo",
+      availabilityNotice: "Available. Settlement terms are defined in the commercial agreement.",
+      marketCta: "Request a demo",
       docs: "KYC documents",
       cta: "Request a demo",
     },

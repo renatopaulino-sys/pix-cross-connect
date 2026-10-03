@@ -85,7 +85,7 @@ export function LatamSimulator() {
                     <p className="mt-2 text-sm text-slateink">{c.simulator.settlementNote}</p>
                   </>
                 ) : (
-                  <p className="mt-4 rounded-lg border border-border bg-paper p-3 text-sm leading-relaxed text-ink">{c.simulator.soonNotice}</p>
+                  <p className="mt-4 rounded-lg border border-border bg-paper p-3 text-sm leading-relaxed text-ink">{c.simulator.availabilityNotice}</p>
                 )}
               </div>
               <div>
@@ -102,10 +102,10 @@ export function LatamSimulator() {
           <Button
             type="button"
             size="lg"
-            onClick={() => requestContact({ country: country.name[locale], message: `${isBR ? c.simulator.cta : c.simulator.waitlist} — ${country.name[locale]}` })}
+            onClick={() => requestContact({ country: country.name[locale], message: `${isBR ? c.simulator.cta : c.simulator.marketCta} — ${country.name[locale]}` })}
             className="btn-lift gradient-brand mt-8 h-12 px-5 font-semibold text-primary-foreground"
           >
-            {isBR ? c.simulator.cta : c.simulator.waitlist}
+            {isBR ? c.simulator.cta : c.simulator.marketCta}
           </Button>
         </div>
       </div>
