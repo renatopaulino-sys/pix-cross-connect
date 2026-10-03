@@ -32,8 +32,9 @@ export function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className="group fixed right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg shadow-black/30 transition-all duration-300 hover:bg-whatsapp-hover hover:shadow-xl animate-in fade-in slide-in-from-bottom-4 duration-500"
-      style={{ bottom: cookieVisible ? "calc(50vh + 1.5rem)" : undefined }}
+      className={`group fixed right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-ink shadow-lg shadow-black/30 transition-all duration-300 hover:bg-whatsapp-hover hover:shadow-xl animate-in fade-in slide-in-from-bottom-4 duration-500 ${
+        cookieVisible ? "bottom-44 sm:bottom-28" : "bottom-6"
+      }`}
     >
       <span
         className="absolute inset-0 -z-10 rounded-full bg-whatsapp opacity-40 blur-md transition-opacity group-hover:opacity-60"

@@ -17,6 +17,7 @@ import { I18nProvider } from "@/lib/i18n";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CookieBanner } from "@/components/site/CookieBanner";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -162,6 +163,7 @@ function RootComponent() {
         <Outlet />
         {!isPanel && <Footer />}
         {!isPanel && <CookieBanner />}
+        {!isPanel && <WhatsAppButton />}
         <Toaster />
       </I18nProvider>
     </QueryClientProvider>

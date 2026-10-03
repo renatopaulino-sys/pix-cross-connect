@@ -18,6 +18,7 @@ export function CookieBanner() {
   const decide = (value: "all" | "essential") => {
     window.localStorage.setItem(KEY, value);
     setVisible(false);
+    window.dispatchEvent(new Event("cruzia:cookie-decided"));
   };
 
   if (!visible) return null;
