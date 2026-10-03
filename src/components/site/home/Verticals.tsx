@@ -6,7 +6,7 @@ import { SectionShell, SectionHead, StatusPill } from "./SectionShell";
 
 const icons = [ShoppingCart, Layers, Store, Plane, GraduationCap, MonitorSmartphone, Dices];
 // Index order matches content.verticals.items: E-commerce, SaaS, Marketplaces, Travel, Education, Digital services, iGaming
-const statusByIndex: ("available" | "soon" | "suspended")[] = ["available", "soon", "soon", "available", "available", "available", "suspended"];
+const statusByIndex: ("available" | "soon" | "suspended")[] = ["available", "available", "available", "available", "available", "available", "suspended"];
 
 export function Verticals() {
   const { t, locale } = useI18n();

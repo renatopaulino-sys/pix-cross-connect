@@ -25,8 +25,9 @@ function MethodPage() {
   const { slug } = Route.useLoaderData();
   const { locale } = useI18n();
   const c = pagesCopy[locale].method;
-  const page = methodPages.find((p) => p.slug === slug)!;
-  const status = methods.find((m) => m.id === page.methodId)?.status ?? "on_request";
+  const page = methodPages.find((p) => p.slug === slug);
+  if (!page) return null;
+  const status = methods.find((m) => m.id === page.methodId)?.status ?? "available";
   return (
     <main className="pt-36 pb-24 lg:pt-44">
       <div className="container-site max-w-3xl">

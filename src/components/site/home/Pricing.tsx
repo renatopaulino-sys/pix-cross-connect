@@ -87,7 +87,7 @@ export function Pricing() {
               {code === "BR" ? (
                 <StatusPill status="available" label={`Pix · ${t.badge.available}`} />
               ) : (
-                <StatusPill status="soon" label={c.badge} />
+                <StatusPill status="available" label={c.badge} />
               )}
             </div>
 

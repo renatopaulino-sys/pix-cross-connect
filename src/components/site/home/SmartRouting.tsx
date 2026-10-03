@@ -24,7 +24,7 @@ export function SmartRouting() {
         <span aria-hidden="true" className="mx-auto h-6 w-px bg-brand/50 sm:h-px sm:w-10" />
         <ul className="grid grid-cols-2 gap-2">
           {partners.map((code) => {
-            const live = code === "BR";
+            const live = true;
             return (
               <li
                 key={code}

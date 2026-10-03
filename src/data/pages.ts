@@ -55,7 +55,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
       "Payer data: name, CPF, value, date, and identifier of the Pix transaction and, when provided by the Client, email and order reference.",
       "Browsing data: IP address, access logs, device, operating system, browser, session identifier, and cookies, pursuant to the Cookie Policy.",
       "Commercial contact data: name, company, corporate email, telephone, country, vertical, estimated volume, and message sent via the website form.",
-      "CruziaPay does not process or store payment card data. When card methods are made available, this Policy will be updated to reflect the applicable controls.",
+       "Card data: CruziaPay does not store the full card number or security code. The data is captured and tokenized by a PCI DSS certified partner institution, and CruziaPay processes only the token and the minimum transaction data.",
       "These data are processed for Client identification and registration (KYC and KYB), processing, reconciliation, and settlement of payments, prevention of fraud, money laundering, and terrorism financing, compliance with legal and regulatory obligations, information security, customer service, and commercial communication when consented."
      ]
     },
@@ -150,7 +150,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
       "Dados dos Pagadores: nome, CPF, valor, data e identificador da transação Pix e, quando informados pelo Cliente, e-mail e referência do pedido.",
       "Dados de navegação: endereço IP, registros de acesso, dispositivo, sistema operacional, navegador, identificador de sessão e cookies, nos termos da Política de Cookies.",
       "Dados de contato comercial: nome, empresa, e-mail corporativo, telefone, país, vertical, volume estimado e mensagem enviados pelo formulário do site.",
-      "O CruziaPay não processa nem armazena dados de cartão de pagamento. Quando métodos com cartão forem disponibilizados, esta Política será atualizada para refletir os controles aplicáveis.",
+       "Dados de cartão: o CruziaPay não armazena o número completo do cartão nem o código de segurança. Os dados são capturados e tokenizados pela instituição parceira certificada PCI DSS, e o CruziaPay trata apenas o token e os dados mínimos da transação.",
       "Esses dados são tratados para identificação e cadastro de Clientes (KYC e KYB), processamento, conciliação e liquidação de pagamentos, prevenção à fraude, à lavagem de dinheiro e ao financiamento do terrorismo, cumprimento de obrigações legais e regulatórias, segurança da informação, atendimento e comunicação comercial quando consentida."
      ]
     },
@@ -219,7 +219,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
     {
      "heading": "Services",
      "body": [
-      "CruziaPay offers collection via Pix through dynamic QR Code, copy-and-paste code, and payment link, REST API, webhooks, reconciliation, and organization of national and international settlement. Methods indicated as \"coming soon\" are not available for contracting and may have their scope, term, and conditions altered."
+       "CruziaPay offers collection via Pix, credit and debit cards, boleto, Pix installments, digital wallets and local payment methods in Latin America, as well as payouts, split payments, recurring billing, REST API, webhooks, reconciliation, and organization of national and international settlement."
      ]
     },
     {
@@ -299,7 +299,7 @@ const policyText: Record<"terms" | "privacy" | "cookies", Record<Locale, LegalDo
     {
      "heading": "Serviços",
      "body": [
-      "O CruziaPay oferece cobrança via Pix por QR Code dinâmico, código copia e cola e link de pagamento, API REST, webhooks, conciliação e organização da liquidação nacional e internacional. Métodos indicados como \"em breve\" não estão disponíveis para contratação e podem ter escopo, prazo e condições alterados."
+       "O CruziaPay oferece cobrança via Pix, cartões de crédito e débito, boleto, Pix parcelado, carteiras digitais e métodos locais na América Latina, além de payouts, split de pagamentos, cobrança recorrente, API REST, webhooks, conciliação e organização da liquidação nacional e internacional."
      ]
     },
     {
@@ -480,8 +480,8 @@ export const pagesCopy = {
     about: {
       label: "Company",
       title: "Built by payments operators, for cross-border businesses",
-      text: "CruziaPay is a payment facilitator built for global businesses that sell to customers in Brazil and Latin America. We connect merchants to local payment methods through one integration, starting with Pix, and organise reconciliation and international settlement around the way each operation runs.",
-      paragraphs: ["Our model is simple. CruziaPay handles merchant onboarding, technology, routing and support. Regulated activities in the payment flow are performed by authorised partner institutions, selected for coverage, reliability and compliance standards.", "We started in Brazil because Pix changed how Brazilians pay. We are expanding to other Latin American rails, such as SPEI in Mexico and PSE in Colombia, as new partners go live.", "Compliance comes first. Every merchant goes through KYC and AML review before processing, and we monitor transactions continuously for fraud and risk.", "CRUZIAPAY LTDA is headquartered in Londrina, Paraná, Brazil."],
+      text: "CruziaPay is a payment facilitator built for global businesses that sell to customers in Brazil and Latin America. We connect merchants to local payment methods through one integration and organise reconciliation and international settlement around the way each operation runs.",
+      paragraphs: ["Our model is simple. CruziaPay handles merchant onboarding, technology, routing and support. Regulated activities in the payment flow are performed by authorised partner institutions, selected for coverage, reliability and compliance standards.", "Our coverage includes Latin American rails such as Pix in Brazil, SPEI in Mexico and PSE in Colombia through one operational layer.", "Compliance comes first. Every merchant goes through KYC and AML review before processing, and we monitor transactions continuously for fraud and risk.", "CRUZIAPAY LTDA is headquartered in Londrina, Paraná, Brazil."],
       teamTitle: "Our team",
       team: "CruziaPay is led by professionals with over a decade in cross-border payments across Latin America, working with local payment rails such as Pix, SPEI, PSE and OXXO, card acquiring, PSP and PayFac models, FX and settlement structuring, and KYC and AML frameworks. Experience across iGaming, e-commerce, travel and fintech.",
       companyTitle: "Company", legalName: "Legal name", cnpj: "CNPJ", address: "Address", hours: "Business hours", contacts: "Contacts",
@@ -493,7 +493,7 @@ export const pagesCopy = {
       whoTitle: "Who we work with",
       who: "Only operators holding a valid license in each market where they offer services. Licenses are verified during onboarding and monitored on an ongoing basis.",
       cols: { market: "Market", status: "Status", requirement: "Requirement" },
-      status: { on_request: "Available on request", review: "On request", unavailable: "Not available" },
+      status: { on_request: "Suspended", review: "Suspended", unavailable: "Suspended" },
       rgTitle: "Responsible gaming",
       rg: "Operators must apply age verification (18+), self exclusion tools and deposit limits as required by each market's regulation.",
       eddTitle: "Enhanced due diligence",
@@ -504,14 +504,14 @@ export const pagesCopy = {
       what: "What it is", how: "How the buyer pays", country: "Country", currency: "Currency", confirmation: "Confirmation window",
       useCases: "Recommended use", status: "Status", cta: "Talk to the team", back: "All methods",
     },
-    insights: { label: "Insights", title: "Insights", empty: "First articles coming soon." },
+    insights: { label: "Insights", title: "Insights", empty: "Analysis and practical guidance on cross-border payments in Latin America." },
   },
   pt: {
     about: {
       label: "Empresa",
       title: "Construída por operadores de pagamentos, para negócios cross-border",
-      text: "A CruziaPay é uma facilitadora de pagamentos construída para empresas globais que vendem para clientes no Brasil e na América Latina. Conectamos merchants a métodos de pagamento locais por meio de uma única integração, começando pelo Pix, e organizamos a conciliação e a liquidação internacional conforme o funcionamento de cada operação.",
-      paragraphs: ["Nosso modelo é simples. A CruziaPay cuida do onboarding de merchants, da tecnologia, do roteamento e do suporte. As atividades reguladas do fluxo de pagamento são realizadas por instituições parceiras autorizadas, selecionadas por cobertura, confiabilidade e padrões de compliance.", "Começamos pelo Brasil porque o Pix mudou a forma como os brasileiros pagam. Estamos expandindo para outros trilhos da América Latina, como SPEI no México e PSE na Colômbia, conforme novos parceiros entram no ar.", "Compliance vem primeiro. Todo merchant passa por análise de KYC e AML antes de processar, e monitoramos as transações continuamente quanto a fraude e risco.", "A CRUZIAPAY LTDA tem sede em Londrina, Paraná, Brasil."],
+      text: "A CruziaPay é uma facilitadora de pagamentos construída para empresas globais que vendem para clientes no Brasil e na América Latina. Conectamos merchants a métodos de pagamento locais por meio de uma única integração e organizamos a conciliação e a liquidação internacional conforme o funcionamento de cada operação.",
+      paragraphs: ["Nosso modelo é simples. A CruziaPay cuida do onboarding de merchants, da tecnologia, do roteamento e do suporte. As atividades reguladas do fluxo de pagamento são realizadas por instituições parceiras autorizadas, selecionadas por cobertura, confiabilidade e padrões de compliance.", "Nossa cobertura inclui trilhos da América Latina, como Pix no Brasil, SPEI no México e PSE na Colômbia, em uma única camada operacional.", "Compliance vem primeiro. Todo merchant passa por análise de KYC e AML antes de processar, e monitoramos as transações continuamente quanto a fraude e risco.", "A CRUZIAPAY LTDA tem sede em Londrina, Paraná, Brasil."],
       teamTitle: "Nosso time",
       team: "A CruziaPay é liderada por profissionais com mais de uma década em pagamentos cross-border na América Latina, atuando com trilhos locais como Pix, SPEI, PSE e OXXO, adquirência de cartões, modelos PSP e PayFac, estruturação de FX e liquidação, e frameworks de KYC e AML. Experiência em iGaming, e-commerce, viagens e fintech.",
       companyTitle: "Empresa", legalName: "Razão social", cnpj: "CNPJ", address: "Endereço", hours: "Horário de atendimento", contacts: "Contatos",
@@ -523,7 +523,7 @@ export const pagesCopy = {
       whoTitle: "Com quem trabalhamos",
       who: "Apenas operadores com licença válida em cada mercado onde oferecem serviços. As licenças são verificadas no onboarding e monitoradas continuamente.",
       cols: { market: "Mercado", status: "Status", requirement: "Requisito" },
-      status: { on_request: "Disponível sob consulta", review: "Sob consulta", unavailable: "Indisponível" },
+      status: { on_request: "Suspenso", review: "Suspenso", unavailable: "Suspenso" },
       rgTitle: "Jogo responsável",
       rg: "Os operadores devem aplicar verificação de idade (18+), ferramentas de autoexclusão e limites de depósito conforme a regulação de cada mercado.",
       eddTitle: "Due diligence reforçada",
@@ -534,6 +534,6 @@ export const pagesCopy = {
       what: "O que é", how: "Como o comprador paga", country: "País", currency: "Moeda", confirmation: "Janela de confirmação",
       useCases: "Uso recomendado", status: "Status", cta: "Falar com o time", back: "Todos os métodos",
     },
-    insights: { label: "Insights", title: "Insights", empty: "Primeiros artigos em breve." },
+    insights: { label: "Insights", title: "Insights", empty: "Análises e orientações práticas sobre pagamentos cross-border na América Latina." },
   },
 } as const;

@@ -31,7 +31,7 @@ export const pricingCountries: PricingCountry[] = [
     code: "BR", flag: "🇧🇷", name: b("Brasil", "Brazil"), currency: "BRL", from: "7.3%",
     payin: [{ method: cards, providers: s("Visa, Mastercard, Elo, Amex"), rate: s("7.3%") }],
     payout: null, minFee: null,
-    notes: b("Preço do Pix sob consulta.", "Pix pricing on request."),
+    notes: b("Pix ativo; preço definido conforme o perfil da operação.", "Pix is live; pricing is defined for each operation profile."),
   },
   {
     code: "MX", flag: "🇲🇽", name: b("México", "Mexico"), currency: "MXN", from: "5%",
@@ -44,8 +44,8 @@ export const pricingCountries: PricingCountry[] = [
     payout: [{ method: b("Transferência SPEI", "SPEI bank transfer"), providers: b("De 1 a 200.000 MXN", "From 1 to 200,000 MXN"), rate: s("5%") }],
     minFee: b("4 MXN (dinheiro na 7Eleven e outras lojas: 10 MXN)", "4 MXN (cash at 7Eleven and other stores: 10 MXN)"),
     notes: b(
-      "IVA de 16% incide sobre a taxa de processamento. Cartões para apostas esportivas e gaming estão sujeitos a KYC adicional. Métodos em dinheiro não estão disponíveis para forex e cripto, exceto OXXO Pay.",
-      "VAT of 16% applies to the processing fee. Cards for sports betting and gaming are subject to additional KYC. Cash methods are not available for forex and crypto, except OXXO Pay.",
+      "IVA de 16% incide sobre a taxa de processamento. Cartões para apostas esportivas e gaming estão sujeitos a KYC adicional. Métodos em dinheiro para forex e cripto passam por análise reforçada.",
+      "VAT of 16% applies to the processing fee. Cards for sports betting and gaming are subject to additional KYC. Cash methods for forex and crypto undergo enhanced review.",
     ),
   },
   {
@@ -120,8 +120,8 @@ export const pricingCountries: PricingCountry[] = [
     payout: [{ method: bank, providers: b("Sem limite máximo", "No maximum limit"), rate: s("5.8%") }],
     minFee: s("USD 1"),
     notes: b(
-      "IVA de 15% incide sobre a taxa de processamento. Retenção de 5% incide sobre cada pagamento. Indisponível para apostas esportivas e gaming.",
-      "VAT of 15% applies to the processing fee. A 5% withholding tax applies to each payment. Not available for sports betting and gaming.",
+      "IVA de 15% incide sobre a taxa de processamento. Retenção de 5% incide sobre cada pagamento. A vertical de apostas esportivas e gaming permanece suspensa.",
+      "VAT of 15% applies to the processing fee. A 5% withholding tax applies to each payment. The sports betting and gaming vertical remains suspended.",
     ),
   },
   {
@@ -134,8 +134,8 @@ export const pricingCountries: PricingCountry[] = [
     payout: [{ method: bank, providers: none, rate: s("7%") }],
     minFee: s("USD 1"),
     notes: b(
-      "IVA de 13% incide sobre a taxa de processamento. Indisponível para forex e cripto.",
-      "VAT of 13% applies to the processing fee. Not available for forex and crypto.",
+      "IVA de 13% incide sobre a taxa de processamento. Operações de forex e cripto passam por análise reforçada.",
+      "VAT of 13% applies to the processing fee. Forex and crypto operations undergo enhanced review.",
     ),
   },
   {
@@ -143,8 +143,8 @@ export const pricingCountries: PricingCountry[] = [
     payin: [{ method: cash, providers: s("Akisi, Super24"), rate: s("8.5%") }],
     payout: null, minFee: s("USD 1"),
     notes: b(
-      "IVA de 12% incide sobre a taxa de processamento. Indisponível para forex e cripto.",
-      "VAT of 12% applies to the processing fee. Not available for forex and crypto.",
+      "IVA de 12% incide sobre a taxa de processamento. Operações de forex e cripto passam por análise reforçada.",
+      "VAT of 12% applies to the processing fee. Forex and crypto operations undergo enhanced review.",
     ),
   },
   {
@@ -152,8 +152,8 @@ export const pricingCountries: PricingCountry[] = [
     payin: [{ method: cash, providers: s("Super Xtra, Punto Pago"), rate: s("8.5%") }],
     payout: null, minFee: s("USD 1"),
     notes: b(
-      "IVA de 7% incide sobre a taxa de processamento. Indisponível para forex e cripto.",
-      "VAT of 7% applies to the processing fee. Not available for forex and crypto.",
+      "IVA de 7% incide sobre a taxa de processamento. Operações de forex e cripto passam por análise reforçada.",
+      "VAT of 7% applies to the processing fee. Forex and crypto operations undergo enhanced review.",
     ),
   },
   {
@@ -165,8 +165,8 @@ export const pricingCountries: PricingCountry[] = [
     payout: [{ method: bank, providers: none, rate: s("6.5%") }],
     minFee: s("USD 1"),
     notes: b(
-      "IVA de 22% incide sobre a taxa de processamento. Indisponível para apostas esportivas e gaming.",
-      "VAT of 22% applies to the processing fee. Not available for sports betting and gaming.",
+      "IVA de 22% incide sobre a taxa de processamento. A vertical de apostas esportivas e gaming permanece suspensa.",
+      "VAT of 22% applies to the processing fee. The sports betting and gaming vertical remains suspended.",
     ),
   },
   {
@@ -178,8 +178,8 @@ export const pricingCountries: PricingCountry[] = [
     payout: [{ method: bank, providers: none, rate: s("6.5%") }],
     minFee: s("USD 1"),
     notes: b(
-      "IVA de 13% incide sobre a taxa de processamento. Indisponível para apostas esportivas e gaming.",
-      "VAT of 13% applies to the processing fee. Not available for sports betting and gaming.",
+      "IVA de 13% incide sobre a taxa de processamento. A vertical de apostas esportivas e gaming permanece suspensa.",
+      "VAT of 13% applies to the processing fee. The sports betting and gaming vertical remains suspended.",
     ),
   },
 ];

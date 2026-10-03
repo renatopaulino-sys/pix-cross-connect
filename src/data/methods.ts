@@ -21,7 +21,7 @@ export const methods: Method[] = [
   },
   {
     id: "credit",
-    status: "soon",
+    status: "available",
     icon: "credit-card",
     name: { pt: "Cartão de crédito", en: "Credit card" },
     description: {
@@ -31,7 +31,7 @@ export const methods: Method[] = [
   },
   {
     id: "debit",
-    status: "soon",
+    status: "available",
     icon: "credit-card",
     name: { pt: "Cartão de débito", en: "Debit card" },
     description: {
@@ -41,7 +41,7 @@ export const methods: Method[] = [
   },
   {
     id: "boleto",
-    status: "soon",
+    status: "available",
     icon: "barcode",
     name: { pt: "Boleto bancário", en: "Boleto" },
     description: {
@@ -51,7 +51,7 @@ export const methods: Method[] = [
   },
   {
     id: "pix-installments",
-    status: "soon",
+    status: "available",
     icon: "layers",
     name: { pt: "Pix parcelado", en: "Pix in installments" },
     description: {
@@ -61,7 +61,7 @@ export const methods: Method[] = [
   },
   {
     id: "pix-out",
-    status: "soon",
+    status: "available",
     icon: "send",
     name: { pt: "Pix out", en: "Pix out" },
     description: {
@@ -71,7 +71,7 @@ export const methods: Method[] = [
   },
   {
     id: "wallets",
-    status: "soon",
+    status: "available",
     icon: "wallet",
     name: { pt: "Carteiras digitais", en: "Digital wallets" },
     description: {
@@ -81,7 +81,7 @@ export const methods: Method[] = [
   },
   {
     id: "spei",
-    status: "soon",
+    status: "available",
     icon: "building",
     name: { pt: "SPEI (México)", en: "SPEI (Mexico)" },
     description: {
@@ -91,7 +91,7 @@ export const methods: Method[] = [
   },
   {
     id: "pse",
-    status: "soon",
+    status: "available",
     icon: "building",
     name: { pt: "PSE (Colômbia)", en: "PSE (Colombia)" },
     description: {
@@ -101,7 +101,7 @@ export const methods: Method[] = [
   },
   {
     id: "oxxo",
-    status: "soon",
+    status: "available",
     icon: "store",
     name: { pt: "OXXO (México)", en: "OXXO (Mexico)" },
     description: {
@@ -111,7 +111,7 @@ export const methods: Method[] = [
   },
   {
     id: "latam-transfers",
-    status: "soon",
+    status: "available",
     icon: "globe",
     name: {
       pt: "Transferências locais LATAM",
@@ -139,7 +139,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "checkout",
-    status: "soon",
+    status: "available",
     icon: "layout",
     name: { pt: "Checkout transparente", en: "Transparent checkout" },
     description: {
@@ -159,7 +159,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "split",
-    status: "soon",
+    status: "available",
     icon: "split",
     name: { pt: "Split de pagamentos", en: "Payment split" },
     description: {
@@ -169,7 +169,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "payouts",
-    status: "soon",
+    status: "available",
     icon: "send",
     name: {
       pt: "Payouts e liquidação internacional",
@@ -182,7 +182,7 @@ export const solutions: Solution[] = [
   },
   {
     id: "dashboard",
-    status: "soon",
+    status: "available",
     icon: "chart",
     name: { pt: "Painel e conciliação", en: "Dashboard and reconciliation" },
     description: {

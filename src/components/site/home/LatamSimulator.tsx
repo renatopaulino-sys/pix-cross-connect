@@ -26,11 +26,11 @@ export function LatamSimulator() {
         { name: "Pix QR Code", status: "available" as const },
         { name: locale === "pt" ? "Pix Copia e Cola" : "Pix Copia e Cola (copy and paste)", status: "available" as const },
         { name: locale === "pt" ? "Link de pagamento Pix" : "Pix payment link", status: "available" as const },
-        { name: "Boleto", status: "soon" as const },
-        { name: locale === "pt" ? "Cartões" : "Cards", status: "soon" as const },
-        { name: "Pix out", status: "soon" as const },
+        { name: "Boleto", status: "available" as const },
+        { name: locale === "pt" ? "Cartões" : "Cards", status: "available" as const },
+        { name: "Pix out", status: "available" as const },
       ]
-    : country.payin.map((r) => ({ name: r.method[locale], status: "soon" as const }));
+    : country.payin.map((r) => ({ name: r.method[locale], status: "available" as const }));
 
   return (
     <SectionShell id="cobertura" tone="paper">
